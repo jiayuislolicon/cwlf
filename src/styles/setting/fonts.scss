@@ -1,0 +1,99 @@
+$h1: 67px;
+$mobile-h1: 48px;
+
+$h2: 59px;
+$mobile-h2: 40px;
+
+$h3: 42px;
+$mobile-h3: 32px;
+
+$h4: 22px;
+$mobile-h4: 18px;
+
+$h5: 18px;
+$mobile-h5: 16px;
+
+$number: 16px;
+$mobile-number: 14px;
+
+$location: 17px;
+$mobile-location: 13px;
+
+$body: 16px;
+$mobile-body: 14px;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Serif TC", serif;
+  word-break: break-all;
+  color: black;
+}
+
+h1 {
+  font-size: $mobile-h1;
+  line-height: 1.2;
+  @include rwd(desktop-w) {
+    font-size: $h1;
+  }
+}
+
+h2 {
+  font-size: $mobile-h2;
+  line-height: 1.2;
+  @include rwd(desktop-w) {
+    font-size: $h2;
+  }
+}
+
+h3 {
+  font-size: $mobile-h3;
+  line-height: 1.2;
+  @include rwd(desktop-w) {
+    font-size: $h3;
+  }
+}
+
+h4 {
+  font-size: $mobile-h4;
+  line-height: 1.36;
+  @include rwd(desktop-w) {
+    font-size: $h4;
+  }
+}
+
+h5 {
+  font-size: $mobile-h5;
+  line-height: 1;
+  @include rwd(desktop-w) {
+    font-size: $h5;
+  }
+}
+
+.number {
+  font-size: $mobile-number;
+  @include rwd(desktop-w) {
+    font-size: $number;
+  }
+}
+
+.location {
+  font-size: $mobile-location;
+  line-height: 1.2;
+  @include rwd(desktop-w) {
+    font-size: $location;
+  }
+}
+
+span,
+p {
+  font-size: $mobile-body;
+  line-height: 1.5;
+  @include rwd(desktop-w) {
+    font-size: $body;
+  }
+}

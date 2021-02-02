@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
-import "./App.scss";
+import "./styles/global.scss";
 import { test } from "./actions";
 import Home from "./layouts/Home/index";
 import InnerPage from "./layouts/InnerPage/index";
