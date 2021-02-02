@@ -1,0 +1,9 @@
+import React from "react";
+// import { link } from "react-router-dom";
+import "./index.css";
+
+const ShapeButton = () => {
+  return <div className="shape-button">ShapeButton</div>;
+};
+
+export default ShapeButton;
