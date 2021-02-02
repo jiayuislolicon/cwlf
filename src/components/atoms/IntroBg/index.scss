@@ -1,0 +1,49 @@
+.intro-bg {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  img {
+    width: 155px;
+    height: auto;
+    // @include center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.heart {
+    background-color: var(--blue);
+    .puff {
+      display: none;
+    }
+    .heart {
+      display: block;
+    }
+  }
+  &.puff {
+    background-color: var(--orange);
+    .heart {
+      display: none;
+    }
+    .puff {
+      display: block;
+    }
+  }
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    h3,
+    h4,
+    p {
+      text-align: center;
+      color: white;
+    }
+    h4 {
+      margin-bottom: 10px;
+    }
+  }
+}
