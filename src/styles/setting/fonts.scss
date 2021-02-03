@@ -1,26 +1,28 @@
-$h1: 67px;
-$mobile-h1: 48px;
+:root {
+  --h1: 67px;
+  --mobile-h1: 48px;
 
-$h2: 59px;
-$mobile-h2: 40px;
+  --h2: 59px;
+  --mobile-h2: 40px;
 
-$h3: 42px;
-$mobile-h3: 32px;
+  --h3: 42px;
+  --mobile-h3: 32px;
 
-$h4: 22px;
-$mobile-h4: 18px;
+  --h4: 22px;
+  --mobile-h4: 18px;
 
-$h5: 18px;
-$mobile-h5: 16px;
+  --h5: 18px;
+  --mobile-h5: 16px;
 
-$number: 16px;
-$mobile-number: 14px;
+  --number: 16px;
+  --mobile-number: 14px;
 
-$location: 17px;
-$mobile-location: 13px;
+  --location: 17px;
+  --mobile-location: 13px;
 
-$body: 16px;
-$mobile-body: 14px;
+  --body: 16px;
+  --mobile-body: 14px;
+}
 
 .bold {
   -webkit-text-stroke: 0.3px #fefefe;
@@ -40,66 +42,66 @@ h5 {
 }
 
 h1 {
-  font-size: $mobile-h1;
+  font-size: var(--mobile-h1);
   line-height: 1.2;
-  @include rwd(desktop-w) {
-    font-size: $h1;
+  @media screen and (desktop-w) {
+    font-size: var(--h1);
   }
 }
 
 h2 {
-  font-size: $mobile-h2;
+  font-size: var(--mobile-h2);
   line-height: 1.2;
-  @include rwd(desktop-w) {
-    font-size: $h2;
+  @media screen and (desktop-w) {
+    font-size: var(--h2);
   }
 }
 
 h3 {
-  font-size: $mobile-h3;
+  font-size: var(--mobile-h3);
   line-height: 1.2;
-  @include rwd(desktop-w) {
-    font-size: $h3;
+  @media screen and (desktop-w) {
+    font-size: var(--h3);
   }
 }
 
 h4 {
-  font-size: $mobile-h4;
+  font-size: var(--mobile-h4);
   line-height: 1.36;
-  @include rwd(desktop-w) {
-    font-size: $h4;
+  @media screen and (desktop-w) {
+    font-size: var(--h4);
   }
 }
 
 h5 {
-  font-size: $mobile-h5;
+  font-size: var(--mobile-h5);
   line-height: 1;
-  @include rwd(desktop-w) {
-    font-size: $h5;
+  @media screen and (desktop-w) {
+    font-size: var(--h5);
   }
 }
 
 .number {
-  font-size: $mobile-number;
-  @include rwd(desktop-w) {
-    font-size: $number;
+  font-size: var(--mobile-number);
+  @media screen and (desktop-w) {
+    font-size: var(--number);
   }
 }
 
 .location {
-  font-size: $mobile-location;
+  font-size: var(--mobile-location);
   line-height: 1.2;
-  @include rwd(desktop-w) {
-    font-size: $location;
+  @media screen and (desktop-w) {
+    font-size: var(--location);
   }
 }
 
 span,
 p {
-  font-size: $mobile-body;
+  font-size: var(--mobile-body);
   line-height: 1.5;
   margin: 0;
-  @include rwd(desktop-w) {
-    font-size: $body;
+  @media screen and (desktop-w) {
+    font-size: var(--body);
   }
 }
