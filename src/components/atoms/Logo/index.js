@@ -1,11 +1,15 @@
 import React from "react";
-// import { link } from "react-router-dom";
+import { ReactComponent as LongLogo } from "static/svg/long-logo.svg";
+import { ReactComponent as ShortLogo } from "static/svg/short-logo.svg";
 import "./index.scss";
 
 const Logo = () => {
   return (
     <div className="logo">
-      <img src={`${process.env.PUBLIC_URL}/logo.svg`} alt="" />
+      <div className="long">
+        <LongLogo />
+        <ShortLogo />
+      </div>
     </div>
   );
 };

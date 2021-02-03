@@ -1,38 +1,19 @@
 import React from "react";
-// import { link } from "react-router-dom";
+import heart from "static/png/character-info-heart.png";
+import heartHover from "static/png/character-info-heart-hover.png";
+import puff from "static/png/character-info-puff.png";
+import puffHover from "static/png/character-info-puff-hover.png";
 import "./index.scss";
 
 const IntroBg = ({ item, className }) => {
   return (
     <div className={`intro-bg ${className} ${item}`}>
+      {item === "heart" && <img src={heart} alt="heart" className="heart" />}
       {item === "heart" && (
-        <img
-          src={`${process.env.PUBLIC_URL}/png/character-info-heart.png`}
-          alt="heart"
-          className="heart"
-        />
+        <img src={heartHover} alt="heart" className="heart" />
       )}
-      {item === "heart" && (
-        <img
-          src={`${process.env.PUBLIC_URL}/png/character-info-heart-hover.png`}
-          alt="heart"
-          className="heart"
-        />
-      )}
-      {item === "puff" && (
-        <img
-          src={`${process.env.PUBLIC_URL}/png/character-info-puff.png`}
-          alt="puff"
-          className="puff"
-        />
-      )}
-      {item === "puff" && (
-        <img
-          src={`${process.env.PUBLIC_URL}/png/character-info-puff-hover.png`}
-          alt="puff"
-          className="puff"
-        />
-      )}
+      {item === "puff" && <img src={puff} alt="puff" className="puff" />}
+      {item === "puff" && <img src={puffHover} alt="puff" className="puff" />}
       <div className="text">
         <h3 className="jf-openhuninn">心仔</h3>
         <h4>愛的超能力</h4>
