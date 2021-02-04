@@ -1,0 +1,44 @@
+.footer {
+  width: 100%;
+  padding: 49px 80px 30px;
+  background-color: var(--white);
+  box-shadow: 0 3px 30px 0 rgba(164, 147, 130, 0.23);
+  border-radius: 40px 40px 0 0;
+  .info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .contact-info {
+      h5 {
+        margin-bottom: 14px;
+      }
+    }
+    .socal-info {
+      display: flex;
+      .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+      a:last-child .icon {
+        margin-right: 0;
+      }
+    }
+  }
+  .copyright {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gray);
+    padding-top: 15px;
+    .btns {
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      a:first-child {
+        margin-right: 30px;
+      }
+    }
+  }
+}
