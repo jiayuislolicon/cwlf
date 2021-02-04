@@ -7,7 +7,7 @@ const ShapeButton = () => {
   return (
     <div className="shape-button">
       <Heart className="heart" />
-      <ShareIcon className="share" />
+      <ShareIcon className="share ab-center" />
     </div>
   );
 };

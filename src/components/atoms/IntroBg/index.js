@@ -8,13 +8,19 @@ import "./index.scss";
 const IntroBg = ({ item, className }) => {
   return (
     <div className={`intro-bg ${className} ${item}`}>
-      {item === "heart" && <img src={heart} alt="heart" className="heart" />}
       {item === "heart" && (
-        <img src={heartHover} alt="heart" className="heart" />
+        <img src={heart} alt="heart" className="heart ab-center" />
       )}
-      {item === "puff" && <img src={puff} alt="puff" className="puff" />}
-      {item === "puff" && <img src={puffHover} alt="puff" className="puff" />}
-      <div className="text">
+      {item === "heart" && (
+        <img src={heartHover} alt="heart" className="heart ab-center" />
+      )}
+      {item === "puff" && (
+        <img src={puff} alt="puff" className="puff ab-center" />
+      )}
+      {item === "puff" && (
+        <img src={puffHover} alt="puff" className="puff ab-center" />
+      )}
+      <div className="text ab-center">
         <h3 className="jf-openhuninn">心仔</h3>
         <h4>愛的超能力</h4>
         <p>
