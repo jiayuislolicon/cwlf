@@ -1,5 +1,5 @@
 @import "setting.scss";
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 
 body {
   background-color: var(--gray);
@@ -17,4 +17,11 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }

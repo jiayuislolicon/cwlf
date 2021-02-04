@@ -1,11 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+// import { Route, Switch } from "react-router-dom";
 import useResize from "utils/useResize";
 
-import { setScreenValue } from "./actions/global";
+import Header from "components/molecules/Header";
+import Footer from "components/molecules/Footer";
 import Home from "./layouts/Home/index";
-import InnerPage from "./layouts/InnerPage/index";
+
+import { setScreenValue } from "./actions/global";
+// import InnerPage from "./layouts/InnerPage/index";
 
 import "./styles/global.scss";
 
@@ -19,10 +22,15 @@ const App = () => {
   };
   useResize(resize);
   return (
-    <Switch className="App">
-      <Route exact path="/" component={Home} />
-      <Route path="/:id" component={InnerPage} />
-    </Switch>
+    // <Switch className="App">
+    //   <Route exact path="/" component={Home} />
+    //   <Route path="/:id" component={InnerPage} />
+    // </Switch>
+    <div>
+      <Header />
+      <Home />
+      <Footer />
+    </div>
   );
 };
 
