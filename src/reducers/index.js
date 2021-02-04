@@ -1,13 +1,8 @@
-import { handleActions } from "redux-actions";
+import { combineReducers } from "redux";
+import global from "./global";
 
-export default handleActions(
-  {
-    SET_TEST: (state) => ({
-      ...state,
-      test: "test",
-    }),
-  },
-  {
-    test: "",
-  }
-);
+const reducers = combineReducers({
+  global,
+});
+
+export default reducers;
