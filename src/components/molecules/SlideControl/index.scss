@@ -1,0 +1,33 @@
+.slide-control {
+  display: flex;
+  align-items: center;
+  .arrow-right {
+    transform: rotate(-180deg);
+  }
+  .arrow {
+    width: 35px;
+    height: 25px;
+  }
+  .slide-num {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 20px;
+    .now-num {
+      font-size: 29px;
+      margin-right: 5px;
+    }
+    .slash {
+      height: 24px;
+      border-left: solid 1px var(--black);
+      transform: rotate(30deg);
+    }
+    .total-num {
+      font-size: 16px;
+      line-height: 1.25;
+      letter-spacing: 1.5px;
+      color: var(--black);
+      margin-left: 5px;
+      font-weight: 300;
+    }
+  }
+}
