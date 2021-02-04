@@ -1,9 +1,14 @@
 import React from "react";
-// import { link } from "react-router-dom";
+import WhiteCircle from "components/atoms/WhiteCircle";
 import "./index.scss";
 
 const Cover = () => {
-  return <div className="cover">Cover</div>;
+  return (
+    <section className="section-cover">
+      <div className="deco-circle" />
+      <WhiteCircle />
+    </section>
+  );
 };
 
 export default Cover;
