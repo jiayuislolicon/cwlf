@@ -5,4 +5,4 @@ import Logo from "../index";
 
 const stories = storiesOf("atoms/Logo", module);
 
-stories.add("__interactive", () => <Logo />);
+stories.add("__interactive", () => <Logo isLong />);
