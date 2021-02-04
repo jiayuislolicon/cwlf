@@ -1,0 +1,31 @@
+.event-item {
+  max-width: 517px;
+  width: 35vw;
+  .cover {
+    width: 100%;
+    position: relative;
+    height: calc(35vw / 517 * 345);
+    border-radius: 30px 30px 0 0;
+    background-size: cover;
+    background-position: center center;
+    .tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+    }
+  }
+  .event-title-wrapper {
+    width: 100%;
+    height: 98px;
+    background-color: var(--white);
+    padding: 0 30px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 3px 30px 0 rgba(164, 147, 130, 0.23);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h4 {
+      width: calc(100% - 142px);
+    }
+  }
+}

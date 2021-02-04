@@ -2,9 +2,9 @@ import React from "react";
 import classNames from "classnames";
 import "./index.scss";
 
-const TimeTag = ({ classname, month, day, year }) => {
+const TimeTag = ({ className, month, day, year }) => {
   return (
-    <div className={classNames("time-tag", classname)}>
+    <div className={classNames("time-tag", className)}>
       <div className="date">
         <span className="number">{String(month).padStart(2, "0")}</span>
         <div className="circle" />
