@@ -81,8 +81,13 @@ h5 {
   }
 }
 
+.en {
+  font-family: "Rubik", sans-serif;
+}
+
 .number {
   font-size: var(--mobile-number);
+  font-family: "Rubik", sans-serif;
   @media screen and (desktop-w) {
     font-size: var(--number);
   }
