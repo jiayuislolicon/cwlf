@@ -1,5 +1,6 @@
 import React from "react";
 import ShareInfo from "components/atoms/ShareInfo";
+import Btn from "static/svg/btn-gotop.svg";
 import { useSelector } from "react-redux";
 
 import "./index.scss";
@@ -19,6 +20,7 @@ const Footer = () => {
   const { width } = useSelector((state) => state.global);
   return (
     <div className="footer">
+      <Btn />
       <div className="info">
         <div className="contact-info">
           <span>聯絡兒福聯盟</span>
