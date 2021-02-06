@@ -1,6 +1,6 @@
 import React from "react";
 import ShareInfo from "components/atoms/ShareInfo";
-import Btn from "static/svg/btn-gotop.svg";
+import {ReactComponent as Btn} from "static/svg/btn-gotop.svg";
 import { useSelector } from "react-redux";
 
 import "./index.scss";
