@@ -1,10 +1,14 @@
 @import "setting.scss";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 
-body {
-  background-color: var(--gray);
+html, body {
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-color: var(--gray);
+  overflow-x: hidden;
 }
 
 * {
