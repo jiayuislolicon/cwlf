@@ -4,9 +4,23 @@
   background-color: var(--white);
   box-shadow: 0 2px 15px 0 rgba(164, 147, 130, 0.23);
   border-radius: 40px 40px 0 0;
+  position: relative;
   @media screen and (min-width: 768px) {
     padding: 49px 80px 30px;
     box-shadow: 0 3px 30px 0 rgba(164, 147, 130, 0.23);
+  }
+  .btn-top {
+    position: absolute;
+    width: 60px;
+    height: 33px;
+    top: 33px;
+    right: 33px;
+    @media screen {
+      width: 80px;
+      height: 43px;
+      top: -43px;
+      right: 80px;
+    }
   }
   .info {
     display: flex;
