@@ -1,6 +1,6 @@
 .time-tag {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   opacity: 0.9;
   background-color: var(--orange);
   border-radius: 50%;
@@ -8,6 +8,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media screen and (min-width: 1024px) {
+    width: 70px;
+    height: 70px;
+  }
   .date {
     display: flex;
     align-items: center;

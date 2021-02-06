@@ -3,11 +3,11 @@ import TabButton from "components/atoms/TabButton";
 import { listName } from "./listName";
 import "./index.scss";
 
-const TabWrapper = () => {
+const TabWrapper = ({nowIndex}) => {
   return (
     <div className="tab-wrapper">
-      {listName.map((e) => (
-        <TabButton text={e} isNow key={e} />
+      {listName.map((e, index) => (
+        <TabButton text={e} isNow={index === nowIndex} key={e} />
       ))}
     </div>
   );

@@ -1,13 +1,22 @@
 .tab-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 400px;
+  margin: 0 auto;
+  @media screen and (min-width: 405px) {
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 547px;
+  }
   .tab-button {
-    margin-right: 18px;
-    @media screen and (min-width: 1024px) {
-      margin-right: 30px;
+    margin-right: 25px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 60px;
     }
     &:nth-child(3) {
-      @media screen and (max-width: 541px) {
+      @media screen and (max-width: 379px) {
         margin-right: 0;
       }
     }

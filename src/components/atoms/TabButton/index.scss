@@ -1,28 +1,41 @@
 .tab-button {
   height: 35px;
-  background-color: transparent;
-  border-radius: 25px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   cursor: pointer;
-  margin-bottom: 10px;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     height: 50px;
-    margin-bottom: 0;
   }
   &.now {
-    background-color: var(--blue);
-    & h5 {
+    h5 {
       color: var(--white);
+      &:after {
+        opacity: 1;
+      }
     }
   }
-  & h5 {
+  h5 {
     color: var(--black);
-    padding: 17px 10px;
     letter-spacing: 1px;
-    @media screen and (min-width: 1024px) {
-      padding: 16px 30px;
+    position: relative;
+    &:after {
+      content: '';
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      padding: 10px 17px;
+      border-radius: 25px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      background-color: var(--blue);
+      @media screen and (min-width: 1280px) {
+        padding: 16px 30px;
+      }
     }
   }
 }

@@ -10,7 +10,7 @@
   }
   .slide-num {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     margin: 0 20px;
     .now-num {
       font-size: 29px;
@@ -22,6 +22,7 @@
       transform: rotate(30deg);
     }
     .total-num {
+      margin-top: 10px;
       font-size: 16px;
       line-height: 1.25;
       letter-spacing: 1.5px;
