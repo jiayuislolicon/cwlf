@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from 'classnames';
 import aboutLogo from "static/png/about-logo.png";
 import bg from "static/svg/logointro-bg.svg";
 import bgHover from "static/svg/logointro-bg-hover.svg";
@@ -7,12 +8,14 @@ import "./index.scss";
 const LogoIntro = ({ mask }) => {
   return (
     <div
-      className="logo-intro"
+      className={classNames("logo-intro", mask ? "mask" : "")}
       style={{ backgroundImage: `url(${!mask ? bg : bgHover})` }}
     >
-      <img src={aboutLogo} alt="" />
+      <img src={aboutLogo} alt="兒福新LOGO" className="logo-img" />
       <p>
-        兒福聯盟30歲了！ 三十而立之年，兒盟秉持初衷，展望未來
+        兒福聯盟30歲了！
+        <br />
+        三十而立之年，兒盟秉持初衷，展望未來
         <br />
         以嶄新姿態與大家見面！
         <br />

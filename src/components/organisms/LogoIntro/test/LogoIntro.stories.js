@@ -5,4 +5,4 @@ import LogoIntro from "../index";
 
 const stories = storiesOf("organisms/LogoIntro", module);
 
-stories.add("__interactive", () => <LogoIntro />);
+stories.add("__interactive", () => <LogoIntro mask />);
