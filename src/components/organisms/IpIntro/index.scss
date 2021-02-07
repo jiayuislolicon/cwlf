@@ -4,14 +4,15 @@
     &:after {
         content: '';
         width: 100%;
-        height: calc(100% - (100vw / 375 * 132) - 3px);
+        height: calc(100% - (100vw / 375 * 59) - 3px);
         background: var(--white);
         position: absolute;
-        top: calc(100vw / 375 * 132 - 3px);
+        top: calc(100vw / 375 * 59 - 3px);
         left: 0;
         z-index: -1;
         @media screen and (min-width: 1024px) {
             height: calc(100% - (100vw / 375 * 132) - 203px);
+            top: calc(100vw / 375 * 132 - 3px);
         }
     }
     .ip-intro-bg {

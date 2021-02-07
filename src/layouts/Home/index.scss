@@ -1,7 +1,10 @@
 .section-cover {
-    margin-bottom: 120px;
+    margin-bottom: 170px;
     position: relative;
     z-index: 1;
+    @media screen and (min-width: 1024px) {
+        margin-bottom: 120px;
+    }
 }
 .section-events {
     position: relative;
@@ -11,20 +14,32 @@
 .section-intro {
     position: relative;
     z-index: 3;
-    margin-bottom: -90px;
+    margin-bottom: -30px;
+    @media screen and (min-width: 1024px) {
+        margin-bottom: -90px;
+    }
 }
 .section-logo-intro {
     position: relative;
     z-index: 4;
-    margin-bottom: -200px;
+    margin-bottom: -70px;
+    @media screen and (min-width: 1024px) {
+        margin-bottom: -200px;
+    }
 }
 .section-service {
     position: relative;
     z-index: 5;
-    margin-bottom: -650px;
+    margin-bottom: calc(-41vw + 50px);
+    @media screen and (min-width: 1024px) {
+        margin-bottom: -650px;
+    }
 }
 .section-ip-intro {
     position: relative;
     z-index: 6;
-    margin-bottom: -268px;
+    margin-bottom: -40px;
+    @media screen and (min-width: 1024px) {
+        margin-bottom: -268px;
+    }
 }

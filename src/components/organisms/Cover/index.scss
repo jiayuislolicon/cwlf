@@ -75,36 +75,39 @@
         position: absolute;
     }
     .white-circle {
-        min-width: 300px;
-        min-height: 300px;
-        width: calc(100vw - 140px);
-        height: calc(100vw - 140px);
+        width: 300px;
+        height: 300px;
         z-index: 1;
-        top: 40vh;
-        right: -17.6vw;
+        bottom: 0;
+        right: -66px;
+        @media screen and (min-width: 768px) {
+            right: auto;
+            left: 180px;
+        }
         @media screen and (min-width: 1024px) {            
             max-width: 500px;
             max-height: 500px;
             width: 34vw;
             height: 34vw;
             top: 51%;
-            right: auto;
             left: 25px;
         }
     }
     .cover-circle {
-        min-width: 376px;
-        min-height: 376px;
-        width: calc(100vw - 47px);
-        height: calc(100vw - 47px);
-        left: -12.8vw;
-        top: 34vh;
+        width: 376px;
+        height: 376px;
+        left: -60px;
+        bottom: -50px;
         z-index: 1;
+        @media screen and (min-width: 768px) {
+            left: -30px;
+        }
         @media screen and (min-width: 1024px) {
             max-width: 615px;
             max-height: 615px;
             width: 48vw;
             height: 48vw;
+            bottom: auto;
             top: 37%;
             left: -196px;
         }
@@ -113,7 +116,7 @@
         width: 100%;
         height: auto;
         z-index: 0;
-        top: calc((88vw * 0.84) - 100px);
+        top: calc((88vw * 0.84) - 130px);
         display: none;
         @media screen and (min-width: 1024px) {
             display: block;
@@ -126,9 +129,12 @@
         width: 100%;
         height: auto;
         position: absolute;
-        top: 92.5vw;
+        top: 94vw;
         left: 0;
         z-index: -1;
+        @media screen and (min-width: 768px) {
+            top: 70vw;
+        }
         @media screen and (min-width: 1024px) {
             display: none;
         }
