@@ -2,16 +2,14 @@ export const text = [
   {
     id: 1,
     title: "家庭增能",
-    content: `
-    收出養服務
+    content: `收出養服務
 親職與育兒支持服務
 托育與親子館服務`,
   },
   {
     id: 2,
     title: "特殊境遇",
-    content: `
-    逆境與弱勢家庭服務
+    content: `逆境與弱勢家庭服務
 偏鄉兒少關懷服務
 兒少保護與創傷服務
 失蹤兒紹協尋與少年服務
@@ -20,8 +18,7 @@ export const text = [
   {
     id: 3,
     title: "社會共好",
-    content: `
-    兒少倡議與立法
+    content: `兒少倡議與立法
 兒少培力與知能推廣`,
   },
 ];
