@@ -6,19 +6,19 @@ import puff from "static/png/character-info-puff.png";
 import puffHover from "static/png/character-info-puff-hover.png";
 import "./index.scss";
 
-const IpIntroCircle = ({ item }) => {
+const IpIntroCircle = ({ item, mask }) => {
   return (
     <div className={classNames('ip-intro-circle', item)}>
-      {item === "heart" && (
+      {item === "heart" && !mask && (
         <img src={heart} alt="heart" className="heart ab-center" />
       )}
-      {item === "heart" && (
+      {item === "heart" && mask && (
         <img src={heartHover} alt="heart" className="heart ab-center" />
       )}
-      {item === "puff" && (
+      {item === "puff" && !mask && (
         <img src={puff} alt="puff" className="puff ab-center" />
       )}
-      {item === "puff" && (
+      {item === "puff" && mask && (
         <img src={puffHover} alt="puff" className="puff ab-center" />
       )}
       {item === "puff" && (

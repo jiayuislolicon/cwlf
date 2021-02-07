@@ -10,6 +10,9 @@ import aboutGroup from "static/png/about-group.png";
 import aboutPuff from "static/png/about-right-puff.png";
 import aboutPuffHover from "static/png/about-right-puff-hover.png";
 
+import logoBg from "static/svg/logointro-bg.svg";
+import logoBgHover from "static/svg/logointro-bg-hover.svg";
+
 import "./index.scss";
 
 const Intro = ({ mask }) => {
@@ -45,6 +48,10 @@ const Intro = ({ mask }) => {
             {mask && <img src={aboutPuffHover} alt="右邊的泡福" />}
           </div>
         </div>
+      </div>
+      <div className="next-section-bg">
+        {!mask && <img src={logoBg} alt="logo區域的背景"/>}
+        {mask && <img src={logoBgHover} alt="logo區域的背景"/>}
       </div>
     </section>
   );

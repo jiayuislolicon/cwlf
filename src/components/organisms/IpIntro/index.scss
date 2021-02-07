@@ -1,25 +1,9 @@
 .section-ip-intro {
     position: relative;
     overflow: hidden;
-    &:after {
-        content: '';
-        width: 100%;
-        height: calc(100% - (100vw / 375 * 59) - 3px);
-        background: var(--white);
-        position: absolute;
-        top: calc(100vw / 375 * 59 - 3px);
-        left: 0;
-        z-index: -1;
-        @media screen and (min-width: 1024px) {
-            height: calc(100% - (100vw / 375 * 132) - 203px);
-            top: calc(100vw / 375 * 132 - 3px);
-        }
-    }
-    .ip-intro-bg {
-        width: 100%;
-        height: auto;
-        margin-bottom: 25px;
-    }
+    background: var(--white);
+    padding-top: 30px;
+   
     h2 {
         margin-bottom: 25px;
         text-align: center;

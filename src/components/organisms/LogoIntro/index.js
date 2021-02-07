@@ -1,15 +1,13 @@
 import React from "react";
 import classNames from 'classnames';
 import aboutLogo from "static/png/about-logo.png";
-import bg from "static/svg/logointro-bg.svg";
-import bgHover from "static/svg/logointro-bg-hover.svg";
+
 import "./index.scss";
 
 const LogoIntro = ({ mask }) => {
   return (
     <section
       className={classNames("section-logo-intro", mask ? "mask" : "")}
-      style={{ backgroundImage: `url(${!mask ? bg : bgHover})` }}
     >
       <img src={aboutLogo} alt="兒福新LOGO" className="logo-img" />
       <p>

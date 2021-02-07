@@ -24,16 +24,12 @@
     z-index: 4;
     margin-bottom: -70px;
     @media screen and (min-width: 1024px) {
-        margin-bottom: -200px;
+        margin-bottom: -140px;
     }
 }
 .section-service {
     position: relative;
     z-index: 5;
-    margin-bottom: calc(-41vw + 50px);
-    @media screen and (min-width: 1024px) {
-        margin-bottom: -650px;
-    }
 }
 .section-ip-intro {
     position: relative;
