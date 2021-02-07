@@ -24,7 +24,7 @@ const IntroItem = ({ item, img, imgHover, mask, classname }) => (
 
 const IpIntro = ({ mask }) => {
   return (
-    <section className="ip-intro">
+    <section className="section-ip-intro">
       <TopBg className="ip-intro-bg" />
       <h2>吉祥物登場</h2>
       <div className="ip-intro-wrapper">

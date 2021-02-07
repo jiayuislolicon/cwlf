@@ -7,8 +7,8 @@ import "./index.scss";
 
 const LogoIntro = ({ mask }) => {
   return (
-    <div
-      className={classNames("logo-intro", mask ? "mask" : "")}
+    <section
+      className={classNames("section-logo-intro", mask ? "mask" : "")}
       style={{ backgroundImage: `url(${!mask ? bg : bgHover})` }}
     >
       <img src={aboutLogo} alt="兒福新LOGO" className="logo-img" />
@@ -32,7 +32,7 @@ const LogoIntro = ({ mask }) => {
         <br />
         兒盟三十，請多多指教！
       </p>
-    </div>
+    </section>
   );
 };
 

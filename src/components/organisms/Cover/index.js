@@ -7,8 +7,8 @@ import mobilePoster from "static/png/mobile-kv-banner.png"
 import {ReactComponent as BgShape} from "static/svg/event-bg.svg";
 import {ReactComponent as BgShapeHover} from "static/svg/event-bg-hover.svg";
 import mobileBg from "static/svg/mobile-cover-bg.svg";
-import {ReactComponent as Circle} from "static/svg/cover-circle.svg";
-import {ReactComponent as CircleHover} from "static/svg/cover-circle-hover.svg";
+import circle from "static/svg/cover-circle.svg";
+import circleHover from "static/svg/cover-circle-hover.svg";
 
 import "./index.scss";
 
@@ -30,8 +30,9 @@ const Cover = ({ mask }) => {
         <span className="location">華山1914文化創意產業園區</span>
       </div>
       <img src={mobileBg} className="mobile-cover-bg ab-pos" alt=""/>
-      {!mask && <Circle className="cover-circle ab-pos" />}
-      {mask && <CircleHover className="cover-circle ab-pos" />}
+      
+      {!mask && <img src={circle} className="cover-circle ab-pos" alt="背景圓形"/>}
+      {mask && <img src={circleHover} className="cover-circle ab-pos" alt="背景圓形"/>}
       <WhiteCircle classname="ab-pos" />
       {!mask && <BgShape className="cover-bg ab-pos" />}
       {mask && <BgShapeHover className="cover-bg ab-pos" />}

@@ -28,7 +28,7 @@ const TextItem = ({ title, content }) => (
 const Service = ({ mask }) => {
   return (
     <section
-      className={classNames("section-service", !mask ? "mask" : "")}
+      className={classNames("section-service", mask ? "mask" : "")}
       style={{ backgroundImage: `url(${!mask ? bg : bgHover})` }}
     >
       <div className="service-bulbs-top">
