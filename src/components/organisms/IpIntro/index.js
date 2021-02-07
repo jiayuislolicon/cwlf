@@ -1,12 +1,14 @@
 import React from "react";
 import classNames from "classnames";
 
+import IpIntroCircle from "components/atoms/IpIntroCircle";
+
 import heartman from "static/png/character-heart.png";
 import heartmanHover from "static/png/character-heart-hover.png";
 import puffman from "static/png/character-puff.png";
 import puffmanHover from "static/png/character-puff-hover.png";
-import IpIntroCircle from "components/atoms/IpIntroCircle";
-
+import loveword from "static/svg/big-love.svg";
+import lovewordHover from "static/svg/big-love-hover.svg";
 import bottomBg from "static/svg/character-bg.svg";
 import bottomBgHover from "static/svg/character-bg-hover.svg";
 
@@ -42,6 +44,10 @@ const IpIntro = ({ mask }) => {
           mask={mask}
           classname="heart"
         />
+        <div className="love-word ab-center">
+          {!mask && <img src={loveword} alt="文字"/>}
+          {mask && <img src={lovewordHover} alt="文字"/>}
+        </div>
       </div>
       <div
         className="intro-hearts-bg"

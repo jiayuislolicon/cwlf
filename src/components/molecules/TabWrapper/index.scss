@@ -2,12 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  max-width: 400px;
+  max-width: 410px;
   margin: 0 auto;
-  @media screen and (min-width: 405px) {
+  @media screen and (min-width: 415px) {
     justify-content: space-between;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1024px) {
     max-width: 547px;
   }
   .tab-button {
