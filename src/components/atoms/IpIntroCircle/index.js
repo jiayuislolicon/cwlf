@@ -1,13 +1,14 @@
 import React from "react";
+import classNames from 'classnames';
 import heart from "static/png/character-info-heart.png";
 import heartHover from "static/png/character-info-heart-hover.png";
 import puff from "static/png/character-info-puff.png";
 import puffHover from "static/png/character-info-puff-hover.png";
 import "./index.scss";
 
-const IntroBg = ({ item, className }) => {
+const IpIntroCircle = ({ item }) => {
   return (
-    <div className={`intro-bg ${className} ${item}`}>
+    <div className={classNames('ip-intro-circle', item)}>
       {item === "heart" && (
         <img src={heart} alt="heart" className="heart ab-center" />
       )}
@@ -54,4 +55,4 @@ const IntroBg = ({ item, className }) => {
   );
 };
 
-export default IntroBg;
+export default IpIntroCircle;
