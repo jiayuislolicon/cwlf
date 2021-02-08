@@ -2,6 +2,7 @@
   width: 100vw;
   position: relative;
   padding: 0 20px;
+  pointer-events: none;
   @media screen and (min-width: 768px) {
     padding: 0 40px;
   }
