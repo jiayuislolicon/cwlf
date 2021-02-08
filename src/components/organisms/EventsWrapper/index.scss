@@ -1,16 +1,15 @@
 .section-events {
   position: relative;
-  padding: 0 20px;
+  padding-left: 20px;
   @media screen and (min-width: 768px) {
-    padding: 0 40px;
+    padding-left: 40px;
   }
   @media screen and (min-width: 1280px) {
-    padding: 0 80px;
+    padding-left: 80px;
   }
   @media screen and (min-width: 1440px) {
-    padding: 0;
     margin: 0 auto;
-    width: 1280px;
+    width: 1440px;
   }
   h2 {
     text-align: center;
@@ -46,22 +45,6 @@
       }
     }
   }
-  /* the slides */
-  .slick-slide {
-    margin: 0 14px;
-  }
-  /* the parent */
-  .slick-list {
-    margin: 0 -14px;
-  }
-  .carousel__inner-slide {
-    // width: calc(100% - 20px);
-    // height: calc(100% - 20px);
-    // left: 10px;
-    // top: 10px;
-    // background-color: burlywood;
-    margin-right: 28px;
-  }
   .white-circle {
     width: 350px;
     height: 350px;
@@ -81,6 +64,7 @@
     margin-top: 30px;
     @media screen and (min-width: 1280px) {
       justify-content: flex-end;
+      padding-right: 80px;
     }
   }
 }

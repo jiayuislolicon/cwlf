@@ -1,71 +1,90 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
-import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
+import React, { useState, useEffect } from "react";
 
 import TabWrapper from "components/molecules/TabWrapper";
 import EventItem from "components/molecules/EventItem";
 import WhiteCircle from "components/atoms/WhiteCircle";
 import SlideControl from "components/molecules/SlideControl";
 
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
+
 import "./index.scss";
 import { useSelector } from "react-redux";
 
 const EventsWrapper = ({ mask }) => {
   const { width } = useSelector((state) => state.global);
+  const [slideNum, setSlideNum] = useState(0);
+  const [itemWidth, setItemWidth] = useState(0);
+
+  const setCarouselItemWidth = () => {
+    if (width >= 1440) {
+      setItemWidth(517);
+    } else if (width >= 768) {
+      setItemWidth(width * 0.35);
+    } else {
+      setItemWidth(width - 75);
+    }
+  }
+
+  const slideChange = (value) => {
+    setSlideNum(value);
+  }
+
+  const minusSlide = () => {
+    if (slideNum === 0) {
+      setSlideNum(0);
+    } else {
+      setSlideNum(slideNum - 1);
+    }
+  }
+
+  const addSlide = () => {
+    if (slideNum === 3) {
+      setSlideNum(0);
+    } else {
+      setSlideNum(slideNum + 1);
+    }
+  }
+
+  useEffect(() => {
+    setCarouselItemWidth();
+  }, [width])
+
   return (
     <section className="section-events">
       <h2>展演活動</h2>
       <TabWrapper nowIndex={1} />
-      {/* <div className="events-wrapper">
-      </div> */}
-      <CarouselProvider
-        naturalSlideWidth={width * 0.35}
-        naturalSlideHeight={width * 0.35 * 0.66 + 98}
-        totalSlides={4}
-        visibleSlides={3}
-      >
-        <Slider>
-          <Slide index={0}>
-            <EventItem
-              title="第十屆兒童節親子活動「兒童月Online」－台中"
-              imgSrc="https://picsum.photos/625/520"
-              mask={mask}
-              characterNum={1}
-              characterDisplay={false}
-            />
-          </Slide>
-          <Slide index={1}>
-            <EventItem
-              title="第十屆兒童節親子活動「兒童月Online」－台中"
-              imgSrc="https://picsum.photos/625/520"
-              mask={mask}
-              characterNum={1}
-              characterDisplay={false}
-            />
-          </Slide>
-          <Slide index={2}>
-            <EventItem
-              title="第十屆兒童節親子活動「兒童月Online」－台中"
-              imgSrc="https://picsum.photos/625/520"
-              mask={mask}
-              characterNum={1}
-              characterDisplay={false}
-            />
-          </Slide>
-          <Slide index={3}>
-            <EventItem
-              title="第十屆兒童節親子活動「兒童月Online」－台中"
-              imgSrc="https://picsum.photos/625/520"
-              mask={mask}
-              characterNum={1}
-              characterDisplay={false}
-            />
-          </Slide>
-        </Slider>
-      </CarouselProvider>
+      <Carousel
+      itemWidth={itemWidth}
+      offset={width < 1024 ? 14 : 28}
+      onChange={slideChange}
+      value={slideNum}
+    >
+        <EventItem
+          title="第十屆兒童節親子活動「兒童月Online」－台中"
+          imgSrc="https://picsum.photos/625/520"
+          mask={mask}
+          characterNum={1}
+          characterDisplay={false}
+        />
+        <EventItem
+          title="第十屆兒童節親子活動「兒童月Online」－台中"
+          imgSrc="https://picsum.photos/625/520"
+          mask={mask}
+          characterNum={1}
+          characterDisplay={false}
+        />
+        <EventItem
+          title="第十屆兒童節親子活動「兒童月Online」－台中"
+          imgSrc="https://picsum.photos/625/520"
+          mask={mask}
+          characterNum={1}
+          characterDisplay={false}
+        />
+      </Carousel>
       {!mask && <WhiteCircle />}
-      <SlideControl nowNum={1} totalNum={10} />
+      <SlideControl nowNum={slideNum + 1} totalNum={10} leftClick={minusSlide} rightClick={addSlide} />
     </section>
   );
 };

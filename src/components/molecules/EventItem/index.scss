@@ -2,6 +2,7 @@
 
 .event-item {
   width: calc(100vw - 75px);
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     max-width: 517px;
     width: 35vw;
