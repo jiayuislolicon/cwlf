@@ -10,14 +10,16 @@ import rightBulbs from "static/png/bulbs-right.png";
 import rightBulbsHover from "static/png/bulbs-right-hover.png";
 import topBulbs from "static/png/bulbs-top.png";
 import topBulbsHover from "static/png/bulbs-top-hover.png";
-import service1 from "static/png/service-1.png"
-import service2 from "static/png/service-2.png"
+import service1 from "static/png/service-1.png";
+import service2 from "static/png/service-2.png";
 
 import bg from "static/svg/service-bg.svg";
 import bgHover from "static/svg/service-bg-hover.svg";
-import {ReactComponent as TopBg} from "static/svg/character-bg-top.svg";
-import {ReactComponent as TopBgHover} from "static/svg/character-bg-top-hover.svg";
-import {ReactComponent as MobileTopBg} from "static/svg/mobile-character-bg-top.svg";
+import mobileBg from "static/svg/mobile-service-bg.svg";
+import mobileBgHover from "static/svg/mobile-service-bg-hover.svg";
+import { ReactComponent as TopBg } from "static/svg/character-bg-top.svg";
+import { ReactComponent as TopBgHover } from "static/svg/character-bg-top-hover.svg";
+import { ReactComponent as MobileTopBg } from "static/svg/mobile-character-bg-top.svg";
 
 import { text } from "./text";
 
@@ -31,11 +33,16 @@ const TextItem = ({ title, content }) => (
 );
 
 const Service = ({ mask }) => {
-  const {width} = useSelector(state => state.global)
+  const { width } = useSelector((state) => state.global);
   return (
     <section
       className={classNames("section-service", mask ? "mask" : "")}
-      style={{ backgroundImage: `url(${!mask ? bg : bgHover})` }}
+      style={{
+        backgroundImage:
+          width >= 1024
+            ? `url(${!mask ? bg : bgHover})`
+            : `url(${!mask ? mobileBg : mobileBgHover})`,
+      }}
     >
       <div className="service-bulbs-top">
         {!mask && <img src={topBulbs} alt="上方的燈泡" />}
@@ -90,10 +97,10 @@ const Service = ({ mask }) => {
           </div>
         </div>
       </div>
-      { width >= 1024 && !mask && <TopBg className="ip-intro-bg" /> }
-      { width >= 1024 && mask && <TopBgHover className="ip-intro-bg" /> }
-      { width < 1024 && !mask && <MobileTopBg className="ip-intro-bg" /> }
-      { width < 1024 && mask && <MobileTopBg className="ip-intro-bg" /> }
+      {width >= 1024 && !mask && <TopBg className="ip-intro-bg" />}
+      {width >= 1024 && mask && <TopBgHover className="ip-intro-bg" />}
+      {width < 1024 && !mask && <MobileTopBg className="ip-intro-bg" />}
+      {width < 1024 && mask && <MobileTopBg className="ip-intro-bg" />}
     </section>
   );
 };

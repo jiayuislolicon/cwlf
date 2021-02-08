@@ -1,142 +1,139 @@
 .section-cover {
+  width: 100%;
+  @media screen and (min-width: 1024px) {
+    background-color: #d3ccbc;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .cover-poster {
     width: 100%;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 12px;
     @media screen and (min-width: 1024px) {
-        background-color: #d3ccbc;
-        display: flex;
-        justify-content: flex-end;
-
+      width: 88vw;
+      margin-bottom: 0;
     }
-    .cover-poster {
-        width: 100%;
-        position: relative;
-        z-index: 2;
-        margin-bottom: 12px;
+    img {
+      width: 100%;
+      display: none;
+      @media screen and (min-width: 1024px) {
+        display: block;
+      }
+      &:last-child {
+        display: block;
         @media screen and (min-width: 1024px) {
-            width: 88vw;
-            margin-bottom: 0;
+          display: none;
         }
-        img {
-            width: 100%;
-            display: none;
-            @media screen and (min-width: 1024px) {
-                display: block;
-            }
-            &:last-child {
-                display: block;
-                @media screen and (min-width: 1024px) {
-                display: none;
-                }
-            }
-        }
+      }
     }
-    .event-title {
-        z-index: 3;
-        padding: 0 20px;
-        position: relative;
-        @media screen and (min-width: 768px) {
-            padding: 0 40px;
-        }
-        @media screen and (min-width: 1024px) {
-            padding: 0;
-            position: absolute;
-            top: 60%;
-            left: 50px;
-
-        }
-        .date {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3px;
-            .line {
-                width: 84px;
-                height: 1px;
-                border-radius: 0.5px;
-                background-color: var(--black);
-                margin: 0 8px;
-                @media screen and (min-width: 1280px) {
-                    margin: 0 10px;
-                    width: 117px;
-
-                }
-            }
-        }
-        h1 {
-            margin-bottom: 4px;
-            -webkit-text-stroke: 0.5px var(--black);
-        }
-        .location {
-            letter-spacing: 6px;
-            @media screen and (min-width: 1280px) {
-                letter-spacing: 9.3px;
-            }
-        }
+  }
+  .event-title {
+    z-index: 3;
+    padding: 0 20px;
+    position: relative;
+    @media screen and (min-width: 768px) {
+      padding: 0 40px;
     }
-    .ab-pos {
-        position: absolute;
+    @media screen and (min-width: 1024px) {
+      padding: 0;
+      position: absolute;
+      top: 60%;
+      left: 50px;
     }
-    .white-circle {
-        width: 300px;
-        height: 300px;
-        z-index: 1;
-        bottom: 0;
-        right: -66px;
-        @media screen and (min-width: 768px) {
-            right: auto;
-            left: 180px;
-        }
-        @media screen and (min-width: 1024px) {            
-            max-width: 500px;
-            max-height: 500px;
-            width: 34vw;
-            height: 34vw;
-            top: 51%;
-            left: 25px;
-        }
-    }
-    .cover-circle {
-        width: 376px;
-        height: 376px;
-        left: -60px;
-        bottom: -50px;
-        z-index: 1;
-        @media screen and (min-width: 768px) {
-            left: -30px;
-        }
-        @media screen and (min-width: 1024px) {
-            max-width: 615px;
-            max-height: 615px;
-            width: 48vw;
-            height: 48vw;
-            bottom: auto;
-            top: 37%;
-            left: -196px;
-        }
-    }
-    .cover-bg {
-        width: 100%;
-        height: auto;
-        z-index: 0;
-        top: calc((88vw * 0.84) - 130px);
-        display: none;
-        @media screen and (min-width: 1024px) {
-            display: block;
-        }
+    .date {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3px;
+      .line {
+        width: 84px;
+        height: 1px;
+        border-radius: 0.5px;
+        background-color: var(--black);
+        margin: 0 8px;
         @media screen and (min-width: 1280px) {
-            top: 847px;
+          margin: 0 10px;
+          width: 117px;
         }
+      }
     }
-    .mobile-cover-bg {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        top: 94vw;
-        left: 0;
-        z-index: -1;
-        @media screen and (min-width: 768px) {
-            top: 70vw;
-        }
-        @media screen and (min-width: 1024px) {
-            display: none;
-        }
+    h1 {
+      margin-bottom: 4px;
+      -webkit-text-stroke: 0.5px var(--black);
     }
+    .location {
+      letter-spacing: 6px;
+      @media screen and (min-width: 1280px) {
+        letter-spacing: 9.3px;
+      }
+    }
+  }
+  .ab-pos {
+    position: absolute;
+  }
+  .white-circle {
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    bottom: 0;
+    right: -66px;
+    @media screen and (min-width: 768px) {
+      right: auto;
+      left: 180px;
+    }
+    @media screen and (min-width: 1024px) {
+      max-width: 500px;
+      max-height: 500px;
+      width: 34vw;
+      height: 34vw;
+      top: 51%;
+      left: 25px;
+    }
+  }
+  .cover-circle {
+    width: 376px;
+    height: 376px;
+    left: -60px;
+    bottom: -50px;
+    z-index: 1;
+    @media screen and (min-width: 768px) {
+      left: -30px;
+    }
+    @media screen and (min-width: 1024px) {
+      max-width: 615px;
+      max-height: 615px;
+      width: 48vw;
+      height: 48vw;
+      bottom: auto;
+      top: 37%;
+      left: -196px;
+    }
+  }
+  .cover-bg {
+    width: 110%;
+    height: auto;
+    z-index: 0;
+    top: calc((88vw * 0.84) - 130px);
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
+    @media screen and (min-width: 1280px) {
+      top: 847px;
+    }
+  }
+  .mobile-cover-bg {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 94vw;
+    left: 0;
+    z-index: -1;
+    @media screen and (min-width: 768px) {
+      top: 70vw;
+    }
+    @media screen and (min-width: 1024px) {
+      display: none;
+    }
+  }
 }

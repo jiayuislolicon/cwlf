@@ -12,13 +12,21 @@ import aboutPuffHover from "static/png/about-right-puff-hover.png";
 
 import logoBg from "static/svg/logointro-bg.svg";
 import logoBgHover from "static/svg/logointro-bg-hover.svg";
+import mobileLogoBg from "static/svg/mobile-logoIntro-bg.svg";
+import mobileLogoBgHover from "static/svg/mobile-logoIntro-bg-hover.svg";
 
 import "./index.scss";
+import { useSelector } from "react-redux";
 
 const Intro = ({ mask }) => {
+  const { width } = useSelector((state) => state.global);
   return (
     <section className="section-intro">
-      <img className="intro-heart-bg" src={`${!mask ? heartBg : heartBgHover}`} alt=""/>
+      <img
+        className="intro-heart-bg"
+        src={`${!mask ? heartBg : heartBgHover}`}
+        alt=""
+      />
       <div className="top-characters">
         {!mask && <img src={characters} alt="上面角色" />}
         {mask && <img src={charactersHover} alt="上面角色" />}
@@ -50,8 +58,16 @@ const Intro = ({ mask }) => {
         </div>
       </div>
       <div className="next-section-bg">
-        {!mask && <img src={logoBg} alt="logo區域的背景"/>}
-        {mask && <img src={logoBgHover} alt="logo區域的背景"/>}
+        {!mask && width >= 1024 && <img src={logoBg} alt="logo區域的背景" />}
+        {mask && width >= 1024 && (
+          <img src={logoBgHover} alt="logo區域的背景" />
+        )}
+        {!mask && width < 1024 && (
+          <img src={mobileLogoBg} alt="logo區域的背景" />
+        )}
+        {mask && width < 1024 && (
+          <img src={mobileLogoBgHover} alt="logo區域的背景" />
+        )}
       </div>
     </section>
   );
