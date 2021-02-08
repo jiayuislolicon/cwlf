@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import WhiteCircle from "components/atoms/WhiteCircle";
 import poster from "static/png/kv-banner.png";
@@ -15,7 +16,7 @@ import "./index.scss";
 
 const Cover = ({ mask }) => {
   return (
-    <section className="section-cover">
+    <section className={classNames("section-cover", mask ? "mask" : "")}>
       <div className="cover-poster">
         {!mask && <img src={poster} alt="兒童節海報" />}
         {mask && <img src={posterHover} alt="兒童節海報" />}
