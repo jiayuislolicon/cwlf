@@ -27,7 +27,7 @@ const EventsWrapper = ({ mask }) => {
         />
       </div>
       {!mask && <WhiteCircle />}
-      <SlideControl />
+      <SlideControl nowNum={1} totalNum={10} />
     </section>
   );
 };
