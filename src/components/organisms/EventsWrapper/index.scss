@@ -1,70 +1,86 @@
 .section-events {
+  position: relative;
+  padding: 0 20px;
+  @media screen and (min-width: 768px) {
+    padding: 0 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 0 80px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 0;
+    margin: 0 auto;
+    width: 1280px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
     position: relative;
-    padding: 0 20px;
-    @media screen and (min-width: 768px) {
-        padding: 0 40px;
+    z-index: 1;
+  }
+  .tab-wrapper {
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 40px;
     }
+  }
+  .events-wrapper {
+    position: relative;
+    display: flex;
+    z-index: 1;
+    width: calc(100% + 20px);
+    overflow: hidden;
+    @media screen and (min-width: 1024px) {
+      width: 100%;
+    }
+    .event-item {
+      flex-shrink: 0;
+      margin-right: 15px;
+      @media screen and (min-width: 768px) {
+        margin-right: 28px;
+      }
+      &:last-child {
+        margin-right: 20px;
+      }
+    }
+  }
+  /* the slides */
+  .slick-slide {
+    margin: 0 14px;
+  }
+  /* the parent */
+  .slick-list {
+    margin: 0 -14px;
+  }
+  .carousel__inner-slide {
+    // width: calc(100% - 20px);
+    // height: calc(100% - 20px);
+    // left: 10px;
+    // top: 10px;
+    // background-color: burlywood;
+    margin-right: 28px;
+  }
+  .white-circle {
+    width: 350px;
+    height: 350px;
+    right: -100px;
+    position: absolute;
+    bottom: -50%;
+    transform: translateY(-50%);
+    z-index: -1;
     @media screen and (min-width: 1280px) {
-        padding: 0 80px;
+      width: 550px;
+      height: 550px;
     }
-    @media screen and (min-width: 1440px) {
-        padding: 0;
-        margin: 0 auto;
-        width: 1280px;
+  }
+  .slide-control {
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;
+    @media screen and (min-width: 1280px) {
+      justify-content: flex-end;
     }
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        position: relative;
-        z-index: 1;
-    }
-    .tab-wrapper {
-        margin-bottom: 10px;
-        position: relative;
-        z-index: 1;
-        @media screen and (min-width: 1024px) {
-            margin-bottom: 40px;
-        }
-    }
-    .events-wrapper {
-        position: relative;
-        display: flex;
-        z-index: 1;
-        width: calc(100% + 20px);
-        overflow: hidden;
-        @media screen and (min-width: 1024px) {
-            width: 100%;
-        }
-        .event-item {
-            flex-shrink: 0;
-            margin-right: 15px;
-            @media screen and (min-width: 768px) {
-                margin-right: 28px;
-            }
-            &:last-child {
-                margin-right: 20px;
-            }
-        }
-    }
-    .white-circle {
-        width: 350px;
-        height: 350px;
-        right: -100px;
-        position: absolute;
-        bottom: -50%;
-        transform: translateY(-50%);
-        z-index: 0;
-        @media screen and (min-width: 1280px) {
-            width: 550px;
-            height: 550px;
-        }
-    }
-    .slide-control {
-        position: relative;
-        z-index: 1;
-        margin-top: 30px;
-        @media screen and (min-width: 1280px) {
-            justify-content: flex-end;
-        }
-    }
+  }
 }

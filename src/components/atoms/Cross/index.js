@@ -3,7 +3,7 @@ import "./index.scss";
 
 const Cross = () => {
   return (
-    <div className="cross">
+    <div className="close-btn">
       <span className="ab-center" />
       <span className="ab-center" />
     </div>
