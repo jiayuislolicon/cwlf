@@ -42,15 +42,17 @@ const EventsWrapper = ({ mask }) => {
   }
 
   const addSlide = () => {
-    if (slideNum === (max - 3)) {
-      setSlideNum(max - 3);
+    if (slideNum === (max - 2) && width >= 768) {
+      setSlideNum(max - 2);
+    } else if (slideNum === max && width >= 768) {
+      setSlideNum(max);
     } else {
       setSlideNum(slideNum + 1);
     }
   }
 
   useEffect(() => {
-    setMax(4);
+    setMax(5);
   }, [])
 
   useEffect(() => {
@@ -61,10 +63,12 @@ const EventsWrapper = ({ mask }) => {
     if (width < 768) {
       setSlideControlValue(slideNum + 1);
     } else if (width >= 768) {
-      if (slideNum > (max - 3)) {
-        setSlideNum(max - 3)
+      if (slideNum >= (max - 2)) {
+        setSlideNum(max - 2)
+        setSlideControlValue(max);
+      } else {
+        setSlideControlValue(slideNum + 3);
       }
-      setSlideControlValue(slideNum + 3);
     }
   }, [slideNum, width])
 
@@ -78,6 +82,20 @@ const EventsWrapper = ({ mask }) => {
         onChange={slideChange}
         value={slideNum}
       >
+        <EventItem
+          title="第十屆兒童節親子活動「兒童月Online」－台中"
+          imgSrc="https://picsum.photos/625/520"
+          mask={mask}
+          characterNum={1}
+          characterDisplay={false}
+        />
+        <EventItem
+          title="第十屆兒童節親子活動「兒童月Online」－台中"
+          imgSrc="https://picsum.photos/625/520"
+          mask={mask}
+          characterNum={1}
+          characterDisplay={false}
+        />
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
           imgSrc="https://picsum.photos/625/520"
