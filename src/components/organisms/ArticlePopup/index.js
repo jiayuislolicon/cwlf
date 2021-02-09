@@ -7,10 +7,10 @@ import bg from "static/svg/innerPage-bg.svg";
 
 import "./index.scss";
 
-const ArticlePopup = () => {
+const ArticlePopup = ({ shareUrl, onClick }) => {
   return (
     <div className="article-popup">
-      <Cross />
+      <Cross onClick={onClick} />
       <div className="content-wrapper">
         <img
           src="https://picsum.photos/625/418"
@@ -26,7 +26,13 @@ const ArticlePopup = () => {
       <div className="list-btns">
         <TimeTag month="1" day="2" year="2020" />
         <div className="event-tag">兒童節</div>
-        <ShapeButton />
+        <a
+          href={`https://www.facebook.com/sharer.php?u=${shareUrl}`}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <ShapeButton />
+        </a>
       </div>
       <img src={bg} className="article-bg ab-center" alt="背景" />
     </div>

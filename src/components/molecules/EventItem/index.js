@@ -11,9 +11,22 @@ import "./index.scss";
 
 const characterPic = [character1, character2, character3, character4];
 
-const EventItem = ({ title, imgSrc, mask, characterNum, characterDisplay }) => {
+const EventItem = ({
+  title,
+  imgSrc,
+  mask,
+  characterNum,
+  characterDisplay,
+  onClick,
+}) => {
   return (
-    <div className={classNames("event-item", mask ? "mask" : "")}>
+    <div
+      className={classNames("event-item", mask ? "mask" : "")}
+      onClick={onClick}
+      onKeyDown={() => {}}
+      role="button"
+      tabIndex="0"
+    >
       <div className="cover" style={{ backgroundImage: `url(${imgSrc})` }}>
         <TimeTag month="2" day="28" year="2020" className="tag" />
         {mask && characterDisplay && (

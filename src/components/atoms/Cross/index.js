@@ -1,9 +1,15 @@
 import React from "react";
 import "./index.scss";
 
-const Cross = () => {
+const Cross = ({ onClick }) => {
   return (
-    <div className="close-btn">
+    <div
+      className="close-btn"
+      onClick={onClick}
+      onKeyDown={() => {}}
+      role="button"
+      tabIndex="0"
+    >
       <span className="ab-center" />
       <span className="ab-center" />
     </div>

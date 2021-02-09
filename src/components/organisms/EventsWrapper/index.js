@@ -10,13 +10,14 @@ import SlideControl from "components/molecules/SlideControl";
 import { setEventSideNum } from "actions/global";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+import { useHistory } from "react-router-dom";
 
 import "./index.scss";
 
 const EventsWrapper = ({ mask }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { width, eventSlideNum } = useSelector((state) => state.global);
-  // const [slideNum, setSlideNum] = useState(0);
   const [slideControlValue, setSlideControlValue] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
   const [max, setMax] = useState(0);
@@ -33,15 +34,12 @@ const EventsWrapper = ({ mask }) => {
 
   const slideChange = (value) => {
     dispatch(setEventSideNum(value));
-    // setSlideNum(value);
   };
 
   const minusSlide = () => {
     if (eventSlideNum === 0) {
-      // setSlideNum(0);
       dispatch(setEventSideNum(0));
     } else {
-      // setSlideNum(eventSlideNum - 1);
       dispatch(setEventSideNum(eventSlideNum - 1));
     }
   };
@@ -56,6 +54,12 @@ const EventsWrapper = ({ mask }) => {
     }
   };
 
+  const linkToPopup = (num) => {
+    const params = new URLSearchParams();
+    params.append("pageNum", num);
+    history.push({ search: params.toString() });
+  };
+
   useEffect(() => {
     setMax(5);
   }, []);
@@ -66,15 +70,12 @@ const EventsWrapper = ({ mask }) => {
 
   useEffect(() => {
     if (width < 768) {
-      // dispatch(setEventSideNum(slideNum + 1));
       setSlideControlValue(eventSlideNum + 1);
     } else if (width >= 768) {
       if (eventSlideNum >= max - 2) {
-        // setSlideNum(max - 2);
         dispatch(setEventSideNum(max - 2));
         setSlideControlValue(max);
       } else {
-        // dispatch(setEventSideNum(slideNum + 3));
         setSlideControlValue(eventSlideNum + 3);
       }
     }
@@ -96,6 +97,9 @@ const EventsWrapper = ({ mask }) => {
           mask={mask}
           characterNum={1}
           characterDisplay={mask}
+          onClick={() => {
+            linkToPopup(1);
+          }}
         />
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
