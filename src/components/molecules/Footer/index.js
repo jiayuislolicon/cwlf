@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 // import ShareInfo from "components/atoms/ShareInfo";
+import { useSpring } from "react-spring";
+import * as easings from "d3-ease";
 import { ReactComponent as TopBtn } from "static/svg/btn-gotop.svg";
 import { useSelector } from "react-redux";
 
@@ -18,9 +21,27 @@ const RegulationsBtns = () => (
 
 const Footer = () => {
   const { width } = useSelector((state) => state.global);
+
+  const [y, setY] = useSpring(() => ({
+    immediate: false,
+    config: { duration: 500, easing: easings.easeCubic },
+    y: 0,
+    onFrame: (props) => {
+      window.scroll(0, props.y);
+    },
+  }));
+
+  const scrollTop = () => {
+    setY({
+      y: 0,
+      reset: true,
+      from: { y: window.pageYOffset },
+    });
+  };
+
   return (
     <div className="footer">
-      <TopBtn className="btn-top" />
+      <TopBtn className="btn-top" onClick={scrollTop} />
       <div className="info">
         <div className="contact-info">
           <span>聯絡兒福聯盟</span>
