@@ -73,7 +73,7 @@ const EventsWrapper = ({ mask }) => {
   }, [slideNum, width])
 
   return (
-    <section className="section-events">
+    <section className={classNames("section-events", mask ? "mask" : "")}>
       <h2>展演活動</h2>
       <TabWrapper nowIndex={1} />
       <Carousel
@@ -108,14 +108,14 @@ const EventsWrapper = ({ mask }) => {
           imgSrc="https://picsum.photos/625/520"
           mask={mask}
           characterNum={1}
-          characterDisplay={false}
+          characterDisplay
         />
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
           imgSrc="https://picsum.photos/625/520"
           mask={mask}
-          characterNum={1}
-          characterDisplay={false}
+          characterNum={2}
+          characterDisplay
         />
       </Carousel>
       {!mask && <WhiteCircle />}

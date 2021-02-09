@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 const Intro = ({ mask }) => {
   const { width } = useSelector((state) => state.global);
   return (
-    <section className="section-intro">
+    <section className={classNames("section-intro", mask ? "mask" : "")}>
       <img
         className="intro-heart-bg"
         src={`${!mask ? heartBg : heartBgHover}`}
@@ -32,7 +32,7 @@ const Intro = ({ mask }) => {
         {mask && <img src={charactersHover} alt="上面角色" />}
       </div>
       <div className="content-wrapper">
-        <div className={classNames("intro-text", mask ? "mask" : "")}>
+        <div className="intro-text">
           <h2>
             穿越兒盟的
             <br />
@@ -50,7 +50,9 @@ const Intro = ({ mask }) => {
             {!mask && <img src={aboutHeart} alt="左邊的心仔" />}
             {mask && <img src={aboutHeartHover} alt="左邊的心仔" />}
           </div>
-          <img className="image-center" src={aboutGroup} alt="團體照" />
+          <div className="image-center">
+            <img src={aboutGroup} alt="團體照" />
+          </div>
           <div className="image-right">
             {!mask && <img src={aboutPuff} alt="右邊的泡福" />}
             {mask && <img src={aboutPuffHover} alt="右邊的泡福" />}
