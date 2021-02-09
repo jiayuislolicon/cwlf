@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from "react";
+import classNames from "classnames";
 
 import TabWrapper from "components/molecules/TabWrapper";
 import EventItem from "components/molecules/EventItem";
@@ -27,11 +28,11 @@ const EventsWrapper = ({ mask }) => {
     } else {
       setItemWidth(width - 75);
     }
-  }
+  };
 
   const slideChange = (value) => {
     setSlideNum(value);
-  }
+  };
 
   const minusSlide = () => {
     if (slideNum === 0) {
@@ -39,38 +40,38 @@ const EventsWrapper = ({ mask }) => {
     } else {
       setSlideNum(slideNum - 1);
     }
-  }
+  };
 
   const addSlide = () => {
-    if (slideNum === (max - 2) && width >= 768) {
+    if (slideNum === max - 2 && width >= 768) {
       setSlideNum(max - 2);
     } else if (slideNum === max && width >= 768) {
       setSlideNum(max);
     } else {
       setSlideNum(slideNum + 1);
     }
-  }
+  };
 
   useEffect(() => {
     setMax(5);
-  }, [])
+  }, []);
 
   useEffect(() => {
     setCarouselItemWidth();
-  }, [width])
-  
+  }, [width]);
+
   useEffect(() => {
     if (width < 768) {
       setSlideControlValue(slideNum + 1);
     } else if (width >= 768) {
-      if (slideNum >= (max - 2)) {
-        setSlideNum(max - 2)
+      if (slideNum >= max - 2) {
+        setSlideNum(max - 2);
         setSlideControlValue(max);
       } else {
         setSlideControlValue(slideNum + 3);
       }
     }
-  }, [slideNum, width])
+  }, [slideNum, width]);
 
   return (
     <section className={classNames("section-events", mask ? "mask" : "")}>
@@ -119,7 +120,12 @@ const EventsWrapper = ({ mask }) => {
         />
       </Carousel>
       {!mask && <WhiteCircle />}
-      <SlideControl nowNum={slideControlValue} totalNum={max} leftClick={minusSlide} rightClick={addSlide} />
+      <SlideControl
+        nowNum={slideControlValue}
+        totalNum={max}
+        leftClick={minusSlide}
+        rightClick={addSlide}
+      />
     </section>
   );
 };
