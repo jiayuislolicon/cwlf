@@ -79,6 +79,21 @@
       @media screen and (min-width: 1280px) {
         width: calc((100vw - 110px) * 0.65);
       }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        opacity: 0.15;
+        display: none;
+      }
     }
     .service-imgs-kid {
       width: calc(100vw - 156px);
@@ -97,6 +112,21 @@
       }
       @media screen and (min-width: 1280) {
         width: calc((100vw - 110px) * 0.35);
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        opacity: 0.15;
+        display: none;
       }
     }
   }
@@ -245,5 +275,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+  &.mask {
+    .service-imgs-group:after,
+    .service-imgs-kid:after {
+      display: block;
+    }
   }
 }

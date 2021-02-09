@@ -58,12 +58,6 @@
       margin: 0 auto;
       text-align: center;
     }
-    &.mask {
-      h2,
-      p {
-        color: var(--white);
-      }
-    }
   }
   .intro-image {
     pointer-events: none;
@@ -94,6 +88,21 @@
         width: calc(100% - 30.7vw + 40px);
         max-width: 843px;
       }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--white);
+        opacity: 0.15;
+        width: 100%;
+        height: 100%;
+        display: none;
+      }
     }
     .image-left {
       @media screen and (min-width: 768px) {
@@ -123,6 +132,17 @@
     }
     img {
       width: 100%;
+    }
+  }
+  &.mask {
+    .intro-text {
+      h2,
+      p {
+        color: var(--white);
+      }
+    }
+    .image-center:after {
+      display: block;
     }
   }
 }

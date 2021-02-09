@@ -13,13 +13,10 @@ const characterPic = [character1, character2, character3, character4];
 
 const EventItem = ({ title, imgSrc, mask, characterNum, characterDisplay }) => {
   return (
-    <div className="event-item">
-      <div
-        className={classNames("cover", mask ? "mask" : "")}
-        style={{ backgroundImage: `url(${imgSrc})` }}
-      >
+    <div className={classNames("event-item", mask ? "mask" : "")}>
+      <div className="cover" style={{ backgroundImage: `url(${imgSrc})` }}>
         <TimeTag month="2" day="28" year="2020" className="tag" />
-        {characterDisplay && (
+        {mask && characterDisplay && (
           <img
             className={`deco-${characterNum}`}
             src={characterPic[characterNum]}

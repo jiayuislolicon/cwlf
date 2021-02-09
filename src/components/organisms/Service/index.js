@@ -68,8 +68,12 @@ const Service = ({ mask }) => {
           </p>
         </div>
         <div className="service-imgs">
-          <img src={service1} alt="" className="service-imgs-group" />
-          <img src={service2} alt="" className="service-imgs-kid" />
+          <div className="service-imgs-group">
+            <img src={service1} alt="小孩子的照片" />
+          </div>
+          <div className="service-imgs-kid">
+            <img src={service2} alt="小孩子的照片" />
+          </div>
           <div className="service-bulbs-right">
             {!mask && <img src={rightBulbs} alt="拿著燈泡的角色們" />}
             {mask && <img src={rightBulbsHover} alt="拿著燈泡的角色們" />}
