@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
 
+import Loading from "components/organisms/Loading";
 import Cover from "components/organisms/Cover";
 import EventsWrapper from "components/organisms/EventsWrapper";
 import Intro from "components/organisms/Intro";
@@ -45,6 +46,7 @@ const Home = () => {
   return (
     <div className="home">
       {nowPageNum !== null && <ArticlePopup onClick={() => cleanString()} />}
+      <Loading />
       <div
         className="origin-content"
         onMouseMove={({ pageX: x, pageY: y }) => {
