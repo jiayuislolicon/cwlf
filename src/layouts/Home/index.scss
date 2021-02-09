@@ -2,6 +2,9 @@
   margin-bottom: 170px;
   position: relative;
   z-index: 1;
+  &.mask {
+    // top: 1px;
+  }
   @media screen and (min-width: 1024px) {
     margin-bottom: 120px;
   }
@@ -10,6 +13,9 @@
   position: relative;
   z-index: 2;
   margin-bottom: -50px;
+  &.mask {
+    top: 1px;
+  }
 }
 .section-intro {
   position: relative;
