@@ -1,14 +1,12 @@
 import React from "react";
-import classNames from 'classnames';
+import classNames from "classnames";
 import aboutLogo from "static/png/about-logo.png";
 
 import "./index.scss";
 
 const LogoIntro = ({ mask }) => {
   return (
-    <section
-      className={classNames("section-logo-intro", mask ? "mask" : "")}
-    >
+    <section className={classNames("section-logo-intro", mask ? "mask" : "")}>
       <img src={aboutLogo} alt="兒福新LOGO" className="logo-img" />
       <p>
         兒福聯盟30歲了！
@@ -26,7 +24,7 @@ const LogoIntro = ({ mask }) => {
         <br />
         以及持續向上提升的目標
         <br />
-        期許達成「和孩子共創更好的世界」的願景
+        期許達成「與孩子共創更好的世界」的願景
         <br />
         兒盟三十，請多多指教！
       </p>

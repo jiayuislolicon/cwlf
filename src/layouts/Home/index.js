@@ -1,14 +1,15 @@
 /* eslint-disable react/destructuring-assignment */
 import React from "react";
-// import { link } from "react-router-dom";
-import "./index.scss";
+import { useSpring, animated } from "react-spring";
+
 import Cover from "components/organisms/Cover";
 import EventsWrapper from "components/organisms/EventsWrapper";
 import Intro from "components/organisms/Intro";
 import IpIntro from "components/organisms/IpIntro";
 import LogoIntro from "components/organisms/LogoIntro";
 import Service from "components/organisms/Service";
-import { useSpring, animated } from "react-spring";
+
+import "./index.scss";
 
 const trans = (x, y) => `circle(100px at ${x}px ${y}px)`;
 

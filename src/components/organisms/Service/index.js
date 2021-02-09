@@ -64,7 +64,7 @@ const Service = ({ mask }) => {
             <br />
             世界就會更美好、就有無限可能
             <br />
-            我們一起與孩子共創一個更好的世界！
+            我們一起與孩子共創更好的世界！
           </p>
         </div>
         <div className="service-imgs">
