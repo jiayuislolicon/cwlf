@@ -28,7 +28,13 @@ const EventItem = ({
       tabIndex="0"
     >
       <div className="cover" style={{ backgroundImage: `url(${imgSrc})` }}>
-        <TimeTag month="2" day="28" year="2020" className="tag" />
+        <TimeTag
+          startMonth="1"
+          startDay="2"
+          endMonth="1"
+          endDay="2"
+          className="tag"
+        />
         {mask && characterDisplay && (
           <img
             className={`deco-${characterNum}`}

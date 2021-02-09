@@ -24,7 +24,13 @@ const ArticlePopup = ({ shareUrl, onClick }) => {
         <img src="https://picsum.photos/625/418" alt="測試" />
       </div>
       <div className="list-btns">
-        <TimeTag month="1" day="2" year="2020" />
+        <TimeTag
+          startMonth="1"
+          startDay="2"
+          endMonth="1"
+          endDay="2"
+          year="2020"
+        />
         <div className="event-tag">兒童節</div>
         <a
           href={`https://www.facebook.com/sharer.php?u=${shareUrl}`}

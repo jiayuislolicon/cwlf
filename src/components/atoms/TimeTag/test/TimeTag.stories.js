@@ -5,4 +5,6 @@ import TimeTag from "../index";
 
 const stories = storiesOf("atoms/TimeTag", module);
 
-stories.add("__interactive", () => <TimeTag month="2" day="28" year="2020" />);
+stories.add("__interactive", () => (
+  <TimeTag startMonth={2} startDay={2} endMonth={2} endDay={2} />
+));

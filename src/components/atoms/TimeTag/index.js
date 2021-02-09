@@ -2,15 +2,20 @@ import React from "react";
 import classNames from "classnames";
 import "./index.scss";
 
-const TimeTag = ({ className, month, day, year }) => {
+const TimeTag = ({ className, startMonth, startDay, endMonth, endDay }) => {
   return (
     <div className={classNames("time-tag", className)}>
       <div className="date">
-        <span className="number">{String(month).padStart(2, "0")}</span>
+        <span className="number">{String(startMonth).padStart(2, "0")}</span>
         <div className="circle" />
-        <span className="number">{String(day).padStart(2, "0")}</span>
+        <span className="number">{String(startDay).padStart(2, "0")}</span>
       </div>
-      <span className="number year">{year}</span>
+      <div className="vertical-line" />
+      <div className="date">
+        <span className="number">{String(endMonth).padStart(2, "0")}</span>
+        <div className="circle" />
+        <span className="number">{String(endDay).padStart(2, "0")}</span>
+      </div>
     </div>
   );
 };
