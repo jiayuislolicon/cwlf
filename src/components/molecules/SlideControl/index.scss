@@ -8,6 +8,7 @@
     width: 35px;
     height: 25px;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
   }
   .slide-num {
     display: flex;
@@ -30,6 +31,14 @@
       color: var(--black);
       margin-left: 5px;
       font-weight: 300;
+    }
+  }
+}
+
+.hover {
+  .slide-control {
+    .arrow:hover {
+      opacity: 0.5;
     }
   }
 }

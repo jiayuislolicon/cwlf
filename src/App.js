@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 // import { Route, Switch } from "react-router-dom";
 import useResize from "utils/useResize";
+import isMobile from "ismobilejs";
 
 import Header from "components/molecules/Header";
 import Footer from "components/molecules/Footer";
@@ -16,11 +17,20 @@ const App = () => {
   const dispatch = useDispatch();
 
   const resize = () => {
+    // recored width when resizing
     const width = window.innerWidth;
-
     dispatch(setScreenValue(width));
+
+    // detect isMobile
+    if (isMobile(window.navigator).any) {
+      document.body.classList.remove("hover");
+    } else {
+      document.body.classList.add("hover");
+    }
   };
+
   useResize(resize);
+
   return (
     // <Switch className="App">
     //   <Route exact path="/" component={Home} />

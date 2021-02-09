@@ -9,11 +9,20 @@
       height: 60px;
       path {
         fill: var(--yellow);
+        transition: 0.2s;
       }
     }
     &.share {
       width: 18px;
       height: 23px;
+    }
+  }
+}
+
+.hover {
+  .shape-button:hover {
+    .heart path {
+      fill: #f9df8d;
     }
   }
 }

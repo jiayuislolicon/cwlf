@@ -98,6 +98,7 @@
       cursor: pointer;
       margin-bottom: 50px;
       font-size: 18px;
+      position: relative;
       @media screen and (min-width: 1024px) {
         margin-bottom: 0;
         margin-right: 55px;
@@ -105,6 +106,31 @@
       &:last-child {
         margin-right: 0;
         margin-bottom: 0;
+      }
+      &:after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: var(--red);
+        position: absolute;
+        left: -19px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+.hover {
+  .header {
+    ul {
+      li:hover {
+        &:after {
+          opacity: 1;
+        }
       }
     }
   }
