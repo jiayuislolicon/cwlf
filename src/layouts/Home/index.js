@@ -18,6 +18,7 @@ const trans = (x, y) => `circle(100px at ${x}px ${y}px)`;
 const Home = () => {
   const location = useLocation();
   const history = useHistory();
+
   const [nowPageNum, setNowPageNum] = useState(null);
   const [props, set] = useSpring(() => ({
     xy: [0, 0],
