@@ -24,6 +24,7 @@ const Home = () => {
         className="origin-content"
         onMouseMove={({ pageX: x, pageY: y }) => {
           set({ xy: [x, y] });
+          // console.log(props, trans);
         }}
       >
         <Cover />

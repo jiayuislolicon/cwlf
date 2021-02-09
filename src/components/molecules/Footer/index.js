@@ -1,6 +1,6 @@
 import React from "react";
-import ShareInfo from "components/atoms/ShareInfo";
-import {ReactComponent as TopBtn} from "static/svg/btn-gotop.svg";
+// import ShareInfo from "components/atoms/ShareInfo";
+import { ReactComponent as TopBtn } from "static/svg/btn-gotop.svg";
 import { useSelector } from "react-redux";
 
 import "./index.scss";
@@ -26,22 +26,20 @@ const Footer = () => {
           <span>聯絡兒福聯盟</span>
           {width >= 768 && (
             <p>
-              TEL: (02)-2550-5959
+              TEL: (02)2799-0333
               <br />
-              FAX: (02)2550-0505
-              <br />
-              ADDRESS: 10351 台北市大同區長安西路43號6樓
+              ADDRESS: 114 台北市內湖區瑞光路583巷21號7樓
             </p>
           )}
           {width < 768 && (
             <p>
-              TEL: (02)-2550-5959 | FAX: (02)2550-0505
+              TEL: (02)2799-0333
               <br />
-              ADDRESS: 10351 台北市大同區長安西路43號6樓
+              ADDRESS: 114 台北市內湖區瑞光路583巷21號7樓
             </p>
           )}
         </div>
-        <ShareInfo />
+        {/* <ShareInfo /> */}
         {width < 768 && <RegulationsBtns />}
       </div>
       <div className="copyright">

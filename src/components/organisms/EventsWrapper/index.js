@@ -1,21 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
 import TabWrapper from "components/molecules/TabWrapper";
 import EventItem from "components/molecules/EventItem";
 import WhiteCircle from "components/atoms/WhiteCircle";
 import SlideControl from "components/molecules/SlideControl";
-
+import { setEventSideNum } from "actions/global";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
 import "./index.scss";
-import { useSelector } from "react-redux";
 
 const EventsWrapper = ({ mask }) => {
-  const { width } = useSelector((state) => state.global);
-  const [slideNum, setSlideNum] = useState(0);
+  const dispatch = useDispatch();
+  const { width, eventSlideNum } = useSelector((state) => state.global);
+  // const [slideNum, setSlideNum] = useState(0);
   const [slideControlValue, setSlideControlValue] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
   const [max, setMax] = useState(0);
@@ -31,24 +32,27 @@ const EventsWrapper = ({ mask }) => {
   };
 
   const slideChange = (value) => {
-    setSlideNum(value);
+    dispatch(setEventSideNum(value));
+    // setSlideNum(value);
   };
 
   const minusSlide = () => {
-    if (slideNum === 0) {
-      setSlideNum(0);
+    if (eventSlideNum === 0) {
+      // setSlideNum(0);
+      dispatch(setEventSideNum(0));
     } else {
-      setSlideNum(slideNum - 1);
+      // setSlideNum(eventSlideNum - 1);
+      dispatch(setEventSideNum(eventSlideNum - 1));
     }
   };
 
   const addSlide = () => {
-    if (slideNum === max - 2 && width >= 768) {
-      setSlideNum(max - 2);
-    } else if (slideNum === max && width >= 768) {
-      setSlideNum(max);
+    if (eventSlideNum === max - 2 && width >= 768) {
+      dispatch(setEventSideNum(max - 2));
+    } else if (eventSlideNum === max && width >= 768) {
+      dispatch(setEventSideNum(max));
     } else {
-      setSlideNum(slideNum + 1);
+      dispatch(setEventSideNum(eventSlideNum + 1));
     }
   };
 
@@ -62,16 +66,19 @@ const EventsWrapper = ({ mask }) => {
 
   useEffect(() => {
     if (width < 768) {
-      setSlideControlValue(slideNum + 1);
+      // dispatch(setEventSideNum(slideNum + 1));
+      setSlideControlValue(eventSlideNum + 1);
     } else if (width >= 768) {
-      if (slideNum >= max - 2) {
-        setSlideNum(max - 2);
+      if (eventSlideNum >= max - 2) {
+        // setSlideNum(max - 2);
+        dispatch(setEventSideNum(max - 2));
         setSlideControlValue(max);
       } else {
-        setSlideControlValue(slideNum + 3);
+        // dispatch(setEventSideNum(slideNum + 3));
+        setSlideControlValue(eventSlideNum + 3);
       }
     }
-  }, [slideNum, width]);
+  }, [eventSlideNum, width]);
 
   return (
     <section className={classNames("section-events", mask ? "mask" : "")}>
@@ -81,28 +88,28 @@ const EventsWrapper = ({ mask }) => {
         itemWidth={itemWidth}
         offset={width < 1024 ? 14 : 28}
         onChange={slideChange}
-        value={slideNum}
+        value={eventSlideNum}
       >
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
           imgSrc="https://picsum.photos/625/520"
           mask={mask}
           characterNum={1}
-          characterDisplay={false}
+          characterDisplay={mask}
         />
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
           imgSrc="https://picsum.photos/625/520"
           mask={mask}
           characterNum={1}
-          characterDisplay={false}
+          characterDisplay={mask}
         />
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
           imgSrc="https://picsum.photos/625/520"
           mask={mask}
           characterNum={1}
-          characterDisplay={false}
+          characterDisplay={mask}
         />
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"

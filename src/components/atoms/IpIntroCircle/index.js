@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from 'classnames';
+import classNames from "classnames";
 import heart from "static/png/character-info-heart.png";
 import heartHover from "static/png/character-info-heart-hover.png";
 import puff from "static/png/character-info-puff.png";
@@ -8,7 +8,7 @@ import "./index.scss";
 
 const IpIntroCircle = ({ item, mask }) => {
   return (
-    <div className={classNames('ip-intro-circle', item)}>
+    <div className={classNames("ip-intro-circle", item)}>
       {item === "heart" && !mask && (
         <img src={heart} alt="heart" className="heart ab-center" />
       )}
@@ -26,13 +26,11 @@ const IpIntroCircle = ({ item, mask }) => {
           <h3 className="jf-openhuninn">泡福</h3>
           <h4>孩子的守護者</h4>
           <p>
-            兒福成為孩子的指引
+            溫柔而堅毅，熱心又專業
             <br />
-            熱心且溫柔的個性
+            總是支持需要幫助與關懷的孩子
             <br />
-            總是呼朋引伴招喚愛
-            <br />
-            支援需要幫助與關懷的孩子
+            擁有召喚愛的超能力
           </p>
         </div>
       )}
@@ -41,13 +39,11 @@ const IpIntroCircle = ({ item, mask }) => {
           <h3 className="jf-openhuninn">心仔</h3>
           <h4>愛的超能力</h4>
           <p>
-            兒福成為孩子的指引
+            愛的力量無限大
             <br />
-            熱心且溫柔的個性
+            心仔就像社會大眾守護孩子的愛
             <br />
-            總是呼朋引伴招喚愛
-            <br />
-            支援需要幫助與關懷的孩子
+            代替大家傳遞愛的能量
           </p>
         </div>
       )}

@@ -10,9 +10,14 @@ export default handleActions(
       ...state,
       width: action.payload,
     }),
+    SET_EVENTSLIDE_NUM: (state, action) => ({
+      ...state,
+      eventSlideNum: action.payload,
+    }),
   },
   {
     test: "",
     width: 0,
+    eventSlideNum: 0,
   }
 );
