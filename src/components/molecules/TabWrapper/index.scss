@@ -1,24 +1,17 @@
 .tab-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  max-width: 410px;
   margin: 0 auto;
-  @media screen and (min-width: 415px) {
-    justify-content: space-between;
-  }
-  @media screen and (min-width: 1024px) {
-    max-width: 547px;
+  overflow-x: scroll;
+  @media screen and (min-width: 768px) {
+    overflow-x: auto;
+    align-items: center;
+    justify-content: center;
   }
   .tab-button {
-    margin-right: 25px;
+    margin-right: 35px;
+    flex-shrink: 0;
     @media screen and (min-width: 1280px) {
       margin-right: 60px;
-    }
-    &:nth-child(3) {
-      @media screen and (max-width: 379px) {
-        margin-right: 0;
-      }
     }
     &:last-child {
       margin-right: 0;
