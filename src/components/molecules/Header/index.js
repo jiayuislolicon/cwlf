@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "components/atoms/Logo";
 import classNames from "classnames";
 import pattern from "static/pattern/logoPattern.png";
@@ -32,6 +32,14 @@ const Header = () => {
     });
   };
 
+  useEffect(() => {
+    if (menuVisible) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "hidden auto";
+    }
+  }, [menuVisible]);
+
   return (
     <nav className="header">
       <div className="header-inner">
@@ -42,7 +50,7 @@ const Header = () => {
           }}
         />
         <div
-          className="hamburger-btn"
+          className={classNames("hamburger-btn", menuVisible ? "cross" : "")}
           role="button"
           tabIndex="0"
           onKeyDown={() => {}}

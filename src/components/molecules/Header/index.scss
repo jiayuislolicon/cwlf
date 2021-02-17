@@ -48,6 +48,7 @@
       display: block;
       border-radius: 1px;
       position: absolute;
+      transition: 0.35s cubic-bezier(0.76, 0, 0.24, 1);
     }
     & span:first-of-type {
       top: 0;
@@ -62,10 +63,25 @@
       bottom: 0;
       left: 0;
     }
+    &.cross {
+      & span:first-of-type {
+        top: 8px;
+        left: 0;
+        transform: rotate(45deg);
+      }
+      & span:nth-last-child(2) {
+        width: 0;
+      }
+      & span:last-of-type {
+        bottom: 8px;
+        left: 0;
+        transform: rotate(-45deg);
+      }
+    }
   }
   & .menu {
     list-style: none;
-    display: none;
+    display: flex;
     position: absolute;
     left: 0;
     top: 0;
@@ -80,28 +96,38 @@
     z-index: 0;
     padding: 0;
     margin: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: 0.8s cubic-bezier(0.76, 0, 0.24, 1);
     @media screen and (min-width: 1024px) {
-      display: flex;
       flex-direction: row;
       left: auto;
       right: 80px;
       top: 30px;
+      transform: translateX(0%);
       z-index: 2;
       width: auto;
       height: auto;
+      pointer-events: auto;
       background-color: transparent;
     }
     &.visible {
-      display: flex;
+      pointer-events: auto;
+      transform: translateX(0%);
     }
     li {
       cursor: pointer;
       margin-bottom: 50px;
       font-size: 18px;
       position: relative;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: 0.5s;
       @media screen and (min-width: 1024px) {
         margin-bottom: 0;
         margin-right: 55px;
+        opacity: 1;
+        transform: translateY(0);
       }
       &:last-child {
         margin-right: 0;
@@ -116,9 +142,18 @@
         position: absolute;
         left: -19px;
         top: 50%;
-        transform: translateY(-50%);
         opacity: 0;
+        transform: translateY(-50%);
         transition: 0.2s ease-in-out;
+      }
+    }
+    &.visible {
+      @for $i from 1 through 2 {
+        li:nth-child(#{$i}) {
+          opacity: 1;
+          transform: translateY(0px);
+          transition-delay: (#{$i * 0.1 + 0.5}s);
+        }
       }
     }
   }

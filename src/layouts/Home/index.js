@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
+import isMobile from "ismobilejs";
 
 import Cover from "components/organisms/Cover";
 import EventsWrapper from "components/organisms/EventsWrapper";
@@ -32,6 +33,7 @@ const Home = () => {
     if (search !== "") {
       const pageNum = new URLSearchParams(search).get("pageNum");
       setNowPageNum(pageNum);
+      document.documentElement.style.overflow = "hidden";
     }
   }, [location]);
 
@@ -40,41 +42,51 @@ const Home = () => {
     const params = new URLSearchParams();
     history.push({ search: params.toString() });
     setNowPageNum(null);
+    document.documentElement.style.overflow = "hidden auto";
   };
 
   return (
     <div
       className="home"
       onMouseMove={({ pageX: x, pageY: y, target }) => {
-        const mouseStatus = target.getAttribute("data-mouse");
-        // console.log(target);
-        if (mouseStatus === "bigger") {
-          set({ xys: [x, y, 200] });
-        } else {
-          set({ xys: [x, y, 100] });
+        if (!isMobile(window.navigator).any) {
+          const mouseStatus = target.getAttribute("data-mouse");
+          // console.log(target);
+          if (mouseStatus === "bigger") {
+            set({ xys: [x, y, 200] });
+          } else {
+            set({ xys: [x, y, 100] });
+          }
         }
       }}
     >
-      {nowPageNum !== null && <ArticlePopup onClick={() => cleanString()} />}
+      {nowPageNum !== null && (
+        <ArticlePopup
+          shareUrl="https://google.com.tw"
+          onClick={() => cleanString()}
+        />
+      )}
       <div className="origin-content">
         <Cover />
-        <EventsWrapper shareUrl="https://google.com.tw" />
+        <EventsWrapper />
         <Intro />
         <LogoIntro />
         <Service />
         <IpIntro />
       </div>
-      <animated.div
-        className="mask-content"
-        style={{ clipPath: props.xys.interpolate(trans) }}
-      >
-        <Cover mask />
-        <EventsWrapper mask />
-        <Intro mask />
-        <LogoIntro mask />
-        <Service mask />
-        <IpIntro mask />
-      </animated.div>
+      {!isMobile(window.navigator).any && (
+        <animated.div
+          className="mask-content"
+          style={{ clipPath: props.xys.interpolate(trans) }}
+        >
+          <Cover mask />
+          <EventsWrapper mask />
+          <Intro mask />
+          <LogoIntro mask />
+          <Service mask />
+          <IpIntro mask />
+        </animated.div>
+      )}
     </div>
   );
 };

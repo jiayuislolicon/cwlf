@@ -22,6 +22,9 @@ const ArticlePopup = ({ shareUrl, onClick }) => {
           將品牌識別標誌在不同媒介運用時，會使用到之色彩或配色，提供統一的標準色號，便於未來應用在其他延伸項目；如CMYK色號用於印刷使用、RGB色號用於電腦螢幕觀看使用、PANTONE色號用於特別專色使用、HEX色號用於網站設計使用。
         </p>
         <img src="https://picsum.photos/625/418" alt="測試" />
+        <p>
+          將品牌識別標誌在不同媒介運用時，會使用到之色彩或配色，提供統一的標準色號，便於未來應用在其他延伸項目；如CMYK色號用於印刷使用、RGB色號用於電腦螢幕觀看使用、PANTONE色號用於特別專色使用、HEX色號用於網站設計使用。
+        </p>
       </div>
       <div className="list-btns">
         <TimeTag

@@ -1,15 +1,16 @@
 .article-popup {
   position: relative;
-  padding: 21px 20px 0;
+  padding: 0 20px;
   display: flex;
   background-color: var(--white);
   pointer-events: auto;
+  overflow-y: scroll;
   @media screen and (min-width: 768px) {
-    padding: 42px 40px 0;
+    padding: 0 40px;
   }
   @media screen and (min-width: 1024px) {
     background-color: transparent;
-    padding: 70px 0 0;
+    padding: 0;
   }
   &:after {
     content: "";
@@ -29,22 +30,31 @@
   .content-wrapper {
     width: calc(100% - 65px);
     max-width: 626px;
+    padding: 21px 0;
+    @media screen and (min-width: 768px) {
+      padding: 42px 0;
+    }
     @media screen and (min-width: 1024px) {
       margin: 0 auto;
+      padding: 70px 0 0;
     }
     .article-cover {
-      margin-bottom: 21px;
+      padding-bottom: 21px;
     }
     h4 {
-      margin-bottom: 15px;
+      padding-bottom: 15px;
     }
     img {
       width: 100%;
+      border-radius: 25px;
     }
     p,
     img {
-      margin-bottom: 25px;
+      padding-bottom: 25px;
     }
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
   }
   .close-btn {
     position: fixed;
@@ -83,10 +93,11 @@
   }
   .article-bg {
     padding: 0 66px;
-    width: 100%;
+    height: 120vh;
     z-index: -1;
     position: fixed;
     display: none;
+    pointer-events: none;
     @media screen and (min-width: 1024px) {
       display: block;
     }
