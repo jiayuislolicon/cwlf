@@ -11,10 +11,10 @@ import "./index.scss";
 const RegulationsBtns = () => (
   <div className="regulations-btns">
     <a href="#test">
-      <span className="location">版權宣告</span>
+      <span>版權宣告</span>
     </a>
     <a href="#test">
-      <span className="location">隱私權保障</span>
+      <span>隱私權保障</span>
     </a>
   </div>
 );
