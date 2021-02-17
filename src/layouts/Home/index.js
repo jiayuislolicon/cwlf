@@ -13,7 +13,7 @@ import ArticlePopup from "components/organisms/ArticlePopup";
 
 import "./index.scss";
 
-const trans = (x, y) => `circle(100px at ${x}px ${y}px)`;
+const trans = (x, y, s) => `circle(${s}px at ${x}px ${y}px)`;
 
 const Home = () => {
   const location = useLocation();
@@ -21,8 +21,8 @@ const Home = () => {
 
   const [nowPageNum, setNowPageNum] = useState(null);
   const [props, set] = useSpring(() => ({
-    xy: [0, 0],
-    config: { mass: 5, tension: 150, friction: 40 },
+    xys: [0, 0, 100],
+    config: { mass: 5, tension: 200, friction: 40 },
   }));
 
   useEffect(() => {
@@ -43,15 +43,20 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div
+      className="home"
+      onMouseMove={({ pageX: x, pageY: y, target }) => {
+        const mouseStatus = target.getAttribute("data-mouse");
+        // console.log(target);
+        if (mouseStatus === "bigger") {
+          set({ xys: [x, y, 200] });
+        } else {
+          set({ xys: [x, y, 100] });
+        }
+      }}
+    >
       {nowPageNum !== null && <ArticlePopup onClick={() => cleanString()} />}
-      <div
-        className="origin-content"
-        onMouseMove={({ pageX: x, pageY: y }) => {
-          set({ xy: [x, y] });
-          // console.log(props, trans);
-        }}
-      >
+      <div className="origin-content">
         <Cover />
         <EventsWrapper shareUrl="https://google.com.tw" />
         <Intro />
@@ -61,7 +66,7 @@ const Home = () => {
       </div>
       <animated.div
         className="mask-content"
-        style={{ clipPath: props.xy.interpolate(trans) }}
+        style={{ clipPath: props.xys.interpolate(trans) }}
       >
         <Cover mask />
         <EventsWrapper mask />

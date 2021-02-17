@@ -19,6 +19,7 @@
     color: var(--black);
     letter-spacing: 1px;
     position: relative;
+    pointer-events: none;
     &:after {
       content: "";
       opacity: 0;

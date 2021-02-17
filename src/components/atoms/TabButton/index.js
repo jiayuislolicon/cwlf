@@ -4,7 +4,10 @@ import "./index.scss";
 
 const TabButton = ({ text, isNow }) => {
   return (
-    <div className={classNames("tab-button", isNow ? "now" : "")}>
+    <div
+      className={classNames("tab-button", isNow ? "now" : "")}
+      data-mouse="bigger"
+    >
       <h5>{text}</h5>
     </div>
   );

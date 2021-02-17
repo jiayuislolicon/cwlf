@@ -20,14 +20,12 @@ const EventItem = ({
   onClick,
 }) => {
   return (
-    <div
-      className={classNames("event-item", mask ? "mask" : "")}
-      onClick={onClick}
-      onKeyDown={() => {}}
-      role="button"
-      tabIndex="0"
-    >
-      <div className="cover" style={{ backgroundImage: `url(${imgSrc})` }}>
+    <div className={classNames("event-item", mask ? "mask" : "")}>
+      <div
+        className="cover"
+        style={{ backgroundImage: `url(${imgSrc})` }}
+        data-mouse="bigger"
+      >
         <TimeTag
           startMonth="1"
           startDay="2"
@@ -43,9 +41,9 @@ const EventItem = ({
           />
         )}
       </div>
-      <div className="event-title-wrapper">
+      <div className="event-title-wrapper" data-mouse="bigger">
         <h4>{title}</h4>
-        <CircleBtn />
+        <CircleBtn onClick={onClick} />
       </div>
     </div>
   );

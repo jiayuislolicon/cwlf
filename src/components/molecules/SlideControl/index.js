@@ -5,7 +5,11 @@ import "./index.scss";
 const SlideControl = ({ nowNum, totalNum, leftClick, rightClick }) => {
   return (
     <div className="slide-control">
-      <Arrow className="arrow arrow-left" onClick={leftClick} />
+      <Arrow
+        className="arrow arrow-left"
+        onClick={leftClick}
+        data-mouse="bigger"
+      />
       <div className="slide-num">
         <span className="now-num">{String(nowNum).padStart(2, "0")}</span>
         <div className="slash" />
@@ -13,7 +17,11 @@ const SlideControl = ({ nowNum, totalNum, leftClick, rightClick }) => {
           {String(totalNum).padStart(2, "0")}
         </span>
       </div>
-      <Arrow className="arrow arrow-right" onClick={rightClick} />
+      <Arrow
+        className="arrow arrow-right"
+        data-mouse="bigger"
+        onClick={rightClick}
+      />
     </div>
   );
 };

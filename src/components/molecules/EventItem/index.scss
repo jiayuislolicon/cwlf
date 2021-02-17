@@ -11,6 +11,9 @@
     .cover:after {
       display: block;
     }
+    .event-title-wrapper {
+      background-color: var(--gray);
+    }
   }
   .cover {
     width: 100%;
@@ -27,12 +30,14 @@
       position: absolute;
       top: 14px;
       right: 14px;
+      pointer-events: none;
     }
     .deco-0 {
       width: 23%;
       position: absolute;
       right: -4.4%;
       bottom: -0.5px;
+      pointer-events: none;
     }
     .deco-1 {
       width: 42%;
@@ -40,18 +45,21 @@
       bottom: -0.5px;
       left: 50%;
       transform: translateX(-50%);
+      pointer-events: none;
     }
     .deco-2 {
       width: 35%;
       position: absolute;
       bottom: -0.5px;
       left: 15px;
+      pointer-events: none;
     }
     .deco-3 {
       width: 20%;
       position: absolute;
       bottom: -0.5px;
       left: 0;
+      pointer-events: none;
     }
     &:after {
       content: "";
@@ -81,6 +89,7 @@
       border-radius: 0 0 30px 30px;
     }
     h4 {
+      pointer-events: none;
       width: calc(100% - 55px);
       @media screen and (min-width: 1024px) {
         width: calc(100% - 142px);
