@@ -1,37 +1,38 @@
 .section-logo-intro {
+  width: 100%;
+  padding: 90px 20px 110px;
+  display: flex;
+  flex-direction: column-reverse;
+  @media screen and (min-width: 768px) {
+    padding: 90px 40px 110px;
+  }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12vw 0 17vw;
+  }
+  .logo-img {
     width: 100%;
-    padding: 90px 20px 110px;
-    display: flex;
-    flex-direction: column-reverse;
-    @media screen and (min-width: 768px) {
-        padding: 90px 40px 110px;
-    }
+    height: auto;
+    max-width: 517px;
+    margin: 0 auto;
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.2));
     @media screen and (min-width: 1024px) {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 12vw 0 17vw;
+      margin: 0 67px 0 0;
+      flex: 1;
     }
-    .logo-img {
-        width: 100%;
-        height: auto;
-        max-width: 517px;
-        margin: 0 auto;
-        @media screen and (min-width: 1024px) {
-            margin: 0 67px 0 0;
-            flex: 1;
-        }
+  }
+  p {
+    text-align: center;
+    margin-bottom: 25px;
+    @media screen and (min-width: 1024px) {
+      text-align: left;
     }
+  }
+  &.mask {
     p {
-        text-align: center;
-        margin-bottom: 25px;
-        @media screen and (min-width: 1024px) {
-            text-align: left;
-        }
+      color: var(--white);
     }
-    &.mask {
-        p {
-            color: var(--white);
-        }
-    }
+  }
 }

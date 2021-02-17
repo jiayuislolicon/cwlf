@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import WhiteCircle from "components/atoms/WhiteCircle";
 import { ReactComponent as CoverMask } from "static/svg/cover-mask.svg";
+import { ReactComponent as CoverShape } from "static/svg/cover-shape.svg";
 import posterHover from "static/png/kv-banner-hover.png";
 import bgShape from "static/svg/event-bg.svg";
 import bgShapeHover from "static/svg/event-bg-hover.svg";
@@ -18,26 +19,33 @@ const Cover = ({ mask }) => {
   const { width } = useSelector((state) => state.global);
   return (
     <section className={classNames("section-cover", mask ? "mask" : "")}>
-      <CoverMask className="cover-mask" />
-      <div
-        className="cover-poster"
-        style={{
-          clipPath:
-            width >= 1024 ? `url(#cover-mask)` : `ellipse(80% 50% at 50% 50%)`,
-        }}
-      >
-        {!mask && (
-          <div
-            className="main-poster img"
-            style={{ backgroundImage: `url(https://picsum.photos/1920/1920)` }}
-          />
-        )}
-        {mask && (
-          <div
-            className="mask-poster img"
-            style={{ backgroundImage: `url(${posterHover})` }}
-          />
-        )}
+      <div className="cover-container">
+        <CoverMask className="cover-mask" />
+        <CoverShape className="cover-shadow" />
+        <div
+          className="cover-poster"
+          style={{
+            clipPath:
+              width >= 1024
+                ? `url(#cover-mask)`
+                : `ellipse(80% 50% at 50% 50%)`,
+          }}
+        >
+          {!mask && (
+            <div
+              className="main-poster img"
+              style={{
+                backgroundImage: `url(https://picsum.photos/1920/1920)`,
+              }}
+            />
+          )}
+          {mask && (
+            <div
+              className="mask-poster img"
+              style={{ backgroundImage: `url(${posterHover})` }}
+            />
+          )}
+        </div>
       </div>
       <div className="event-title">
         <div className="date">
