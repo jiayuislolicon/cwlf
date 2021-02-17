@@ -11,21 +11,19 @@ const Loading = () => {
         const img = new Image();
 
         img.src = src;
-        img.onload = resolve(setLoadingNumber(loadingNumber + 1));
+        img.onload = resolve("s");
         img.onerror = reject();
       });
     });
 
-    await Promise.all(promises);
+    await Promise.all(promises).then(() => {
+      setLoadingNumber(3);
+    });
   };
 
   useEffect(() => {
     cacheImages(assets);
   }, []);
-
-  useEffect(() => {
-    console.log(loadingNumber);
-  }, [loadingNumber]);
 
   return (
     <div className="section-loading">
