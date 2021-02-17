@@ -2,8 +2,9 @@ import React from "react";
 import classNames from "classnames";
 
 import WhiteCircle from "components/atoms/WhiteCircle";
+import { ReactComponent as CoverMask } from "static/svg/cover-mask.svg";
 // import poster from "static/png/kv-banner.png";
-// import posterHover from "static/png/kv-banner-hover.png";
+import posterHover from "static/png/kv-banner-hover.png";
 // import mobilePoster from "static/png/mobile-kv-banner.png";
 import { ReactComponent as BgShape } from "static/svg/event-bg.svg";
 import { ReactComponent as BgShapeHover } from "static/svg/event-bg-hover.svg";
@@ -13,21 +14,35 @@ import circle from "static/svg/cover-circle.svg";
 import circleHover from "static/svg/cover-circle-hover.svg";
 
 import "./index.scss";
+import { useSelector } from "react-redux";
 
 const Cover = ({ mask }) => {
+  const { width } = useSelector((state) => state.global);
   return (
     <section className={classNames("section-cover", mask ? "mask" : "")}>
+      <CoverMask className="cover-mask" />
       <div
         className="cover-poster"
-        style={{ clipPath: `ellipse(80% 50% at 50% 50%)` }}
+        style={{
+          clipPath:
+            width >= 1024 ? `url(#cover-mask)` : `ellipse(80% 50% at 50% 50%)`,
+        }}
       >
         {/* {!mask && <img src={poster} alt="兒童節海報" />}
         {mask && <img src={posterHover} alt="兒童節海報" />}
         <img src={mobilePoster} alt="兒童節海報" /> */}
-        <div
-          className="img"
-          style={{ backgroundImage: `url(https://picsum.photos/1920/1920)` }}
-        />
+        {!mask && (
+          <div
+            className="main-poster img"
+            style={{ backgroundImage: `url(https://picsum.photos/1920/1920)` }}
+          />
+        )}
+        {mask && (
+          <div
+            className="mask-poster img"
+            style={{ backgroundImage: `url(${posterHover})` }}
+          />
+        )}
       </div>
       <div className="event-title">
         <div className="date">
