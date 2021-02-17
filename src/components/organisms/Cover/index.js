@@ -3,11 +3,9 @@ import classNames from "classnames";
 
 import WhiteCircle from "components/atoms/WhiteCircle";
 import { ReactComponent as CoverMask } from "static/svg/cover-mask.svg";
-// import poster from "static/png/kv-banner.png";
 import posterHover from "static/png/kv-banner-hover.png";
-// import mobilePoster from "static/png/mobile-kv-banner.png";
-import { ReactComponent as BgShape } from "static/svg/event-bg.svg";
-import { ReactComponent as BgShapeHover } from "static/svg/event-bg-hover.svg";
+import bgShape from "static/svg/event-bg.svg";
+import bgShapeHover from "static/svg/event-bg-hover.svg";
 import mobileBg from "static/svg/mobile-cover-bg.svg";
 import mobileBgHover from "static/svg/mobile-cover-bg-hover.svg";
 import circle from "static/svg/cover-circle.svg";
@@ -28,9 +26,6 @@ const Cover = ({ mask }) => {
             width >= 1024 ? `url(#cover-mask)` : `ellipse(80% 50% at 50% 50%)`,
         }}
       >
-        {/* {!mask && <img src={poster} alt="兒童節海報" />}
-        {mask && <img src={posterHover} alt="兒童節海報" />}
-        <img src={mobilePoster} alt="兒童節海報" /> */}
         {!mask && (
           <div
             className="main-poster img"
@@ -70,8 +65,10 @@ const Cover = ({ mask }) => {
         <img src={circleHover} className="cover-circle ab-pos" alt="背景圓形" />
       )}
       <WhiteCircle classname="ab-pos" />
-      {!mask && <BgShape className="cover-bg ab-pos" />}
-      {mask && <BgShapeHover className="cover-bg ab-pos" />}
+      {!mask && <img src={bgShape} className="cover-bg ab-pos" alt="背景" />}
+      {mask && (
+        <img src={bgShapeHover} className="cover-bg ab-pos" alt="背景" />
+      )}
     </section>
   );
 };
