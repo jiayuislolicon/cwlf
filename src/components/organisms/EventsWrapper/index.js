@@ -45,10 +45,10 @@ const EventsWrapper = ({ mask }) => {
   };
 
   const addSlide = () => {
-    if (eventSlideNum === max - 2 && width >= 768) {
+    if (eventSlideNum >= max - 2 && width >= 768) {
       dispatch(setEventSideNum(max - 2));
-    } else if (eventSlideNum === max && width >= 768) {
-      dispatch(setEventSideNum(max));
+    } else if (eventSlideNum >= max - 1 && width < 768) {
+      dispatch(setEventSideNum(max - 1));
     } else {
       dispatch(setEventSideNum(eventSlideNum + 1));
     }
