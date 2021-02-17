@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
 import isMobile from "ismobilejs";
 
+import Loading from "components/organisms/Loading";
 import Cover from "components/organisms/Cover";
 import EventsWrapper from "components/organisms/EventsWrapper";
 import Intro from "components/organisms/Intro";
