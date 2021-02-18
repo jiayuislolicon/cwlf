@@ -121,12 +121,11 @@ const Home = () => {
         detectPos(x, y, target, 0, 0);
       }}
     >
-      {nowPageNum !== null && (
-        <ArticlePopup
-          shareUrl="https://google.com.tw"
-          onClick={() => cleanString()}
-        />
-      )}
+      <ArticlePopup
+        shareUrl="https://google.com.tw"
+        onClick={() => cleanString()}
+        open={nowPageNum !== null}
+      />
 
       <Loading />
 

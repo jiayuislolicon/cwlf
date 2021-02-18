@@ -3,8 +3,10 @@
   padding: 0 20px;
   display: flex;
   background-color: var(--white);
-  pointer-events: auto;
+  pointer-events: none;
   overflow-y: scroll;
+  opacity: 0;
+  transition: opacity 0.5s;
   @media screen and (min-width: 768px) {
     padding: 0 40px;
   }
@@ -31,6 +33,9 @@
     width: calc(100% - 65px);
     max-width: 626px;
     padding: 21px 0;
+    transform: translateY(20%);
+    opacity: 0;
+    transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
     @media screen and (min-width: 768px) {
       padding: 42px 0;
     }
@@ -39,10 +44,16 @@
       padding: 70px 0 0;
     }
     .article-cover {
-      padding-bottom: 21px;
+      margin-bottom: 21px;
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 42px;
+      }
     }
     h4 {
-      padding-bottom: 15px;
+      margin-bottom: 15px;
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 20px;
+      }
     }
     img {
       width: 100%;
@@ -50,16 +61,21 @@
     }
     p,
     img {
-      padding-bottom: 25px;
+      margin-bottom: 25px;
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 60px;
+      }
     }
-    // &::-webkit-scrollbar {
-    //   display: none;
-    // }
+    .space {
+      padding-bottom: 80px;
+    }
   }
   .close-btn {
     position: fixed;
     right: 23px;
     top: 21px;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.5s;
     @media screen and (min-width: 1024px) {
       right: 40px;
       top: 40px;
@@ -72,9 +88,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0;
+    transform: translateY(20%);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.5s,
+      opacity 0.5s 0.5s;
     @media screen and (min-width: 1024px) {
       right: calc(50vw - 353px);
-      transform: translateX(100%);
+      transform: translate(100%, 20%);
     }
     .time-tag,
     .event-tag {
@@ -98,8 +118,28 @@
     position: fixed;
     display: none;
     pointer-events: none;
+    transform-origin: left center;
     @media screen and (min-width: 1024px) {
       display: block;
+    }
+  }
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    .close-btn {
+      opacity: 1;
+    }
+    .content-wrapper {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .list-btns {
+      transform: translateY(0%);
+      opacity: 1;
+      @media screen and (min-width: 1024px) {
+        transform: translate(100%, 0%);
+      }
     }
   }
 }
