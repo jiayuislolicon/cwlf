@@ -19,7 +19,7 @@ const Cover = ({ mask }) => {
   const { width } = useSelector((state) => state.global);
   return (
     <section className={classNames("section-cover", mask ? "mask" : "")}>
-      <div className="cover-container">
+      <div className="cover-wrapper">
         <CoverMask className="cover-mask" />
         <CoverShape className="cover-shadow" />
         <div
