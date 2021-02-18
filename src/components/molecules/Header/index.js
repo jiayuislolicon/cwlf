@@ -24,7 +24,7 @@ const Header = () => {
   }));
 
   const scrollToSection = (num) => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll(".container");
     setY({
       y: sections[num].getBoundingClientRect().top + window.pageYOffset - 80,
       reset: true,

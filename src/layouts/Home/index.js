@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
-// import isMobile from "ismobilejs";
+import isMobile from "ismobilejs";
 
 import Loading from "components/organisms/Loading";
 import Cover from "components/organisms/Cover";
@@ -25,32 +25,32 @@ const Home = () => {
   const [nowPageNum, setNowPageNum] = useState(null);
 
   const [coverProps, setCoverProps] = useSpring(() => ({
-    xys: [0, 0, 100],
+    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
   const [eventsProps, setEventsProps] = useSpring(() => ({
-    xys: [0, 0, 100],
+    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
   const [introProps, setIntroProps] = useSpring(() => ({
-    xys: [0, 0, 100],
+    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
   const [logoProps, setLogoProps] = useSpring(() => ({
-    xys: [0, 0, 100],
+    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
   const [serviceProps, setServiceProps] = useSpring(() => ({
-    xys: [0, 0, 100],
+    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
   const [ipProps, setIpProps] = useSpring(() => ({
-    xys: [0, 0, 100],
+    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
@@ -73,36 +73,52 @@ const Home = () => {
     document.documentElement.style.overflow = "hidden auto";
   };
 
+  const detectPos = (x, y, target, biggerScale, normalScale) => {
+    const sections = document.querySelectorAll(".container");
+    const mouseStatus = target.getAttribute("data-mouse");
+
+    const nowScroll = window.scrollY;
+    const pY0 = sections[0].getBoundingClientRect().top + nowScroll;
+    const pY1 = sections[1].getBoundingClientRect().top + nowScroll;
+    const pY2 = sections[2].getBoundingClientRect().top + nowScroll;
+    const pY3 = sections[3].getBoundingClientRect().top + nowScroll;
+    const pY4 = sections[4].getBoundingClientRect().top + nowScroll;
+    const pY5 = sections[5].getBoundingClientRect().top + nowScroll;
+
+    if (mouseStatus === "bigger") {
+      setCoverProps({ xys: [x, y - pY0, biggerScale] });
+      setEventsProps({ xys: [x, y - pY1, biggerScale] });
+      setIntroProps({ xys: [x, y - pY2, biggerScale] });
+      setLogoProps({ xys: [x, y - pY3, biggerScale] });
+      setServiceProps({ xys: [x, y - pY4, biggerScale] });
+      setIpProps({ xys: [x, y - pY5, biggerScale] });
+    } else {
+      setCoverProps({ xys: [x, y - pY0, normalScale] });
+      setEventsProps({ xys: [x, y - pY1, normalScale] });
+      setIntroProps({ xys: [x, y - pY2, normalScale] });
+      setLogoProps({ xys: [x, y - pY3, normalScale] });
+      setServiceProps({ xys: [x, y - pY4, normalScale] });
+      setIpProps({ xys: [x, y - pY5, normalScale] });
+    }
+  };
+
   return (
     <div
       className="home"
       onMouseMove={({ pageX: x, pageY: y, target }) => {
-        const sections = document.querySelectorAll(".container");
-        const mouseStatus = target.getAttribute("data-mouse");
-
-        const nowScroll = window.scrollY;
-        const pY0 = sections[0].getBoundingClientRect().top + nowScroll;
-        const pY1 = sections[1].getBoundingClientRect().top + nowScroll;
-        const pY2 = sections[2].getBoundingClientRect().top + nowScroll;
-        const pY3 = sections[3].getBoundingClientRect().top + nowScroll;
-        const pY4 = sections[4].getBoundingClientRect().top + nowScroll;
-        const pY5 = sections[5].getBoundingClientRect().top + nowScroll;
-
-        if (mouseStatus === "bigger") {
-          setCoverProps({ xys: [x, y - pY0, 200] });
-          setEventsProps({ xys: [x, y - pY1, 200] });
-          setIntroProps({ xys: [x, y - pY2, 200] });
-          setLogoProps({ xys: [x, y - pY3, 200] });
-          setServiceProps({ xys: [x, y - pY4, 200] });
-          setIpProps({ xys: [x, y - pY5, 200] });
-        } else {
-          setCoverProps({ xys: [x, y - pY0, 100] });
-          setEventsProps({ xys: [x, y - pY1, 100] });
-          setIntroProps({ xys: [x, y - pY2, 100] });
-          setLogoProps({ xys: [x, y - pY3, 100] });
-          setServiceProps({ xys: [x, y - pY4, 100] });
-          setIpProps({ xys: [x, y - pY5, 100] });
-        }
+        if (!isMobile(window.navigator).any) detectPos(x, y, target, 200, 100);
+      }}
+      onTouchStart={({ touches, target }) => {
+        const { pageX: x, pageY: y } = touches[0];
+        detectPos(x, y, target, 200, 100);
+      }}
+      onTouchMove={({ touches, target }) => {
+        const { pageX: x, pageY: y } = touches[0];
+        detectPos(x, y, target, 200, 100);
+      }}
+      onTouchEnd={({ changedTouches, target }) => {
+        const { pageX: x, pageY: y } = changedTouches[0];
+        detectPos(x, y, target, 0, 0);
       }}
     >
       {nowPageNum !== null && (
