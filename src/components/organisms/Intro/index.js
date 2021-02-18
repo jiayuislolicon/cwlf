@@ -2,14 +2,14 @@ import React from "react";
 import classNames from "classnames";
 import characters from "static/png/heart-characters.png";
 import charactersHover from "static/png/heart-characters-hover.png";
-import heartBg from "static/svg/heart-bg.svg";
-import heartBgHover from "static/svg/heart-bg-hover.svg";
 import aboutHeartHover from "static/png/about-left-heart-hover.png";
 import aboutHeart from "static/png/about-left-heart.png";
 import aboutGroup from "static/png/about-group.png";
 import aboutPuff from "static/png/about-right-puff.png";
 import aboutPuffHover from "static/png/about-right-puff-hover.png";
 
+import heartBg from "static/svg/heart-bg.svg";
+import heartBgHover from "static/svg/heart-bg-hover.svg";
 import logoBg from "static/svg/logointro-bg.svg";
 import logoBgHover from "static/svg/logointro-bg-hover.svg";
 import mobileLogoBg from "static/svg/mobile-logoIntro-bg.svg";

@@ -20,6 +20,7 @@ import mobileBgHover from "static/svg/mobile-service-bg-hover.svg";
 import { ReactComponent as TopBg } from "static/svg/character-bg-top.svg";
 import { ReactComponent as TopBgHover } from "static/svg/character-bg-top-hover.svg";
 import { ReactComponent as MobileTopBg } from "static/svg/mobile-character-bg-top.svg";
+import { ReactComponent as MobileTopBgHover } from "static/svg/mobile-character-bg-top-hover.svg";
 
 import { text } from "./text";
 
@@ -104,7 +105,7 @@ const Service = ({ mask }) => {
       {width >= 1024 && !mask && <TopBg className="ip-intro-bg" />}
       {width >= 1024 && mask && <TopBgHover className="ip-intro-bg" />}
       {width < 1024 && !mask && <MobileTopBg className="ip-intro-bg" />}
-      {width < 1024 && mask && <MobileTopBg className="ip-intro-bg" />}
+      {width < 1024 && mask && <MobileTopBgHover className="ip-intro-bg" />}
     </section>
   );
 };
