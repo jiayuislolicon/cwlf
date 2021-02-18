@@ -29,6 +29,10 @@ const Cover = ({ mask }) => {
               width >= 1024
                 ? `url(#cover-mask)`
                 : `ellipse(80% 50% at 50% 50%)`,
+            WebkitClipPath:
+              width >= 1024
+                ? `url(#cover-mask)`
+                : `ellipse(80% 50% at 50% 50%)`,
           }}
         >
           {!mask && (

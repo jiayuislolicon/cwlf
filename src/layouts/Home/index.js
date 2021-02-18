@@ -134,7 +134,10 @@ const Home = () => {
         </div>
         <animated.div
           className="container-mask"
-          style={{ clipPath: coverProps.xys.interpolate(trans) }}
+          style={{
+            clipPath: coverProps.xys.interpolate(trans),
+            WebkitClipPath: coverProps.xys.interpolate(trans),
+          }}
         >
           <Cover mask />
         </animated.div>
@@ -147,7 +150,10 @@ const Home = () => {
         </div>
         <animated.div
           className="container-mask"
-          style={{ clipPath: eventsProps.xys.interpolate(trans) }}
+          style={{
+            clipPath: eventsProps.xys.interpolate(trans),
+            WebkitClipPath: eventsProps.xys.interpolate(trans),
+          }}
         >
           <EventsWrapper mask />
         </animated.div>
@@ -160,7 +166,10 @@ const Home = () => {
         </div>
         <animated.div
           className="container-mask"
-          style={{ clipPath: introProps.xys.interpolate(trans) }}
+          style={{
+            clipPath: introProps.xys.interpolate(trans),
+            WebkitClipPath: introProps.xys.interpolate(trans),
+          }}
         >
           <Intro mask />
         </animated.div>
@@ -173,7 +182,10 @@ const Home = () => {
         </div>
         <animated.div
           className="container-mask"
-          style={{ clipPath: logoProps.xys.interpolate(trans) }}
+          style={{
+            clipPath: logoProps.xys.interpolate(trans),
+            WebkitClipPath: logoProps.xys.interpolate(trans),
+          }}
         >
           <LogoIntro mask />
         </animated.div>
@@ -186,7 +198,10 @@ const Home = () => {
         </div>
         <animated.div
           className="container-mask"
-          style={{ clipPath: serviceProps.xys.interpolate(trans) }}
+          style={{
+            clipPath: serviceProps.xys.interpolate(trans),
+            WebkitClipPath: serviceProps.xys.interpolate(trans),
+          }}
         >
           <Service mask />
         </animated.div>
@@ -199,7 +214,10 @@ const Home = () => {
         </div>
         <animated.div
           className="container-mask"
-          style={{ clipPath: ipProps.xys.interpolate(trans) }}
+          style={{
+            clipPath: ipProps.xys.interpolate(trans),
+            WebkitClipPath: ipProps.xys.interpolate(trans),
+          }}
         >
           <IpIntro mask />
         </animated.div>
