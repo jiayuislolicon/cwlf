@@ -67,6 +67,7 @@ const Home = () => {
           onClick={() => cleanString()}
         />
       )}
+      <Loading />
       <div className="origin-content">
         <Cover />
         <EventsWrapper />
