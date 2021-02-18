@@ -23,7 +23,33 @@ const Home = () => {
   const history = useHistory();
 
   const [nowPageNum, setNowPageNum] = useState(null);
-  const [props, set] = useSpring(() => ({
+
+  const [coverProps, setCoverProps] = useSpring(() => ({
+    xys: [0, 0, 100],
+    config: { mass: 5, tension: 200, friction: 40 },
+  }));
+
+  const [eventsProps, setEventsProps] = useSpring(() => ({
+    xys: [0, 0, 100],
+    config: { mass: 5, tension: 200, friction: 40 },
+  }));
+
+  const [introProps, setIntroProps] = useSpring(() => ({
+    xys: [0, 0, 100],
+    config: { mass: 5, tension: 200, friction: 40 },
+  }));
+
+  const [logoProps, setLogoProps] = useSpring(() => ({
+    xys: [0, 0, 100],
+    config: { mass: 5, tension: 200, friction: 40 },
+  }));
+
+  const [serviceProps, setServiceProps] = useSpring(() => ({
+    xys: [0, 0, 100],
+    config: { mass: 5, tension: 200, friction: 40 },
+  }));
+
+  const [ipProps, setIpProps] = useSpring(() => ({
     xys: [0, 0, 100],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
@@ -50,15 +76,34 @@ const Home = () => {
   return (
     <div
       className="home"
-      // onMouseMove={({ pageX: x, pageY: y, target }) => {
-      //   const mouseStatus = target.getAttribute("data-mouse");
-      //   // console.log(target);
-      //   if (mouseStatus === "bigger") {
-      //     set({ xys: [x, y, 200] });
-      //   } else {
-      //     set({ xys: [x, y, 100] });
-      //   }
-      // }}
+      onMouseMove={({ pageX: x, pageY: y, target }) => {
+        const sections = document.querySelectorAll(".container");
+        const mouseStatus = target.getAttribute("data-mouse");
+
+        const nowScroll = window.scrollY;
+        const pY0 = sections[0].getBoundingClientRect().top + nowScroll;
+        const pY1 = sections[1].getBoundingClientRect().top + nowScroll;
+        const pY2 = sections[2].getBoundingClientRect().top + nowScroll;
+        const pY3 = sections[3].getBoundingClientRect().top + nowScroll;
+        const pY4 = sections[4].getBoundingClientRect().top + nowScroll;
+        const pY5 = sections[5].getBoundingClientRect().top + nowScroll;
+
+        if (mouseStatus === "bigger") {
+          setCoverProps({ xys: [x, y - pY0, 200] });
+          setEventsProps({ xys: [x, y - pY1, 200] });
+          setIntroProps({ xys: [x, y - pY2, 200] });
+          setLogoProps({ xys: [x, y - pY3, 200] });
+          setServiceProps({ xys: [x, y - pY4, 200] });
+          setIpProps({ xys: [x, y - pY5, 200] });
+        } else {
+          setCoverProps({ xys: [x, y - pY0, 100] });
+          setEventsProps({ xys: [x, y - pY1, 100] });
+          setIntroProps({ xys: [x, y - pY2, 100] });
+          setLogoProps({ xys: [x, y - pY3, 100] });
+          setServiceProps({ xys: [x, y - pY4, 100] });
+          setIpProps({ xys: [x, y - pY5, 100] });
+        }
+      }}
     >
       {nowPageNum !== null && (
         <ArticlePopup
@@ -66,74 +111,86 @@ const Home = () => {
           onClick={() => cleanString()}
         />
       )}
+
       <Loading />
+
+      {/* 封面圖 */}
       <section className="cover-container container">
         <div className="container-content">
           <Cover />
         </div>
-        <div className="container-mask">
+        <animated.div
+          className="container-mask"
+          style={{ clipPath: coverProps.xys.interpolate(trans) }}
+        >
           <Cover mask />
-        </div>
+        </animated.div>
       </section>
+
+      {/* 展演活動 */}
       <section className="events-container container">
         <div className="container-content">
           <EventsWrapper />
         </div>
-        <div className="container-mask">
+        <animated.div
+          className="container-mask"
+          style={{ clipPath: eventsProps.xys.interpolate(trans) }}
+        >
           <EventsWrapper mask />
-        </div>
+        </animated.div>
       </section>
+
+      {/* 兒盟介紹 */}
       <section className="intro-container container">
         <div className="container-content">
           <Intro />
         </div>
-        <div className="container-mask">
+        <animated.div
+          className="container-mask"
+          style={{ clipPath: introProps.xys.interpolate(trans) }}
+        >
           <Intro mask />
-        </div>
+        </animated.div>
       </section>
+
+      {/* LOGO介紹 */}
       <section className="logo-intro-container container">
         <div className="container-content">
           <LogoIntro />
         </div>
-        <div className="container-mask">
+        <animated.div
+          className="container-mask"
+          style={{ clipPath: logoProps.xys.interpolate(trans) }}
+        >
           <LogoIntro mask />
-        </div>
+        </animated.div>
       </section>
+
+      {/* 服務說明 */}
       <section className="service-container container">
         <div className="container-content">
           <Service />
         </div>
-        <div className="container-mask">
+        <animated.div
+          className="container-mask"
+          style={{ clipPath: serviceProps.xys.interpolate(trans) }}
+        >
           <Service mask />
-        </div>
+        </animated.div>
       </section>
+
+      {/* 介紹ＩＰ */}
       <section className="ip-intro-container container">
         <div className="container-content">
           <IpIntro />
         </div>
-        <div className="container-mask">
+        <animated.div
+          className="container-mask"
+          style={{ clipPath: ipProps.xys.interpolate(trans) }}
+        >
           <IpIntro mask />
-        </div>
+        </animated.div>
       </section>
-      {/* <div className="origin-content">
-        <Cover />
-        <EventsWrapper />
-        <Intro />
-        <LogoIntro />
-        <Service />
-        <IpIntro />
-      </div>
-      <animated.div
-        className="mask-content"
-        // style={{ clipPath: props.xys.interpolate(trans) }}
-      >
-        <Cover mask />
-        <EventsWrapper mask />
-        <Intro mask />
-        <LogoIntro mask />
-        <Service mask />
-        <IpIntro mask />
-      </animated.div> */}
     </div>
   );
 };
