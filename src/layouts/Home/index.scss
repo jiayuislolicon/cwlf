@@ -6,23 +6,23 @@
   pointer-events: none;
 }
 
-.section-cover {
+.cover-container {
   margin-bottom: 170px;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   @media screen and (min-width: 1024px) {
     margin-bottom: 120px;
   }
 }
-.section-events {
+.events-container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   margin-bottom: -50px;
   &.mask {
     top: 1px;
   }
 }
-.section-intro {
+.intro-container {
   position: relative;
   z-index: 3;
   margin-bottom: -30px;
@@ -30,7 +30,7 @@
     margin-bottom: -90px;
   }
 }
-.section-logo-intro {
+.logo-intro-container {
   position: relative;
   z-index: 4;
   margin-bottom: -70px;
@@ -38,11 +38,11 @@
     margin-bottom: -140px;
   }
 }
-.section-service {
+.service-container {
   position: relative;
   z-index: 5;
 }
-.section-ip-intro {
+.ip-intro-container {
   position: relative;
   z-index: 6;
   margin-bottom: -40px;
@@ -69,11 +69,32 @@
   position: absolute;
   top: 0;
   left: 0;
+  // width: 100%;
+  // height: 100%;
+  z-index: 2;
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+  transform: translateZ(0);
+  // transition: inherit;
+}
+
+.container {
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: 2;
-  // pointer-events: none;
-  // user-select: none;
-  transform: translateZ(0);
-  transition: inherit;
+  .container-content {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .container-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 3;
+  }
 }

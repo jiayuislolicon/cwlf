@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
-import isMobile from "ismobilejs";
+// import isMobile from "ismobilejs";
 
 import Loading from "components/organisms/Loading";
 import Cover from "components/organisms/Cover";
@@ -49,17 +50,15 @@ const Home = () => {
   return (
     <div
       className="home"
-      onMouseMove={({ pageX: x, pageY: y, target }) => {
-        if (!isMobile(window.navigator).any) {
-          const mouseStatus = target.getAttribute("data-mouse");
-          // console.log(target);
-          if (mouseStatus === "bigger") {
-            set({ xys: [x, y, 200] });
-          } else {
-            set({ xys: [x, y, 100] });
-          }
-        }
-      }}
+      // onMouseMove={({ pageX: x, pageY: y, target }) => {
+      //   const mouseStatus = target.getAttribute("data-mouse");
+      //   // console.log(target);
+      //   if (mouseStatus === "bigger") {
+      //     set({ xys: [x, y, 200] });
+      //   } else {
+      //     set({ xys: [x, y, 100] });
+      //   }
+      // }}
     >
       {nowPageNum !== null && (
         <ArticlePopup
@@ -68,7 +67,55 @@ const Home = () => {
         />
       )}
       <Loading />
-      <div className="origin-content">
+      <section className="cover-container container">
+        <div className="container-content">
+          <Cover />
+        </div>
+        <div className="container-mask">
+          <Cover mask />
+        </div>
+      </section>
+      <section className="events-container container">
+        <div className="container-content">
+          <EventsWrapper />
+        </div>
+        <div className="container-mask">
+          <EventsWrapper mask />
+        </div>
+      </section>
+      <section className="intro-container container">
+        <div className="container-content">
+          <Intro />
+        </div>
+        <div className="container-mask">
+          <Intro mask />
+        </div>
+      </section>
+      <section className="logo-intro-container container">
+        <div className="container-content">
+          <LogoIntro />
+        </div>
+        <div className="container-mask">
+          <LogoIntro mask />
+        </div>
+      </section>
+      <section className="service-container container">
+        <div className="container-content">
+          <Service />
+        </div>
+        <div className="container-mask">
+          <Service mask />
+        </div>
+      </section>
+      <section className="ip-intro-container container">
+        <div className="container-content">
+          <IpIntro />
+        </div>
+        <div className="container-mask">
+          <IpIntro mask />
+        </div>
+      </section>
+      {/* <div className="origin-content">
         <Cover />
         <EventsWrapper />
         <Intro />
@@ -76,19 +123,17 @@ const Home = () => {
         <Service />
         <IpIntro />
       </div>
-      {!isMobile(window.navigator).any && (
-        <animated.div
-          className="mask-content"
-          style={{ clipPath: props.xys.interpolate(trans) }}
-        >
-          <Cover mask />
-          <EventsWrapper mask />
-          <Intro mask />
-          <LogoIntro mask />
-          <Service mask />
-          <IpIntro mask />
-        </animated.div>
-      )}
+      <animated.div
+        className="mask-content"
+        // style={{ clipPath: props.xys.interpolate(trans) }}
+      >
+        <Cover mask />
+        <EventsWrapper mask />
+        <Intro mask />
+        <LogoIntro mask />
+        <Service mask />
+        <IpIntro mask />
+      </animated.div> */}
     </div>
   );
 };
