@@ -90,6 +90,7 @@ const EventsWrapper = ({ mask }) => {
         offset={width < 1024 ? 14 : 28}
         onChange={slideChange}
         value={eventSlideNum}
+        draggable={false}
       >
         <EventItem
           title="第十屆兒童節親子活動「兒童月Online」－台中"
