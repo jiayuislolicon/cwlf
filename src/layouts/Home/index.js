@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
