@@ -32,11 +32,7 @@ const IpIntro = ({ mask, offset }) => {
     const { top } = ipIntroRef.current.getBoundingClientRect();
     const sectionTop = top + offset;
 
-    if (offset >= sectionTop - 500) {
-      setAnimate(true);
-    } else {
-      setAnimate(false);
-    }
+    if (offset >= sectionTop - 500) setAnimate(true);
   }, [offset]);
   return (
     <section

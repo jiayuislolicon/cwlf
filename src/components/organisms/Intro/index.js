@@ -20,14 +20,21 @@ import { useSelector } from "react-redux";
 
 const Intro = ({ mask, offset }) => {
   const introRef = useRef(null);
+  const imgRef = useRef(null);
   const { width } = useSelector((state) => state.global);
   const [animate, setAnimate] = useState(false);
+  const [imgAnimate, setImgAnimate] = useState(false);
 
   useEffect(() => {
     const { top } = introRef.current.getBoundingClientRect();
     const sectionTop = top + offset;
 
     if (offset >= sectionTop - 200) setAnimate(true);
+
+    const imgTop = imgRef.current.getBoundingClientRect().top;
+    const imgY = imgTop + offset;
+
+    if (offset >= imgY - 500) setImgAnimate(true);
   }, [offset]);
 
   return (
@@ -70,7 +77,10 @@ const Intro = ({ mask, offset }) => {
             </p>
           </div>
         </div>
-        <div className="intro-image">
+        <div
+          className={classNames("intro-image", imgAnimate ? "animate" : "")}
+          ref={imgRef}
+        >
           <div className="image-left">
             {!mask && <img src={aboutHeart} alt="左邊的心仔" />}
             {mask && <img src={aboutHeartHover} alt="左邊的心仔" />}

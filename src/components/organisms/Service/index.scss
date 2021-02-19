@@ -291,7 +291,6 @@
     .service-intro-top {
       .service-text {
         .overflow-wrapper {
-          overflow: hidden;
           h2 {
             transform: translateY(150%);
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -312,34 +311,7 @@
           transition-delay: 0.3s;
         }
       }
-    }
-    .service-construction {
-      .bg-circle {
-        transform: translate(0%, -50%) scale(0);
-        transition: transform 0.5s;
-      }
-      .overflow-wrapper {
-        overflow: hidden;
-        h3 {
-          transform: translateY(150%);
-          transition: transform 0.5s;
-        }
-      }
-      .text-item-wrapper {
-        .text-item {
-          transform: translateY(20px);
-          opacity: 0;
-          transition: transform 0.5s, opacity 0.5s;
-        }
-        @for $i from 1 through 3 {
-          .text-item:nth-child(#{$i}) {
-            transition-delay: (#{$i * 0.1 + 0.2}s);
-          }
-        }
-      }
-    }
-    &.animate {
-      .service-intro-top {
+      &.animate {
         .service-text {
           .overflow-wrapper {
             h2 {
@@ -357,12 +329,35 @@
           }
         }
       }
-      .service-construction {
+    }
+    .service-construction {
+      .bg-circle {
+        transform: translate(0%, -50%) scale(0);
+        transition: transform 0.5s;
+      }
+      .overflow-wrapper {
+        h3 {
+          transform: translateY(150%);
+          transition: transform 0.5s;
+        }
+      }
+      .text-item-wrapper {
+        .text-item {
+          transform: translateY(20px);
+          opacity: 0;
+          transition: transform 0.5s, opacity 0.5s;
+        }
+        @for $i from 1 through 3 {
+          .text-item:nth-child(#{$i}) {
+            transition-delay: (#{$i * 0.1 + 0.2}s);
+          }
+        }
+      }
+      &.animate {
         .bg-circle {
           transform: translate(0%, -50%) scale(1);
         }
         .overflow-wrapper {
-          overflow: hidden;
           h3 {
             transform: translateY(0%);
           }

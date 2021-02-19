@@ -35,39 +35,43 @@ const TextItem = ({ title, content }) => (
 
 const Service = ({ mask, offset }) => {
   const { width } = useSelector((state) => state.global);
+  const introRef = useRef(null);
   const serviceRef = useRef(null);
-  const [animate, setAnimate] = useState(false);
+  const [introAnimate, setIntroAnimate] = useState(false);
+  const [serviceAnimate, setServiceAnimate] = useState(false);
 
   useEffect(() => {
-    const { top } = serviceRef.current.getBoundingClientRect();
-    const sectionTop = top + offset;
+    const introTop = introRef.current.getBoundingClientRect().top;
+    const introY = introTop + offset;
 
-    if (offset >= sectionTop - 200) {
-      setAnimate(true);
-    } else {
-      setAnimate(false);
-    }
+    if (offset >= introY - 200) setIntroAnimate(true);
+
+    const serviceTop = serviceRef.current.getBoundingClientRect().top;
+    const serviceY = serviceTop + offset;
+
+    if (offset >= serviceY - 500) setServiceAnimate(true);
   }, [offset]);
   return (
     <section
-      className={classNames(
-        "section-service",
-        mask ? "mask" : "",
-        animate ? "animate" : ""
-      )}
+      className={classNames("section-service", mask ? "mask" : "")}
       style={{
         backgroundImage:
           width >= 1024
             ? `url(${!mask ? bg : bgHover})`
             : `url(${!mask ? mobileBg : mobileBgHover})`,
       }}
-      ref={serviceRef}
+      ref={introRef}
     >
       <div className="service-bulbs-top">
         {!mask && <img src={topBulbs} alt="上方的燈泡" />}
         {mask && <img src={topBulbsHover} alt="上方的燈泡" />}
       </div>
-      <div className="service-intro-top">
+      <div
+        className={classNames(
+          "service-intro-top",
+          introAnimate ? "animate" : ""
+        )}
+      >
         <div className="service-text">
           <div className="overflow-wrapper">
             <h2>
@@ -112,7 +116,13 @@ const Service = ({ mask, offset }) => {
         </div>
         <WhiteCircle />
       </div>
-      <div className="service-construction">
+      <div
+        className={classNames(
+          "service-construction",
+          serviceAnimate ? "animate" : ""
+        )}
+        ref={serviceRef}
+      >
         <div className="bg-circle ab-center" />
         <WhiteCircle />
         <div className="text-content-wrapper">
