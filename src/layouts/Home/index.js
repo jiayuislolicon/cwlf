@@ -134,6 +134,7 @@ const Home = () => {
 
     if (!isMobile(window.navigator).any) {
       scrollBarRef.current = Scrollbar.init(wrapperRef.current);
+      scrollBarRef.current.track.xAxis.element.remove();
     }
     return () => {
       if (!isMobile(window.navigator).any) scrollBarRef.current.destroy();
