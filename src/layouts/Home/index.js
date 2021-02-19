@@ -77,8 +77,9 @@ const Home = () => {
 
   const [nowPageNum, setNowPageNum] = useState(null);
   const [nowScroll, setNowScroll] = useState(0);
+  const [scrollValue, setScrollValue] = useState(0);
 
-  const { nowPos } = useSelector((state) => state.global);
+  const { nowPos, loadingFinish } = useSelector((state) => state.global);
 
   const [, setY] = useSpring(() => ({
     immediate: false,
@@ -128,6 +129,29 @@ const Home = () => {
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
+  const cleanString = () => {
+    // clean params when closing innerPage
+    const params = new URLSearchParams();
+    history.push({ search: params.toString() });
+    setNowPageNum(null);
+    document.documentElement.style.overflow = "hidden auto";
+  };
+
+  const detectPos = (x, y, target, biggerScale, normalScale) => {
+    const mouseStatus = target.getAttribute("data-mouse");
+    setNowScroll(window.pageYOffset);
+
+    if (mouseStatus === "bigger") {
+      set({ xys: [x, y, biggerScale] });
+    } else {
+      set({ xys: [x, y, normalScale] });
+    }
+  };
+
+  const handleScroll = () => {
+    setScrollValue(scrollBarRef.current.scrollTop);
+  };
+
   useEffect(() => {
     const sections = document.querySelectorAll(".container");
     sectionRef.current = sections;
@@ -135,6 +159,7 @@ const Home = () => {
     if (!isMobile(window.navigator).any) {
       scrollBarRef.current = Scrollbar.init(wrapperRef.current);
       scrollBarRef.current.track.xAxis.element.remove();
+      scrollBarRef.current.addListener(handleScroll);
     }
     return () => {
       if (!isMobile(window.navigator).any) scrollBarRef.current.destroy();
@@ -151,25 +176,6 @@ const Home = () => {
       document.documentElement.style.overflow = "hidden";
     }
   }, [location]);
-
-  const cleanString = () => {
-    // clean params when closing innerPage
-    const params = new URLSearchParams();
-    history.push({ search: params.toString() });
-    setNowPageNum(null);
-    document.documentElement.style.overflow = "hidden auto";
-  };
-
-  const detectPos = (x, y, target, biggerScale, normalScale) => {
-    const mouseStatus = target.getAttribute("data-mouse");
-    setNowScroll(window.scrollY);
-
-    if (mouseStatus === "bigger") {
-      set({ xys: [x, y, biggerScale] });
-    } else {
-      set({ xys: [x, y, normalScale] });
-    }
-  };
 
   return (
     <div
@@ -211,8 +217,8 @@ const Home = () => {
           sectionRef={sectionRef}
           xys={xys}
           nowScroll={nowScroll}
-          originChildren={<Cover />}
-          maskChildren={<Cover mask />}
+          originChildren={<Cover loading={loadingFinish} />}
+          maskChildren={<Cover loading={loadingFinish} mask />}
           className="cover-container"
           num="0"
         />
@@ -222,8 +228,8 @@ const Home = () => {
           sectionRef={sectionRef}
           xys={xys}
           nowScroll={nowScroll}
-          originChildren={<EventsWrapper />}
-          maskChildren={<EventsWrapper mask />}
+          originChildren={<EventsWrapper offset={scrollValue} />}
+          maskChildren={<EventsWrapper mask offset={scrollValue} />}
           className="events-container"
           num="1"
         />
@@ -233,8 +239,8 @@ const Home = () => {
           sectionRef={sectionRef}
           xys={xys}
           nowScroll={nowScroll}
-          originChildren={<Intro />}
-          maskChildren={<Intro mask />}
+          originChildren={<Intro offset={scrollValue} />}
+          maskChildren={<Intro mask offset={scrollValue} />}
           className="intro-container"
           num="2"
         />
@@ -244,8 +250,8 @@ const Home = () => {
           sectionRef={sectionRef}
           xys={xys}
           nowScroll={nowScroll}
-          originChildren={<LogoIntro />}
-          maskChildren={<LogoIntro mask />}
+          originChildren={<LogoIntro offset={scrollValue} />}
+          maskChildren={<LogoIntro mask offset={scrollValue} />}
           className="logo-intro-container"
           num="3"
         />
@@ -255,8 +261,8 @@ const Home = () => {
           sectionRef={sectionRef}
           xys={xys}
           nowScroll={nowScroll}
-          originChildren={<Service />}
-          maskChildren={<Service mask />}
+          originChildren={<Service offset={scrollValue} />}
+          maskChildren={<Service mask offset={scrollValue} />}
           className="service-container"
           num="4"
         />
@@ -266,8 +272,8 @@ const Home = () => {
           sectionRef={sectionRef}
           xys={xys}
           nowScroll={nowScroll}
-          originChildren={<IpIntro />}
-          maskChildren={<IpIntro mask />}
+          originChildren={<IpIntro offset={scrollValue} />}
+          maskChildren={<IpIntro mask offset={scrollValue} />}
           className="ip-intro-container"
           num="5"
         />

@@ -1,10 +1,15 @@
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import LoadingLayout from "components/molecules/LoadingLayout";
-import "./index.scss";
+import { setLoadingStatus } from "actions/global";
 import { assets } from "assets";
 
+import "./index.scss";
+
 const Loading = () => {
+  const dispatch = useDispatch();
   const [loadingNumber, setLoadingNumber] = useState(0);
 
   useEffect(() => {
@@ -32,6 +37,10 @@ const Loading = () => {
       });
     };
   }, []);
+
+  useEffect(() => {
+    if (loadingNumber === 100) dispatch(setLoadingStatus(true));
+  }, [loadingNumber]);
 
   return (
     <div className="section-loading">

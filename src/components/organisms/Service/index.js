@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 
@@ -33,17 +33,35 @@ const TextItem = ({ title, content }) => (
   </div>
 );
 
-const Service = ({ mask }) => {
+const Service = ({ mask, offset }) => {
   const { width } = useSelector((state) => state.global);
+  const serviceRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const { top } = serviceRef.current.getBoundingClientRect();
+    const sectionTop = top + offset;
+
+    if (offset >= sectionTop - 200) {
+      setAnimate(true);
+    } else {
+      setAnimate(false);
+    }
+  }, [offset]);
   return (
     <section
-      className={classNames("section-service", mask ? "mask" : "")}
+      className={classNames(
+        "section-service",
+        mask ? "mask" : "",
+        animate ? "animate" : ""
+      )}
       style={{
         backgroundImage:
           width >= 1024
             ? `url(${!mask ? bg : bgHover})`
             : `url(${!mask ? mobileBg : mobileBgHover})`,
       }}
+      ref={serviceRef}
     >
       <div className="service-bulbs-top">
         {!mask && <img src={topBulbs} alt="上方的燈泡" />}
@@ -51,22 +69,26 @@ const Service = ({ mask }) => {
       </div>
       <div className="service-intro-top">
         <div className="service-text">
-          <h2>
-            與孩子共創
-            <br />
-            更好的世界
-          </h2>
-          <p>
-            我們相信
-            <br />
-            每個孩子都是未來世界組成的一份子
-            <br />
-            幫助孩子成為更好的人
-            <br />
-            世界就會更美好、就有無限可能
-            <br />
-            我們一起與孩子共創更好的世界！
-          </p>
+          <div className="overflow-wrapper">
+            <h2>
+              與孩子共創
+              <br />
+              更好的世界
+            </h2>
+          </div>
+          <div className="overflow-wrapper">
+            <p>
+              我們相信
+              <br />
+              每個孩子都是未來世界組成的一份子
+              <br />
+              幫助孩子成為更好的人
+              <br />
+              世界就會更美好、就有無限可能
+              <br />
+              我們一起與孩子共創更好的世界！
+            </p>
+          </div>
         </div>
         <div className="service-imgs">
           <div className="service-imgs-group">
@@ -94,7 +116,9 @@ const Service = ({ mask }) => {
         <div className="bg-circle ab-center" />
         <WhiteCircle />
         <div className="text-content-wrapper">
-          <h3>三大服務架構</h3>
+          <div className="overflow-wrapper">
+            <h3>三大服務架構</h3>
+          </div>
           <div className="text-item-wrapper">
             {text.map((e) => (
               <TextItem title={e.title} content={e.content} key={e.id} />

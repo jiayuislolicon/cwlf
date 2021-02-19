@@ -72,3 +72,37 @@
     }
   }
 }
+
+.hover {
+  .section-events {
+    .overflow-wrapper {
+      overflow: hidden;
+      h2,
+      .tab-wrapper {
+        transition: transform 0.5s;
+      }
+      h2 {
+        transform: translateY(150%);
+      }
+      .tab-wrapper {
+        transform: translateY(200%);
+        transition-delay: 0.1s;
+      }
+    }
+    .slideshow-wrapper {
+      transform: translateY(100%);
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+    }
+    &.animate {
+      .overflow-wrapper {
+        h2,
+        .tab-wrapper {
+          transform: translateY(0%);
+        }
+      }
+      .slideshow-wrapper {
+        transform: translateY(0);
+      }
+    }
+  }
+}

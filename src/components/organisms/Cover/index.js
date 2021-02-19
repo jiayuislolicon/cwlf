@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 
 import WhiteCircle from "components/atoms/WhiteCircle";
@@ -16,10 +16,29 @@ import circleHover from "static/svg/cover-circle-hover.svg";
 import "./index.scss";
 import { useSelector } from "react-redux";
 
-const Cover = ({ mask }) => {
+const Cover = ({ mask, loading }) => {
   const { width } = useSelector((state) => state.global);
+  const [animate, setAnimate] = useState(false);
+  useEffect(() => {
+    let timer;
+
+    if (loading && !animate) {
+      timer = setTimeout(() => {
+        setAnimate(true);
+      }, 1200);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [loading]);
   return (
-    <section className={classNames("section-cover", mask ? "mask" : "")}>
+    <section
+      className={classNames(
+        "section-cover",
+        mask ? "mask" : "",
+        animate ? "animate" : ""
+      )}
+    >
       <div className="cover-wrapper">
         <CoverMask className="cover-mask" />
         <CoverShape className="cover-shadow" />
@@ -58,8 +77,10 @@ const Cover = ({ mask }) => {
           <span className="line" />
           <span>2021.04.30</span>
         </div>
-        <h1>兒童節展覽</h1>
-        <span className="location">華山1914文化創意產業園區</span>
+        <div className="overflow-wrapper">
+          <h1>兒童節展覽</h1>
+          <span className="location">華山1914文化創意產業園區</span>
+        </div>
       </div>
       {!mask && (
         <img src={mobileBg} className="mobile-cover-bg ab-pos" alt="背景" />

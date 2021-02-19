@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import classNames from "classnames";
 
 import IpIntroCircle from "components/atoms/IpIntroCircle";
@@ -14,9 +14,8 @@ import bottomBgHover from "static/svg/character-bg-hover.svg";
 
 import "./index.scss";
 
-
 const IntroItem = ({ item, img, imgHover, mask, classname }) => (
-  <div className={classNames('intro-item', classname)}>
+  <div className={classNames("intro-item", classname)}>
     <IpIntroCircle item={item} mask={mask} />
     <div className="character">
       {!mask && <img src={img} alt="" />}
@@ -25,10 +24,28 @@ const IntroItem = ({ item, img, imgHover, mask, classname }) => (
   </div>
 );
 
-const IpIntro = ({ mask }) => {
+const IpIntro = ({ mask, offset }) => {
+  const ipIntroRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const { top } = ipIntroRef.current.getBoundingClientRect();
+    const sectionTop = top + offset;
+
+    if (offset >= sectionTop - 500) {
+      setAnimate(true);
+    } else {
+      setAnimate(false);
+    }
+  }, [offset]);
   return (
-    <section className="section-ip-intro">
-      <h2>吉祥物登場</h2>
+    <section
+      className={classNames("section-ip-intro", animate ? "animate" : "")}
+      ref={ipIntroRef}
+    >
+      <div className="overflow-wrapper">
+        <h2>吉祥物登場</h2>
+      </div>
       <div className="ip-intro-wrapper">
         <IntroItem
           item="puff"
@@ -45,8 +62,8 @@ const IpIntro = ({ mask }) => {
           classname="heart"
         />
         <div className="love-word ab-center">
-          {!mask && <img src={loveword} alt="文字"/>}
-          {mask && <img src={lovewordHover} alt="文字"/>}
+          {!mask && <img src={loveword} alt="文字" />}
+          {mask && <img src={lovewordHover} alt="文字" />}
         </div>
       </div>
       <div

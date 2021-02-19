@@ -11,3 +11,8 @@ export const setEventSideNum = createAction(
 );
 
 export const setMovingPos = createAction("SET_MOVING_POS", (state) => state);
+
+export const setLoadingStatus = createAction(
+  "SET_LOADING_STATUS",
+  (state) => state
+);

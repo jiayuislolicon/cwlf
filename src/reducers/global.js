@@ -14,10 +14,15 @@ export default handleActions(
       ...state,
       nowPos: action.payload,
     }),
+    SET_LOADING_STATUS: (state, action) => ({
+      ...state,
+      loadingFinish: action.payload,
+    }),
   },
   {
     width: 0,
     eventSlideNum: 0,
     nowPos: "",
+    loadingFinish: false,
   }
 );

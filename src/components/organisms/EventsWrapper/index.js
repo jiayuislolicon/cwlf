@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
@@ -14,13 +14,16 @@ import { useHistory } from "react-router-dom";
 
 import "./index.scss";
 
-const EventsWrapper = ({ mask }) => {
+const EventsWrapper = ({ mask, offset }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const eventsRef = useRef(null);
+
   const { width, eventSlideNum } = useSelector((state) => state.global);
   const [slideControlValue, setSlideControlValue] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
   const [max, setMax] = useState(0);
+  const [animate, setAnimate] = useState(false);
 
   const setCarouselItemWidth = () => {
     if (width >= 1440) {
@@ -69,6 +72,13 @@ const EventsWrapper = ({ mask }) => {
   }, [width]);
 
   useEffect(() => {
+    const { top } = eventsRef.current.getBoundingClientRect();
+    const sectionTop = top + offset;
+
+    if (offset >= sectionTop - 200) setAnimate(true);
+  }, [offset]);
+
+  useEffect(() => {
     if (width < 768) {
       setSlideControlValue(eventSlideNum + 1);
     } else if (width >= 768) {
@@ -82,62 +92,75 @@ const EventsWrapper = ({ mask }) => {
   }, [eventSlideNum, width]);
 
   return (
-    <section className={classNames("section-events", mask ? "mask" : "")}>
-      <h2>展演活動</h2>
-      <TabWrapper nowIndex={1} />
-      <Carousel
-        itemWidth={itemWidth}
-        offset={width < 1024 ? 14 : 28}
-        onChange={slideChange}
-        value={eventSlideNum}
-        draggable={false}
-      >
-        <EventItem
-          title="第十屆兒童節親子活動「兒童月Online」－台中"
-          imgSrc="https://picsum.photos/625/520"
-          mask={mask}
-          characterNum={1}
-          characterDisplay={mask}
-          onClick={() => {
-            linkToPopup(1);
-          }}
+    <section
+      className={classNames(
+        "section-events",
+        mask ? "mask" : "",
+        animate ? "animate" : ""
+      )}
+      ref={eventsRef}
+    >
+      <div className="overflow-wrapper">
+        <h2>展演活動</h2>
+      </div>
+      <div className="overflow-wrapper">
+        <TabWrapper nowIndex={1} />
+      </div>
+      <div className="slideshow-wrapper">
+        <Carousel
+          itemWidth={itemWidth}
+          offset={width < 1024 ? 14 : 28}
+          onChange={slideChange}
+          value={eventSlideNum}
+          draggable={false}
+        >
+          <EventItem
+            title="第十屆兒童節親子活動「兒童月Online」－台中"
+            imgSrc="https://picsum.photos/625/520"
+            mask={mask}
+            characterNum={1}
+            characterDisplay={mask}
+            onClick={() => {
+              linkToPopup(1);
+            }}
+          />
+          <EventItem
+            title="第十屆兒童節親子活動「兒童月Online」－台中"
+            imgSrc="https://picsum.photos/625/520"
+            mask={mask}
+            characterNum={1}
+            characterDisplay={mask}
+          />
+          <EventItem
+            title="第十屆兒童節親子活動「兒童月Online」－台中"
+            imgSrc="https://picsum.photos/625/520"
+            mask={mask}
+            characterNum={1}
+            characterDisplay={mask}
+          />
+          <EventItem
+            title="第十屆兒童節親子活動「兒童月Online」－台中"
+            imgSrc="https://picsum.photos/625/520"
+            mask={mask}
+            characterNum={1}
+            characterDisplay
+          />
+          <EventItem
+            title="第十屆兒童節親子活動「兒童月Online」－台中"
+            imgSrc="https://picsum.photos/625/520"
+            mask={mask}
+            characterNum={2}
+            characterDisplay
+          />
+        </Carousel>
+        <SlideControl
+          nowNum={slideControlValue}
+          totalNum={max}
+          leftClick={minusSlide}
+          rightClick={addSlide}
         />
-        <EventItem
-          title="第十屆兒童節親子活動「兒童月Online」－台中"
-          imgSrc="https://picsum.photos/625/520"
-          mask={mask}
-          characterNum={1}
-          characterDisplay={mask}
-        />
-        <EventItem
-          title="第十屆兒童節親子活動「兒童月Online」－台中"
-          imgSrc="https://picsum.photos/625/520"
-          mask={mask}
-          characterNum={1}
-          characterDisplay={mask}
-        />
-        <EventItem
-          title="第十屆兒童節親子活動「兒童月Online」－台中"
-          imgSrc="https://picsum.photos/625/520"
-          mask={mask}
-          characterNum={1}
-          characterDisplay
-        />
-        <EventItem
-          title="第十屆兒童節親子活動「兒童月Online」－台中"
-          imgSrc="https://picsum.photos/625/520"
-          mask={mask}
-          characterNum={2}
-          characterDisplay
-        />
-      </Carousel>
+      </div>
       {!mask && <WhiteCircle />}
-      <SlideControl
-        nowNum={slideControlValue}
-        totalNum={max}
-        leftClick={minusSlide}
-        rightClick={addSlide}
-      />
     </section>
   );
 };
