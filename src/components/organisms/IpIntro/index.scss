@@ -129,26 +129,26 @@
       .intro-item {
         .ip-intro-circle {
           transform: translateY(100%);
-          transition: 0.8s cubic-bezier(0.87, 0, 0.13, 1);
+          transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .character {
           transform: translateY(100%);
-          transition: 0.8s cubic-bezier(0.87, 0, 0.13, 1);
+          transition: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         &:first-child {
           .character {
-            transition-delay: 0.1s;
+            // transition-delay: 0.1s;
           }
           .ip-intro-circle {
-            transition-delay: 0.2s;
+            transition-delay: 0.1s;
           }
         }
         &:last-child {
           .ip-intro-circle {
-            transition-delay: 0.3s;
+            transition-delay: 0.2s;
           }
           .character {
-            transition-delay: 0.4s;
+            transition-delay: 0.3s;
           }
         }
       }

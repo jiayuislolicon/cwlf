@@ -12,7 +12,7 @@ const LogoIntro = ({ mask, offset }) => {
     const { top } = logoRef.current.getBoundingClientRect();
     const sectionTop = top + offset;
 
-    if (offset >= sectionTop - 200) setAnimate(true);
+    if (offset >= sectionTop - 300) setAnimate(true);
   }, [offset]);
   return (
     <section

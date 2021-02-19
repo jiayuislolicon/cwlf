@@ -44,12 +44,12 @@ const Service = ({ mask, offset }) => {
     const introTop = introRef.current.getBoundingClientRect().top;
     const introY = introTop + offset;
 
-    if (offset >= introY - 200) setIntroAnimate(true);
+    if (offset >= introY - 300) setIntroAnimate(true);
 
     const serviceTop = serviceRef.current.getBoundingClientRect().top;
     const serviceY = serviceTop + offset;
 
-    if (offset >= serviceY - 500) setServiceAnimate(true);
+    if (offset >= serviceY - 550) setServiceAnimate(true);
   }, [offset]);
   return (
     <section

@@ -29,7 +29,7 @@ const Intro = ({ mask, offset }) => {
     const { top } = introRef.current.getBoundingClientRect();
     const sectionTop = top + offset;
 
-    if (offset >= sectionTop - 200) setAnimate(true);
+    if (offset >= sectionTop - 300) setAnimate(true);
 
     const imgTop = imgRef.current.getBoundingClientRect().top;
     const imgY = imgTop + offset;
