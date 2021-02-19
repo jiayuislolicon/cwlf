@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
+import classNames from "classnames";
 import isMobile from "ismobilejs";
 
 import Loading from "components/organisms/Loading";
@@ -14,43 +15,68 @@ import ArticlePopup from "components/organisms/ArticlePopup";
 
 import "./index.scss";
 
-const trans = (x, y, s) => `circle(${s}px at ${x}px ${y}px)`;
+const trans = (x, y, s, padding) => `circle(${s}px at ${x}px ${y - padding}px)`;
+
+const Section = ({
+  sectionRef,
+  xys,
+  nowScroll,
+  originChildren,
+  maskChildren,
+  className,
+  num,
+}) => {
+  return (
+    <section className={classNames("container", className)}>
+      <div className="container-content">{originChildren}</div>
+      <animated.div
+        className="container-mask"
+        style={{
+          clipPath:
+            sectionRef.current !== null &&
+            xys.interpolate((x, y, s) =>
+              trans(
+                x,
+                y,
+                s,
+                sectionRef.current[num].getBoundingClientRect().top + nowScroll
+              )
+            ),
+          WebkitClipPath:
+            sectionRef.current !== null &&
+            xys.interpolate((x, y, s) =>
+              trans(
+                x,
+                y,
+                s,
+                sectionRef.current[num].getBoundingClientRect().top + nowScroll
+              )
+            ),
+        }}
+      >
+        {maskChildren}
+      </animated.div>
+    </section>
+  );
+};
 
 const Home = () => {
   const location = useLocation();
   const history = useHistory();
+  const sectionRef = useRef(null);
 
   const [nowPageNum, setNowPageNum] = useState(null);
+  const [nowScroll, setNowScroll] = useState(0);
 
-  const [coverProps, setCoverProps] = useSpring(() => ({
+  const [{ xys }, set] = useSpring(() => ({
     xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
     config: { mass: 5, tension: 200, friction: 40 },
   }));
 
-  const [eventsProps, setEventsProps] = useSpring(() => ({
-    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
-    config: { mass: 5, tension: 200, friction: 40 },
-  }));
-
-  const [introProps, setIntroProps] = useSpring(() => ({
-    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
-    config: { mass: 5, tension: 200, friction: 40 },
-  }));
-
-  const [logoProps, setLogoProps] = useSpring(() => ({
-    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
-    config: { mass: 5, tension: 200, friction: 40 },
-  }));
-
-  const [serviceProps, setServiceProps] = useSpring(() => ({
-    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
-    config: { mass: 5, tension: 200, friction: 40 },
-  }));
-
-  const [ipProps, setIpProps] = useSpring(() => ({
-    xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
-    config: { mass: 5, tension: 200, friction: 40 },
-  }));
+  useEffect(() => {
+    const sections = document.querySelectorAll(".container");
+    sectionRef.current = sections;
+  }, []);
 
   useEffect(() => {
     // if query params change...
@@ -72,31 +98,13 @@ const Home = () => {
   };
 
   const detectPos = (x, y, target, biggerScale, normalScale) => {
-    const sections = document.querySelectorAll(".container");
     const mouseStatus = target.getAttribute("data-mouse");
-
-    const nowScroll = window.scrollY;
-    const pY0 = sections[0].getBoundingClientRect().top + nowScroll;
-    const pY1 = sections[1].getBoundingClientRect().top + nowScroll;
-    const pY2 = sections[2].getBoundingClientRect().top + nowScroll;
-    const pY3 = sections[3].getBoundingClientRect().top + nowScroll;
-    const pY4 = sections[4].getBoundingClientRect().top + nowScroll;
-    const pY5 = sections[5].getBoundingClientRect().top + nowScroll;
+    setNowScroll(window.scrollY);
 
     if (mouseStatus === "bigger") {
-      setCoverProps({ xys: [x, y - pY0, biggerScale] });
-      setEventsProps({ xys: [x, y - pY1, biggerScale] });
-      setIntroProps({ xys: [x, y - pY2, biggerScale] });
-      setLogoProps({ xys: [x, y - pY3, biggerScale] });
-      setServiceProps({ xys: [x, y - pY4, biggerScale] });
-      setIpProps({ xys: [x, y - pY5, biggerScale] });
+      set({ xys: [x, y, biggerScale] });
     } else {
-      setCoverProps({ xys: [x, y - pY0, normalScale] });
-      setEventsProps({ xys: [x, y - pY1, normalScale] });
-      setIntroProps({ xys: [x, y - pY2, normalScale] });
-      setLogoProps({ xys: [x, y - pY3, normalScale] });
-      setServiceProps({ xys: [x, y - pY4, normalScale] });
-      setIpProps({ xys: [x, y - pY5, normalScale] });
+      set({ xys: [x, y, normalScale] });
     }
   };
 
@@ -128,100 +136,70 @@ const Home = () => {
       <Loading />
 
       {/* 封面圖 */}
-      <section className="cover-container container">
-        <div className="container-content">
-          <Cover />
-        </div>
-        <animated.div
-          className="container-mask"
-          style={{
-            clipPath: coverProps.xys.interpolate(trans),
-            WebkitClipPath: coverProps.xys.interpolate(trans),
-          }}
-        >
-          <Cover mask />
-        </animated.div>
-      </section>
+      <Section
+        sectionRef={sectionRef}
+        xys={xys}
+        nowScroll={nowScroll}
+        originChildren={<Cover />}
+        maskChildren={<Cover mask />}
+        className="cover-container"
+        num="0"
+      />
 
       {/* 展演活動 */}
-      <section className="events-container container">
-        <div className="container-content">
-          <EventsWrapper />
-        </div>
-        <animated.div
-          className="container-mask"
-          style={{
-            clipPath: eventsProps.xys.interpolate(trans),
-            WebkitClipPath: eventsProps.xys.interpolate(trans),
-          }}
-        >
-          <EventsWrapper mask />
-        </animated.div>
-      </section>
+      <Section
+        sectionRef={sectionRef}
+        xys={xys}
+        nowScroll={nowScroll}
+        originChildren={<EventsWrapper />}
+        maskChildren={<EventsWrapper mask />}
+        className="events-container"
+        num="1"
+      />
 
       {/* 兒盟介紹 */}
-      <section className="intro-container container">
-        <div className="container-content">
-          <Intro />
-        </div>
-        <animated.div
-          className="container-mask"
-          style={{
-            clipPath: introProps.xys.interpolate(trans),
-            WebkitClipPath: introProps.xys.interpolate(trans),
-          }}
-        >
-          <Intro mask />
-        </animated.div>
-      </section>
+      <Section
+        sectionRef={sectionRef}
+        xys={xys}
+        nowScroll={nowScroll}
+        originChildren={<Intro />}
+        maskChildren={<Intro mask />}
+        className="intro-container"
+        num="2"
+      />
 
       {/* LOGO介紹 */}
-      <section className="logo-intro-container container">
-        <div className="container-content">
-          <LogoIntro />
-        </div>
-        <animated.div
-          className="container-mask"
-          style={{
-            clipPath: logoProps.xys.interpolate(trans),
-            WebkitClipPath: logoProps.xys.interpolate(trans),
-          }}
-        >
-          <LogoIntro mask />
-        </animated.div>
-      </section>
+      <Section
+        sectionRef={sectionRef}
+        xys={xys}
+        nowScroll={nowScroll}
+        originChildren={<LogoIntro />}
+        maskChildren={<LogoIntro mask />}
+        className="logo-intro-container"
+        num="3"
+      />
 
       {/* 服務說明 */}
-      <section className="service-container container">
-        <div className="container-content">
-          <Service />
-        </div>
-        <animated.div
-          className="container-mask"
-          style={{
-            clipPath: serviceProps.xys.interpolate(trans),
-            WebkitClipPath: serviceProps.xys.interpolate(trans),
-          }}
-        >
-          <Service mask />
-        </animated.div>
-      </section>
+      <Section
+        sectionRef={sectionRef}
+        xys={xys}
+        nowScroll={nowScroll}
+        originChildren={<Service />}
+        maskChildren={<Service mask />}
+        className="service-container"
+        num="4"
+      />
 
       {/* 介紹ＩＰ */}
-      <section className="ip-intro-container container">
-        <div className="container-content">
-          <IpIntro />
-        </div>
-        <animated.div
-          className="container-mask"
-          style={{
-            clipPath: ipProps.xys.interpolate(trans),
-            WebkitClipPath: ipProps.xys.interpolate(trans),
-          }}
-        >
-          <IpIntro mask />
-        </animated.div>
-      </section>
+      <Section
+        sectionRef={sectionRef}
+        xys={xys}
+        nowScroll={nowScroll}
+        originChildren={<IpIntro />}
+        maskChildren={<IpIntro mask />}
+        className="ip-intro-container"
+        num="5"
+      />
     </div>
   );
 };
