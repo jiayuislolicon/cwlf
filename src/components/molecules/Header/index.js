@@ -1,36 +1,17 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Logo from "components/atoms/Logo";
 import classNames from "classnames";
 import pattern from "static/pattern/logoPattern.png";
-import { useSpring } from "react-spring";
-import * as easings from "d3-ease";
+import { useDispatch, useSelector } from "react-redux";
 
+import { setMovingPos } from "actions/global";
 import "./index.scss";
-import { useSelector } from "react-redux";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { width } = useSelector((state) => state.global);
   const [menuVisible, setMenuVisible] = useState(false);
-
-  const [y, setY] = useSpring(() => ({
-    immediate: false,
-    config: { duration: 500, easing: easings.easeCubic },
-    y: 0,
-    onFrame: (props) => {
-      window.scroll(0, props.y);
-    },
-  }));
-
-  const scrollToSection = (num) => {
-    const sections = document.querySelectorAll(".container");
-    setY({
-      y: sections[num].getBoundingClientRect().top + window.pageYOffset - 80,
-      reset: true,
-      from: { y: window.pageYOffset },
-    });
-  };
 
   useEffect(() => {
     if (menuVisible) {
@@ -46,7 +27,7 @@ const Header = () => {
         <Logo
           isLong
           onClick={() => {
-            scrollToSection(0);
+            dispatch(setMovingPos("top"));
           }}
         />
         <div
@@ -69,7 +50,7 @@ const Header = () => {
       >
         <li
           onClick={() => {
-            scrollToSection(1);
+            dispatch(setMovingPos("events"));
             setMenuVisible(false);
           }}
           onKeyDown={() => {}}
@@ -78,7 +59,7 @@ const Header = () => {
         </li>
         <li
           onClick={() => {
-            scrollToSection(2);
+            dispatch(setMovingPos("intro"));
             setMenuVisible(false);
           }}
           onKeyDown={() => {}}

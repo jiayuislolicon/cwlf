@@ -4,7 +4,6 @@ import useResize from "utils/useResize";
 import isMobile from "ismobilejs";
 
 import Header from "components/molecules/Header";
-import Footer from "components/molecules/Footer";
 import Home from "./layouts/Home/index";
 
 import { setScreenValue } from "./actions/global";
@@ -33,7 +32,6 @@ const App = () => {
     <div>
       <Header />
       <Home />
-      <Footer />
     </div>
   );
 };

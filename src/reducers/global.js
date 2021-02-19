@@ -10,9 +10,14 @@ export default handleActions(
       ...state,
       eventSlideNum: action.payload,
     }),
+    SET_MOVING_POS: (state, action) => ({
+      ...state,
+      nowPos: action.payload,
+    }),
   },
   {
     width: 0,
     eventSlideNum: 0,
+    nowPos: "",
   }
 );

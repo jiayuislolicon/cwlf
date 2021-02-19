@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import isMobile from "ismobilejs";
+import Scrollbar from "smooth-scrollbar";
+import * as easings from "d3-ease";
 
 import Loading from "components/organisms/Loading";
 import Cover from "components/organisms/Cover";
@@ -12,6 +15,9 @@ import IpIntro from "components/organisms/IpIntro";
 import LogoIntro from "components/organisms/LogoIntro";
 import Service from "components/organisms/Service";
 import ArticlePopup from "components/organisms/ArticlePopup";
+import Footer from "components/molecules/Footer";
+
+import { setMovingPos } from "actions/global";
 
 import "./index.scss";
 
@@ -63,10 +69,51 @@ const Section = ({
 const Home = () => {
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const sectionRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const scrollBarRef = useRef(null);
 
   const [nowPageNum, setNowPageNum] = useState(null);
   const [nowScroll, setNowScroll] = useState(0);
+
+  const { nowPos } = useSelector((state) => state.global);
+
+  const [, setY] = useSpring(() => ({
+    immediate: false,
+    config: { duration: 500, easing: easings.easeCubic },
+    y: 0,
+    onFrame: (props) => {
+      scrollBarRef.current.scrollTop = props.y;
+      window.scroll(0, props.y);
+    },
+  }));
+
+  const scrollToSection = (num) => {
+    const sections = document.querySelectorAll(".container");
+    setY({
+      y:
+        sections[num].getBoundingClientRect().top +
+        scrollBarRef.current.scrollTop -
+        80,
+      reset: true,
+      from: { y: scrollBarRef.current.scrollTop },
+    });
+  };
+
+  useEffect(() => {
+    if (nowPos === "top") {
+      scrollToSection(0);
+      dispatch(setMovingPos(""));
+    } else if (nowPos === "events") {
+      scrollToSection(1);
+      dispatch(setMovingPos(""));
+    } else if (nowPos === "intro") {
+      scrollToSection(2);
+      dispatch(setMovingPos(""));
+    }
+  }, [nowPos]);
 
   const [{ xys }, set] = useSpring(() => ({
     xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
@@ -76,6 +123,13 @@ const Home = () => {
   useEffect(() => {
     const sections = document.querySelectorAll(".container");
     sectionRef.current = sections;
+
+    if (!isMobile(window.navigator).any) {
+      scrollBarRef.current = Scrollbar.init(wrapperRef.current);
+    }
+    return () => {
+      if (!isMobile(window.navigator).any) scrollBarRef.current.destroy();
+    };
   }, []);
 
   useEffect(() => {
@@ -134,72 +188,74 @@ const Home = () => {
       />
 
       <Loading />
+      <div className="scroll-content-wrapper" ref={wrapperRef}>
+        {/* 封面圖 */}
+        <Section
+          sectionRef={sectionRef}
+          xys={xys}
+          nowScroll={nowScroll}
+          originChildren={<Cover />}
+          maskChildren={<Cover mask />}
+          className="cover-container"
+          num="0"
+        />
 
-      {/* 封面圖 */}
-      <Section
-        sectionRef={sectionRef}
-        xys={xys}
-        nowScroll={nowScroll}
-        originChildren={<Cover />}
-        maskChildren={<Cover mask />}
-        className="cover-container"
-        num="0"
-      />
+        {/* 展演活動 */}
+        <Section
+          sectionRef={sectionRef}
+          xys={xys}
+          nowScroll={nowScroll}
+          originChildren={<EventsWrapper />}
+          maskChildren={<EventsWrapper mask />}
+          className="events-container"
+          num="1"
+        />
 
-      {/* 展演活動 */}
-      <Section
-        sectionRef={sectionRef}
-        xys={xys}
-        nowScroll={nowScroll}
-        originChildren={<EventsWrapper />}
-        maskChildren={<EventsWrapper mask />}
-        className="events-container"
-        num="1"
-      />
+        {/* 兒盟介紹 */}
+        <Section
+          sectionRef={sectionRef}
+          xys={xys}
+          nowScroll={nowScroll}
+          originChildren={<Intro />}
+          maskChildren={<Intro mask />}
+          className="intro-container"
+          num="2"
+        />
 
-      {/* 兒盟介紹 */}
-      <Section
-        sectionRef={sectionRef}
-        xys={xys}
-        nowScroll={nowScroll}
-        originChildren={<Intro />}
-        maskChildren={<Intro mask />}
-        className="intro-container"
-        num="2"
-      />
+        {/* LOGO介紹 */}
+        <Section
+          sectionRef={sectionRef}
+          xys={xys}
+          nowScroll={nowScroll}
+          originChildren={<LogoIntro />}
+          maskChildren={<LogoIntro mask />}
+          className="logo-intro-container"
+          num="3"
+        />
 
-      {/* LOGO介紹 */}
-      <Section
-        sectionRef={sectionRef}
-        xys={xys}
-        nowScroll={nowScroll}
-        originChildren={<LogoIntro />}
-        maskChildren={<LogoIntro mask />}
-        className="logo-intro-container"
-        num="3"
-      />
+        {/* 服務說明 */}
+        <Section
+          sectionRef={sectionRef}
+          xys={xys}
+          nowScroll={nowScroll}
+          originChildren={<Service />}
+          maskChildren={<Service mask />}
+          className="service-container"
+          num="4"
+        />
 
-      {/* 服務說明 */}
-      <Section
-        sectionRef={sectionRef}
-        xys={xys}
-        nowScroll={nowScroll}
-        originChildren={<Service />}
-        maskChildren={<Service mask />}
-        className="service-container"
-        num="4"
-      />
-
-      {/* 介紹ＩＰ */}
-      <Section
-        sectionRef={sectionRef}
-        xys={xys}
-        nowScroll={nowScroll}
-        originChildren={<IpIntro />}
-        maskChildren={<IpIntro mask />}
-        className="ip-intro-container"
-        num="5"
-      />
+        {/* 介紹ＩＰ */}
+        <Section
+          sectionRef={sectionRef}
+          xys={xys}
+          nowScroll={nowScroll}
+          originChildren={<IpIntro />}
+          maskChildren={<IpIntro mask />}
+          className="ip-intro-container"
+          num="5"
+        />
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -9,3 +9,5 @@ export const setEventSideNum = createAction(
   "SET_EVENTSLIDE_NUM",
   (state) => state
 );
+
+export const setMovingPos = createAction("SET_MOVING_POS", (state) => state);
