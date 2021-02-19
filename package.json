@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "classnames": "^2.2.6",
+    "compression-webpack-plugin": "^7.1.2",
     "d3-ease": "^2.0.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -19,6 +20,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "gzipper": "^4.4.0",
     "ismobilejs": "^1.1.1",
     "node-sass": "4.14.1",
     "react": "^17.0.1",
@@ -42,6 +44,7 @@
     "lint": "eslint 'src/**'",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "gzip build/static/js/*.js && gzip build/static/css/*.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -s ./public -p 8000"

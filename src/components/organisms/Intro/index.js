@@ -4,7 +4,7 @@ import characters from "static/png/heart-characters.png";
 import charactersHover from "static/png/heart-characters-hover.png";
 import aboutHeartHover from "static/png/about-left-heart-hover.png";
 import aboutHeart from "static/png/about-left-heart.png";
-import aboutGroup from "static/png/about-group.png";
+import aboutGroup from "static/jpg/about-group.jpg";
 import aboutPuff from "static/png/about-right-puff.png";
 import aboutPuffHover from "static/png/about-right-puff-hover.png";
 
@@ -86,7 +86,7 @@ const Intro = ({ mask, offset }) => {
             {mask && <img src={aboutHeartHover} alt="左邊的心仔" />}
           </div>
           <div className="image-center">
-            <img src={aboutGroup} alt="團體照" />
+            <img src={aboutGroup} className="radius-img" alt="團體照" />
           </div>
           <div className="image-right">
             {!mask && <img src={aboutPuff} alt="右邊的泡福" />}

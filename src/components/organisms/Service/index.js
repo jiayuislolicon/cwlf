@@ -10,8 +10,8 @@ import rightBulbs from "static/png/bulbs-right.png";
 import rightBulbsHover from "static/png/bulbs-right-hover.png";
 import topBulbs from "static/png/bulbs-top.png";
 import topBulbsHover from "static/png/bulbs-top-hover.png";
-import service1 from "static/png/service-1.png";
-import service2 from "static/png/service-2.png";
+import service1 from "static/jpg/service-1.jpg";
+import service2 from "static/jpg/service-2.jpg";
 
 import bg from "static/svg/service-bg.svg";
 import bgHover from "static/svg/service-bg-hover.svg";
@@ -96,10 +96,10 @@ const Service = ({ mask, offset }) => {
         </div>
         <div className="service-imgs">
           <div className="service-imgs-group">
-            <img src={service1} alt="小孩子的照片" />
+            <img src={service1} className="radius-img" alt="小孩子的照片" />
           </div>
           <div className="service-imgs-kid">
-            <img src={service2} alt="小孩子的照片" />
+            <img src={service2} className="radius-img" alt="小孩子的照片" />
           </div>
           <div className="service-bulbs-right">
             {!mask && <img src={rightBulbs} alt="拿著燈泡的角色們" />}

@@ -10,7 +10,7 @@ import characters from "static/png/heart-characters.png";
 import charactersHover from "static/png/heart-characters-hover.png";
 import aboutHeartHover from "static/png/about-left-heart-hover.png";
 import aboutHeart from "static/png/about-left-heart.png";
-import aboutGroup from "static/png/about-group.png";
+import aboutGroup from "static/jpg/about-group.jpg";
 import aboutPuff from "static/png/about-right-puff.png";
 import aboutPuffHover from "static/png/about-right-puff-hover.png";
 import heartman from "static/png/character-heart.png";
@@ -24,8 +24,8 @@ import rightBulbs from "static/png/bulbs-right.png";
 import rightBulbsHover from "static/png/bulbs-right-hover.png";
 import topBulbs from "static/png/bulbs-top.png";
 import topBulbsHover from "static/png/bulbs-top-hover.png";
-import service1 from "static/png/service-1.png";
-import service2 from "static/png/service-2.png";
+import service1 from "static/jpg/service-1.jpg";
+import service2 from "static/jpg/service-2.jpg";
 import dot from "static/pattern/dotPattern.png";
 
 export const assets = [
