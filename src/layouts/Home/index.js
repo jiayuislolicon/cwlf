@@ -85,20 +85,28 @@ const Home = () => {
     config: { duration: 500, easing: easings.easeCubic },
     y: 0,
     onFrame: (props) => {
-      scrollBarRef.current.scrollTop = props.y;
-      window.scroll(0, props.y);
+      if (isMobile(window.navigator).any) {
+        window.scroll(0, props.y);
+      } else {
+        scrollBarRef.current.scrollTop = props.y;
+      }
     },
   }));
 
   const scrollToSection = (num) => {
     const sections = document.querySelectorAll(".container");
     setY({
-      y:
-        sections[num].getBoundingClientRect().top +
-        scrollBarRef.current.scrollTop -
-        80,
+      y: isMobile(window.navigator).any
+        ? sections[num].getBoundingClientRect().top + window.pageYOffset - 60
+        : sections[num].getBoundingClientRect().top +
+          scrollBarRef.current.scrollTop -
+          80,
       reset: true,
-      from: { y: scrollBarRef.current.scrollTop },
+      from: {
+        y: isMobile(window.navigator).any
+          ? window.pageYOffset
+          : scrollBarRef.current.scrollTop,
+      },
     });
   };
 
@@ -188,7 +196,15 @@ const Home = () => {
       />
 
       <Loading />
-      <div className="scroll-content-wrapper" ref={wrapperRef}>
+      <div
+        className="scroll-content-wrapper"
+        ref={wrapperRef}
+        style={{
+          width: !isMobile(window.navigator).any ? "100%" : "auto",
+          height: !isMobile(window.navigator).any ? "100vh" : "auto",
+          // overflow: !isMobile(window.navigator).any ? "hidden" : "unset",
+        }}
+      >
         {/* 封面圖 */}
         <Section
           sectionRef={sectionRef}

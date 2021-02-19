@@ -12,9 +12,9 @@ const middlewares = [thunkMiddleware, promiseMiddleware, epicMiddleware];
 
 const { createLogger } = require("redux-logger");
 
-middlewares.push(createLogger());
-// if (process.env.NODE_ENV !== "production") {
-// }
+if (process.env.NODE_ENV !== "production") {
+  middlewares.push(createLogger());
+}
 
 const configureStore = () => {
   const store = createStore(reducers, applyMiddleware(...middlewares));
