@@ -9,6 +9,7 @@ const Cross = ({ onClick }) => {
       onKeyDown={() => {}}
       role="button"
       tabIndex="0"
+      aria-label="關閉"
     >
       <span className="ab-center" />
       <span className="ab-center" />

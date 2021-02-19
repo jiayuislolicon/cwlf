@@ -11,6 +11,7 @@ const CircleBtn = ({ classname, onClick }) => {
       role="button"
       tabIndex="0"
       onClick={onClick}
+      aria-label="開啟文章"
     >
       <div className="cross ab-center">
         <span className="horizon ab-center" />

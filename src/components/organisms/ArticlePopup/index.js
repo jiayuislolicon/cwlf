@@ -52,6 +52,7 @@ const ArticlePopup = ({ shareUrl, onClick, open }) => {
           rel="noreferrer"
           target="_blank"
         >
+          <span>分享</span>
           <ShapeButton />
         </a>
       </div>

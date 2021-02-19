@@ -11,6 +11,7 @@ const Logo = ({ isLong, isShort, onClick }) => {
       onKeyDown={() => {}}
       role="button"
       tabIndex="0"
+      aria-label="LOGO"
     >
       {isLong && <LongLogo />}
       {isShort && <ShortLogo />}

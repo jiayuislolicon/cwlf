@@ -38,6 +38,7 @@ const Header = () => {
           onClick={() => {
             setMenuVisible(!menuVisible);
           }}
+          aria-label="手機選單"
         >
           <span />
           <span />

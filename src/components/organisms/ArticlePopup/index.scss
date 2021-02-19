@@ -110,6 +110,11 @@
       writing-mode: vertical-lr;
       color: var(--white);
     }
+    a {
+      span {
+        display: none;
+      }
+    }
   }
   .article-bg {
     padding: 0 66px;
