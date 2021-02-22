@@ -23,7 +23,13 @@ const LogoIntro = ({ mask, offset }) => {
       )}
       ref={logoRef}
     >
-      <img src={aboutLogo} alt="兒福新LOGO" className="logo-img" />
+      <img
+        src={aboutLogo}
+        alt="兒福新LOGO"
+        className="logo-img"
+        width="517"
+        height="347"
+      />
       <div className="text-wrapper">
         <div className="overflow-wrapper">
           <p>

@@ -10,16 +10,40 @@ const IpIntroCircle = ({ item, mask }) => {
   return (
     <div className={classNames("ip-intro-circle", item)}>
       {item === "heart" && !mask && (
-        <img src={heart} alt="heart" className="heart ab-center" />
+        <img
+          src={heart}
+          alt="裝飾用愛心"
+          className="heart ab-center"
+          width="312"
+          height="270"
+        />
       )}
       {item === "heart" && mask && (
-        <img src={heartHover} alt="heart" className="heart ab-center" />
+        <img
+          src={heartHover}
+          alt="裝飾用愛心"
+          className="heart ab-center"
+          width="312"
+          height="270"
+        />
       )}
       {item === "puff" && !mask && (
-        <img src={puff} alt="puff" className="puff ab-center" />
+        <img
+          src={puff}
+          alt="裝飾用泡福頭剪影"
+          className="puff ab-center"
+          width="312"
+          height="312"
+        />
       )}
       {item === "puff" && mask && (
-        <img src={puffHover} alt="puff" className="puff ab-center" />
+        <img
+          src={puffHover}
+          alt="裝飾用泡福頭剪影"
+          className="puff ab-center"
+          width="312"
+          height="312"
+        />
       )}
       {item === "puff" && (
         <div className="text ab-center">

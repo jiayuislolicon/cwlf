@@ -14,12 +14,21 @@ import bottomBgHover from "static/svg/character-bg-hover.svg";
 
 import "./index.scss";
 
-const IntroItem = ({ item, img, imgHover, mask, classname }) => (
+const IntroItem = ({
+  item,
+  img,
+  imgHover,
+  mask,
+  classname,
+  alt,
+  width,
+  height,
+}) => (
   <div className={classNames("intro-item", classname)}>
     <IpIntroCircle item={item} mask={mask} />
     <div className="character">
-      {!mask && <img src={img} alt="" />}
-      {mask && <img src={imgHover} alt="" />}
+      {!mask && <img src={img} alt={alt} width={width} height={height} />}
+      {mask && <img src={imgHover} alt={alt} width={width} height={height} />}
     </div>
   </div>
 );
@@ -49,6 +58,9 @@ const IpIntro = ({ mask, offset }) => {
           imgHover={puffmanHover}
           mask={mask}
           classname="puff"
+          alt="泡福"
+          width="594"
+          height="1378"
         />
         <IntroItem
           item="heart"
@@ -56,10 +68,27 @@ const IpIntro = ({ mask, offset }) => {
           imgHover={heartmanHover}
           mask={mask}
           classname="heart"
+          alt="心仔"
+          width="644"
+          height="1000"
         />
         <div className="love-word ab-center">
-          {!mask && <img src={loveword} alt="文字" />}
-          {mask && <img src={lovewordHover} alt="文字" />}
+          {!mask && (
+            <img
+              src={loveword}
+              alt="BigLoveforLittleOnes"
+              width="624"
+              height="479"
+            />
+          )}
+          {mask && (
+            <img
+              src={lovewordHover}
+              alt="BigLoveforLittleOnes"
+              width="624"
+              height="479"
+            />
+          )}
         </div>
       </div>
       <div

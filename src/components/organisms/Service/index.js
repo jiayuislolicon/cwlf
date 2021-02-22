@@ -63,8 +63,8 @@ const Service = ({ mask, offset }) => {
       ref={introRef}
     >
       <div className="service-bulbs-top">
-        {!mask && <img src={topBulbs} alt="上方的燈泡" />}
-        {mask && <img src={topBulbsHover} alt="上方的燈泡" />}
+        {!mask && <img src={topBulbs} alt="燈泡" />}
+        {mask && <img src={topBulbsHover} alt="燈泡" />}
       </div>
       <div
         className={classNames(
@@ -96,23 +96,65 @@ const Service = ({ mask, offset }) => {
         </div>
         <div className="service-imgs">
           <div className="service-imgs-group">
-            <img src={service1} className="radius-img" alt="小孩子的照片" />
+            <img
+              src={service1}
+              className="radius-img"
+              alt="笑著的小孩子們"
+              width="843"
+              height="560"
+            />
           </div>
           <div className="service-imgs-kid">
-            <img src={service2} className="radius-img" alt="小孩子的照片" />
+            <img
+              src={service2}
+              className="radius-img"
+              alt="正在讀著書的幼兒"
+              width="516"
+              height="344"
+            />
           </div>
           <div className="service-bulbs-right">
-            {!mask && <img src={rightBulbs} alt="拿著燈泡的角色們" />}
-            {mask && <img src={rightBulbsHover} alt="拿著燈泡的角色們" />}
+            {!mask && (
+              <img
+                src={rightBulbs}
+                alt="拿著燈泡的角色們"
+                width="1050"
+                height="706"
+              />
+            )}
+            {mask && (
+              <img
+                src={rightBulbsHover}
+                alt="拿著燈泡的角色們"
+                width="1050"
+                height="706"
+              />
+            )}
           </div>
         </div>
         <div className="service-bulbs-left">
-          {!mask && <img src={leftBulbs} alt="左邊的燈泡" />}
-          {mask && <img src={leftBulbsHover} alt="左邊的燈泡" />}
+          {!mask && <img src={leftBulbs} alt="燈泡" width="848" height="954" />}
+          {mask && (
+            <img src={leftBulbsHover} alt="燈泡" width="848" height="954" />
+          )}
         </div>
         <div className="service-bulbs-right">
-          {!mask && <img src={rightBulbs} alt="拿著燈泡的角色們" />}
-          {mask && <img src={rightBulbsHover} alt="拿著燈泡的角色們" />}
+          {!mask && (
+            <img
+              src={rightBulbs}
+              alt="拿著燈泡的角色們"
+              width="1050"
+              height="706"
+            />
+          )}
+          {mask && (
+            <img
+              src={rightBulbsHover}
+              alt="拿著燈泡的角色們"
+              width="1050"
+              height="706"
+            />
+          )}
         </div>
         <WhiteCircle />
       </div>

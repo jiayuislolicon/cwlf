@@ -50,10 +50,16 @@ const Intro = ({ mask, offset }) => {
         className="intro-heart-bg"
         src={`${!mask ? heartBg : heartBgHover}`}
         alt="背景愛心"
+        // width="2240"
+        // height="1936"
       />
       <div className="top-characters">
-        {!mask && <img src={characters} alt="上面角色" />}
-        {mask && <img src={charactersHover} alt="上面角色" />}
+        {!mask && (
+          <img src={characters} alt="上面角色" width="966" height="1082" />
+        )}
+        {mask && (
+          <img src={charactersHover} alt="上面角色" width="966" height="1082" />
+        )}
       </div>
       <div className="content-wrapper">
         <div className="intro-text">
@@ -82,28 +88,59 @@ const Intro = ({ mask, offset }) => {
           ref={imgRef}
         >
           <div className="image-left">
-            {!mask && <img src={aboutHeart} alt="左邊的心仔" />}
-            {mask && <img src={aboutHeartHover} alt="左邊的心仔" />}
+            {!mask && (
+              <img src={aboutHeart} alt="心仔" width="420" height="600" />
+            )}
+            {mask && (
+              <img src={aboutHeartHover} alt="心仔" width="420" height="600" />
+            )}
           </div>
           <div className="image-center">
-            <img src={aboutGroup} className="radius-img" alt="團體照" />
+            <img
+              src={aboutGroup}
+              width="843"
+              height="560"
+              className="radius-img"
+              alt="團體照"
+            />
           </div>
           <div className="image-right">
-            {!mask && <img src={aboutPuff} alt="右邊的泡福" />}
-            {mask && <img src={aboutPuffHover} alt="右邊的泡福" />}
+            {!mask && (
+              <img src={aboutPuff} alt="泡福" width="468" height="836" />
+            )}
+            {mask && (
+              <img src={aboutPuffHover} alt="泡福" width="468" height="836" />
+            )}
           </div>
         </div>
       </div>
       <div className="next-section-bg">
-        {!mask && width >= 1024 && <img src={logoBg} alt="logo區域的背景" />}
+        {!mask && width >= 1024 && (
+          <img src={logoBg} alt="logo區域的背景" width="1440" height="1180" />
+        )}
         {mask && width >= 1024 && (
-          <img src={logoBgHover} alt="logo區域的背景" />
+          <img
+            src={logoBgHover}
+            alt="logo區域的背景"
+            width="1440"
+            height="1180"
+          />
         )}
         {!mask && width < 1024 && (
-          <img src={mobileLogoBg} alt="logo區域的背景" />
+          <img
+            src={mobileLogoBg}
+            alt="logo區域的背景"
+            width="375"
+            height="660"
+          />
         )}
         {mask && width < 1024 && (
-          <img src={mobileLogoBgHover} alt="logo區域的背景" />
+          <img
+            src={mobileLogoBgHover}
+            alt="logo區域的背景"
+            width="375"
+            height="660"
+          />
         )}
       </div>
     </section>
