@@ -63,8 +63,10 @@ const Service = ({ mask, offset }) => {
       ref={introRef}
     >
       <div className="service-bulbs-top">
-        {!mask && <img src={topBulbs} alt="燈泡" />}
-        {mask && <img src={topBulbsHover} alt="燈泡" />}
+        {!mask && <img src={topBulbs} alt="燈泡" width="734" height="276" />}
+        {mask && (
+          <img src={topBulbsHover} alt="燈泡" width="734" height="276" />
+        )}
       </div>
       <div
         className={classNames(

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,18 +8,26 @@ import Scrollbar from "smooth-scrollbar";
 import * as easings from "d3-ease";
 
 import Loading from "components/organisms/Loading";
-import Cover from "components/organisms/Cover";
-import EventsWrapper from "components/organisms/EventsWrapper";
-import Intro from "components/organisms/Intro";
-import IpIntro from "components/organisms/IpIntro";
-import LogoIntro from "components/organisms/LogoIntro";
-import Service from "components/organisms/Service";
-import ArticlePopup from "components/organisms/ArticlePopup";
+// import Cover from "components/organisms/Cover";
+// import EventsWrapper from "components/organisms/EventsWrapper";
+// import Intro from "components/organisms/Intro";
+// import IpIntro from "components/organisms/IpIntro";
+// import LogoIntro from "components/organisms/LogoIntro";
+// import Service from "components/organisms/Service";
+// import ArticlePopup from "components/organisms/ArticlePopup";
 import Footer from "components/molecules/Footer";
 
 import { setMovingPos } from "actions/global";
 
 import "./index.scss";
+
+const Cover = lazy(() => import("components/organisms/Cover"));
+const EventsWrapper = lazy(() => import("components/organisms/EventsWrapper"));
+const Intro = lazy(() => import("components/organisms/Intro"));
+const IpIntro = lazy(() => import("components/organisms/IpIntro"));
+const LogoIntro = lazy(() => import("components/organisms/LogoIntro"));
+const Service = lazy(() => import("components/organisms/Service"));
+const ArticlePopup = lazy(() => import("components/organisms/ArticlePopup"));
 
 const trans = (x, y, s, padding) => `circle(${s}px at ${x}px ${y - padding}px)`;
 
@@ -88,7 +96,7 @@ const Home = () => {
     onFrame: (props) => {
       if (isMobile(window.navigator).any) {
         window.scroll(0, props.y);
-      } else {
+      } else if (scrollBarRef.current !== null) {
         scrollBarRef.current.scrollTop = props.y;
       }
     },
@@ -203,82 +211,84 @@ const Home = () => {
       />
 
       <Loading />
-      <div
-        className="scroll-content-wrapper"
-        ref={wrapperRef}
-        style={{
-          width: !isMobile(window.navigator).any ? "100%" : "auto",
-          height: !isMobile(window.navigator).any ? "100vh" : "auto",
-          // overflow: !isMobile(window.navigator).any ? "hidden" : "unset",
-        }}
-      >
-        {/* 封面圖 */}
-        <Section
-          sectionRef={sectionRef}
-          xys={xys}
-          nowScroll={nowScroll}
-          originChildren={<Cover loading={loadingFinish} />}
-          maskChildren={<Cover loading={loadingFinish} mask />}
-          className="cover-container"
-          num="0"
-        />
+      <Suspense fallback={() => {}}>
+        <div
+          className="scroll-content-wrapper"
+          ref={wrapperRef}
+          style={{
+            width: !isMobile(window.navigator).any ? "100%" : "auto",
+            height: !isMobile(window.navigator).any ? "100vh" : "auto",
+            // overflow: !isMobile(window.navigator).any ? "hidden" : "unset",
+          }}
+        >
+          {/* 封面圖 */}
+          <Section
+            sectionRef={sectionRef}
+            xys={xys}
+            nowScroll={nowScroll}
+            originChildren={<Cover loading={loadingFinish} />}
+            maskChildren={<Cover loading={loadingFinish} mask />}
+            className="cover-container"
+            num="0"
+          />
 
-        {/* 展演活動 */}
-        <Section
-          sectionRef={sectionRef}
-          xys={xys}
-          nowScroll={nowScroll}
-          originChildren={<EventsWrapper offset={scrollValue} />}
-          maskChildren={<EventsWrapper mask offset={scrollValue} />}
-          className="events-container"
-          num="1"
-        />
+          {/* 展演活動 */}
+          <Section
+            sectionRef={sectionRef}
+            xys={xys}
+            nowScroll={nowScroll}
+            originChildren={<EventsWrapper offset={scrollValue} />}
+            maskChildren={<EventsWrapper mask offset={scrollValue} />}
+            className="events-container"
+            num="1"
+          />
 
-        {/* 兒盟介紹 */}
-        <Section
-          sectionRef={sectionRef}
-          xys={xys}
-          nowScroll={nowScroll}
-          originChildren={<Intro offset={scrollValue} />}
-          maskChildren={<Intro mask offset={scrollValue} />}
-          className="intro-container"
-          num="2"
-        />
+          {/* 兒盟介紹 */}
+          <Section
+            sectionRef={sectionRef}
+            xys={xys}
+            nowScroll={nowScroll}
+            originChildren={<Intro offset={scrollValue} />}
+            maskChildren={<Intro mask offset={scrollValue} />}
+            className="intro-container"
+            num="2"
+          />
 
-        {/* LOGO介紹 */}
-        <Section
-          sectionRef={sectionRef}
-          xys={xys}
-          nowScroll={nowScroll}
-          originChildren={<LogoIntro offset={scrollValue} />}
-          maskChildren={<LogoIntro mask offset={scrollValue} />}
-          className="logo-intro-container"
-          num="3"
-        />
+          {/* LOGO介紹 */}
+          <Section
+            sectionRef={sectionRef}
+            xys={xys}
+            nowScroll={nowScroll}
+            originChildren={<LogoIntro offset={scrollValue} />}
+            maskChildren={<LogoIntro mask offset={scrollValue} />}
+            className="logo-intro-container"
+            num="3"
+          />
 
-        {/* 服務說明 */}
-        <Section
-          sectionRef={sectionRef}
-          xys={xys}
-          nowScroll={nowScroll}
-          originChildren={<Service offset={scrollValue} />}
-          maskChildren={<Service mask offset={scrollValue} />}
-          className="service-container"
-          num="4"
-        />
+          {/* 服務說明 */}
+          <Section
+            sectionRef={sectionRef}
+            xys={xys}
+            nowScroll={nowScroll}
+            originChildren={<Service offset={scrollValue} />}
+            maskChildren={<Service mask offset={scrollValue} />}
+            className="service-container"
+            num="4"
+          />
 
-        {/* 介紹ＩＰ */}
-        <Section
-          sectionRef={sectionRef}
-          xys={xys}
-          nowScroll={nowScroll}
-          originChildren={<IpIntro offset={scrollValue} />}
-          maskChildren={<IpIntro mask offset={scrollValue} />}
-          className="ip-intro-container"
-          num="5"
-        />
-        <Footer />
-      </div>
+          {/* 介紹ＩＰ */}
+          <Section
+            sectionRef={sectionRef}
+            xys={xys}
+            nowScroll={nowScroll}
+            originChildren={<IpIntro offset={scrollValue} />}
+            maskChildren={<IpIntro mask offset={scrollValue} />}
+            className="ip-intro-container"
+            num="5"
+          />
+          <Footer />
+        </div>
+      </Suspense>
     </div>
   );
 };

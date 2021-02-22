@@ -39,6 +39,7 @@ h5 {
   font-weight: 400;
   word-break: break-all;
   color: var(--black);
+  font-display: swap;
 }
 
 h1 {
@@ -108,6 +109,7 @@ p {
   line-height: 1.5;
   margin: 0;
   font-family: "jf-openhuninn", sans-serif;
+  font-display: swap;
   @media screen and (min-width: 1280px) {
     font-size: var(--body);
   }
