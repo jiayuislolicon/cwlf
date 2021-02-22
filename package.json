@@ -23,7 +23,7 @@
     "camelcase": "^6.1.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "classnames": "^2.2.6",
-    "compression-webpack-plugin": "5.0.1",
+    "compression-webpack-plugin": "6.0.5",
     "css-loader": "4.3.0",
     "d3-ease": "^2.0.0",
     "dotenv": "8.2.0",

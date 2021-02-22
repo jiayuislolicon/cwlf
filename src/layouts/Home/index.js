@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { useSpring, animated } from "react-spring";
 import { useLocation, useHistory } from "react-router-dom";
@@ -211,7 +212,7 @@ const Home = () => {
       />
 
       <Loading />
-      <Suspense fallback={() => {}}>
+      <Suspense fallback={<div>loading...</div>}>
         <div
           className="scroll-content-wrapper"
           ref={wrapperRef}

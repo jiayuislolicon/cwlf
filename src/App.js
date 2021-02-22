@@ -4,12 +4,13 @@ import useResize from "utils/useResize";
 import isMobile from "ismobilejs";
 
 import Header from "components/molecules/Header";
+// import Home from "layouts/Home";
 
 import { setScreenValue } from "./actions/global";
 
 import "./styles/global.scss";
 
-const Home = lazy(() => import("./layouts/Home/index"));
+const Home = lazy(() => import("layouts/Home"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,10 +31,12 @@ const App = () => {
   useResize(resize);
 
   return (
-    <Suspense fallback={() => {}}>
-      <Header />
-      <Home />
-    </Suspense>
+    <div>
+      <Suspense fallback={<div>...</div>}>
+        <Header />
+        <Home />
+      </Suspense>
+    </div>
   );
 };
 

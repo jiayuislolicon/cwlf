@@ -557,14 +557,8 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
-      new CompressionPlugin({
-        filename: "[path].gz[query]",
-        algorithm: "gzip",
-        test: /\.js$|\.css$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8,
-      }),
-      new BundleAnalyzerPlugin(),
+      new CompressionPlugin({ test: /\.(js|css|html)$/ }),
+      // new BundleAnalyzerPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
