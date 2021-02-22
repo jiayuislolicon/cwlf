@@ -1,14 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import useResize from "utils/useResize";
 import isMobile from "ismobilejs";
 
 import Header from "components/molecules/Header";
-import Home from "./layouts/Home/index";
 
 import { setScreenValue } from "./actions/global";
 
 import "./styles/global.scss";
+
+const Home = lazy(() => import("./layouts/Home/index"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,10 +30,10 @@ const App = () => {
   useResize(resize);
 
   return (
-    <div>
+    <Suspense fallback={() => {}}>
       <Header />
       <Home />
-    </div>
+    </Suspense>
   );
 };
 
