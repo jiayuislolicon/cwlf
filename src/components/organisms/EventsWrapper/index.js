@@ -51,12 +51,14 @@ const EventsWrapper = ({ mask, offset }) => {
   };
 
   const addSlide = () => {
-    if (eventSlideNum >= max - 2 && width >= 768) {
-      dispatch(setEventSideNum(max - 2));
-    } else if (eventSlideNum >= max - 1 && width < 768) {
-      dispatch(setEventSideNum(max - 1));
-    } else {
-      dispatch(setEventSideNum(eventSlideNum + 1));
+    if (max !== 0) {
+      if (eventSlideNum >= max - 2 && width >= 768) {
+        dispatch(setEventSideNum(max - 2));
+      } else if (eventSlideNum >= max - 1 && width < 768) {
+        dispatch(setEventSideNum(max - 1));
+      } else {
+        dispatch(setEventSideNum(eventSlideNum + 1));
+      }
     }
   };
 
@@ -67,7 +69,11 @@ const EventsWrapper = ({ mask, offset }) => {
   };
 
   useEffect(() => {
-    setMax(5);
+    setMax(fakerData.length);
+    // if (width >= 1024) {
+    //   console.log("1024");
+    //   dispatch(setEventSideNum(3));
+    // }
   }, []);
 
   useEffect(() => {
@@ -82,17 +88,19 @@ const EventsWrapper = ({ mask, offset }) => {
   }, [offset]);
 
   useEffect(() => {
-    if (width < 768) {
-      setSlideControlValue(eventSlideNum + 1);
-    } else if (width >= 768) {
-      if (eventSlideNum >= max - 2) {
-        dispatch(setEventSideNum(max - 2));
-        setSlideControlValue(max);
-      } else {
-        setSlideControlValue(eventSlideNum + 3);
+    if (max !== 0) {
+      if (width < 768) {
+        setSlideControlValue(eventSlideNum + 1);
+      } else if (width >= 768) {
+        if (eventSlideNum >= max - 2) {
+          dispatch(setEventSideNum(max - 2));
+          setSlideControlValue(max);
+        } else {
+          setSlideControlValue(eventSlideNum + 3);
+        }
       }
     }
-  }, [eventSlideNum, width]);
+  }, [eventSlideNum, width, max]);
 
   return (
     <section
