@@ -14,7 +14,9 @@
       display: block;
     }
     .event-title-wrapper {
-      background-color: var(--gray);
+      @media screen and (min-width: 1280px) {
+        background-color: var(--gray);
+      }
     }
   }
   .cover {
@@ -33,6 +35,16 @@
       top: 14px;
       right: 14px;
       pointer-events: none;
+    }
+    .character-img {
+      opacity: 0;
+      transition: opacity 0.5s;
+      @media screen and (min-width: 1280px) {
+        opacity: 1;
+      }
+      &.appear {
+        opacity: 1;
+      }
     }
     .deco-0 {
       width: 23%;

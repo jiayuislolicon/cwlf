@@ -40,37 +40,42 @@ const Section = ({
   maskChildren,
   className,
   num,
+  clipPath,
 }) => {
   return (
     <section className={classNames("container", className)}>
       <div className="container-content">{originChildren}</div>
-      <animated.div
-        className="container-mask"
-        style={{
-          clipPath:
-            sectionRef.current !== null &&
-            xys.interpolate((x, y, s) =>
-              trans(
-                x,
-                y,
-                s,
-                sectionRef.current[num].getBoundingClientRect().top + nowScroll
-              )
-            ),
-          WebkitClipPath:
-            sectionRef.current !== null &&
-            xys.interpolate((x, y, s) =>
-              trans(
-                x,
-                y,
-                s,
-                sectionRef.current[num].getBoundingClientRect().top + nowScroll
-              )
-            ),
-        }}
-      >
-        {maskChildren}
-      </animated.div>
+      {clipPath && (
+        <animated.div
+          className="container-mask"
+          style={{
+            clipPath:
+              sectionRef.current !== null &&
+              xys.interpolate((x, y, s) =>
+                trans(
+                  x,
+                  y,
+                  s,
+                  sectionRef.current[num].getBoundingClientRect().top +
+                    nowScroll
+                )
+              ),
+            WebkitClipPath:
+              sectionRef.current !== null &&
+              xys.interpolate((x, y, s) =>
+                trans(
+                  x,
+                  y,
+                  s,
+                  sectionRef.current[num].getBoundingClientRect().top +
+                    nowScroll
+                )
+              ),
+          }}
+        >
+          {maskChildren}
+        </animated.div>
+      )}
     </section>
   );
 };
@@ -231,6 +236,7 @@ const Home = () => {
             maskChildren={<Cover loading={loadingFinish} mask />}
             className="cover-container"
             num="0"
+            clipPath
           />
 
           {/* 展演活動 */}
@@ -242,6 +248,7 @@ const Home = () => {
             maskChildren={<EventsWrapper mask offset={scrollValue} />}
             className="events-container"
             num="1"
+            clipPath={!isMobile(window.navigator).any}
           />
 
           {/* 兒盟介紹 */}
@@ -253,6 +260,7 @@ const Home = () => {
             maskChildren={<Intro mask offset={scrollValue} />}
             className="intro-container"
             num="2"
+            clipPath
           />
 
           {/* LOGO介紹 */}
@@ -264,6 +272,7 @@ const Home = () => {
             maskChildren={<LogoIntro mask offset={scrollValue} />}
             className="logo-intro-container"
             num="3"
+            clipPath
           />
 
           {/* 服務說明 */}
@@ -275,6 +284,7 @@ const Home = () => {
             maskChildren={<Service mask offset={scrollValue} />}
             className="service-container"
             num="4"
+            clipPath
           />
 
           {/* 介紹ＩＰ */}
@@ -286,6 +296,7 @@ const Home = () => {
             maskChildren={<IpIntro mask offset={scrollValue} />}
             className="ip-intro-container"
             num="5"
+            clipPath
           />
           <Footer />
         </div>
