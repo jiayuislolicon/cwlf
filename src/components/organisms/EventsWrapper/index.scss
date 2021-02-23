@@ -8,12 +8,9 @@
     padding-left: 80px;
   }
   @media screen and (min-width: 1440px) {
-    width: 1440px;
-  }
-  @media screen and (min-width: 1520px) {
-    padding: 0;
+    width: 1280px;
     margin: 0 auto;
-    width: 1360px;
+    padding-left: 0;
   }
   h2 {
     text-align: center;
@@ -37,6 +34,7 @@
     overflow: hidden;
     @media screen and (min-width: 1024px) {
       width: 100%;
+      overflow: auto;
     }
     .event-item {
       flex-shrink: 0;
@@ -47,6 +45,13 @@
       &:last-child {
         margin-right: 20px;
       }
+    }
+  }
+  .slideshow-wrapper {
+    .BrainhubCarousel__container,
+    .BrainhubCarousel,
+    .BrainhubCarousel__trackContainer {
+      overflow: unset;
     }
   }
   .white-circle {
@@ -69,6 +74,9 @@
     @media screen and (min-width: 1280px) {
       justify-content: flex-end;
       padding-right: 80px;
+    }
+    @media screen and (min-width: 1440px) {
+      padding-right: 0px;
     }
   }
 }
