@@ -139,6 +139,7 @@
     top: calc(100% - 50px);
     @media screen and (min-width: 1024px) {
       bottom: -45vw;
+      top: calc(100% - 100px);
     }
     @media screen and (min-width: 1440px) {
       left: calc(-50vw + 640px);
