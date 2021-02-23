@@ -10,7 +10,7 @@
   }
   .service-bulbs-top {
     position: absolute;
-    top: 0;
+    top: -0.35%;
     right: -7%;
     width: 65vw;
     @media screen and (min-width: 1024px) {
@@ -43,7 +43,7 @@
   }
   .service-imgs {
     padding: 0 20px;
-    margin-bottom: 11px;
+    margin-bottom: -20px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -100,7 +100,7 @@
       width: calc(100vw - 156px);
       position: relative;
       z-index: 1;
-      top: -10px;
+      top: -30px;
       align-self: flex-end;
       @media screen and (min-width: 768px) {
         width: calc(100vw - 196px);
