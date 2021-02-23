@@ -172,7 +172,7 @@ const Home = () => {
 
     if (!isMobile(window.navigator).any) {
       scrollBarRef.current = Scrollbar.init(wrapperRef.current);
-      scrollBarRef.current.track.xAxis.element.remove();
+      // scrollBarRef.current.track.xAxis.element.remove();
       scrollBarRef.current.addListener(handleScroll);
     }
     return () => {

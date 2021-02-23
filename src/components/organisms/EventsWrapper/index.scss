@@ -51,7 +51,9 @@
     .BrainhubCarousel__container,
     .BrainhubCarousel,
     .BrainhubCarousel__trackContainer {
-      overflow: unset;
+      @media screen and (min-width: 1280px) {
+        overflow: unset;
+      }
     }
   }
   .white-circle {

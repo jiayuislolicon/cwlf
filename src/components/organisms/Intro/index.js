@@ -46,13 +46,13 @@ const Intro = ({ mask, offset }) => {
       )}
       ref={introRef}
     >
-      <img
-        className="intro-heart-bg"
-        src={`${!mask ? heartBg : heartBgHover}`}
-        alt="背景愛心"
-        // width="2240"
-        // height="1936"
-      />
+      <div className="intro-heart-bg-mask">
+        <img
+          className="intro-heart-bg"
+          src={`${!mask ? heartBg : heartBgHover}`}
+          alt="背景愛心"
+        />
+      </div>
       <div className="top-characters">
         {!mask && (
           <img src={characters} alt="上面角色" width="966" height="1082" />
