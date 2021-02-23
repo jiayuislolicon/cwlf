@@ -140,7 +140,7 @@ const Home = () => {
 
   const [{ xys }, set] = useSpring(() => ({
     xys: !isMobile(window.navigator).any ? [0, 0, 100] : [0, 0, 0],
-    config: { mass: 5, tension: 200, friction: 40 },
+    config: { mass: 5, tension: 650, friction: 70 },
   }));
 
   const cleanString = () => {

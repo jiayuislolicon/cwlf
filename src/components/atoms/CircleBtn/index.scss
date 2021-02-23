@@ -10,6 +10,7 @@
     height: 50px;
   }
   .cross {
+    pointer-events: none;
     .horizon,
     .vertical {
       background-color: #fff;
