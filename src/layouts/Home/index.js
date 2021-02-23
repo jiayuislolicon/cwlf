@@ -195,15 +195,15 @@ const Home = () => {
     <div
       className="home"
       onMouseMove={({ pageX: x, pageY: y, target }) => {
-        if (!isMobile(window.navigator).any) detectPos(x, y, target, 200, 100);
+        if (!isMobile(window.navigator).any) detectPos(x, y, target, 150, 100);
       }}
       onTouchStart={({ touches, target }) => {
         const { pageX: x, pageY: y } = touches[0];
-        detectPos(x, y, target, 200, 100);
+        detectPos(x, y, target, 150, 100);
       }}
       onTouchMove={({ touches, target }) => {
         const { pageX: x, pageY: y } = touches[0];
-        detectPos(x, y, target, 200, 100);
+        detectPos(x, y, target, 150, 100);
       }}
       onTouchEnd={({ changedTouches, target }) => {
         const { pageX: x, pageY: y } = changedTouches[0];
