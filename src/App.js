@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div>
-      <Suspense fallback={<div>...</div>}>
+      <Suspense fallback={<div> </div>}>
         <Header />
         <Home />
       </Suspense>

@@ -212,7 +212,7 @@ const Home = () => {
       />
 
       <Loading />
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<div> </div>}>
         <div
           className="scroll-content-wrapper"
           ref={wrapperRef}
