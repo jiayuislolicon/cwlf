@@ -39,7 +39,15 @@ h5 {
   font-weight: 400;
   word-break: break-all;
   color: var(--black);
-  font-display: swap;
+}
+
+h1,
+h2,
+h3 {
+  -webkit-text-stroke: 0.3px var(--black);
+  @media screen and (min-width: 1280px) {
+    -webkit-text-stroke: 0.5px var(--black);
+  }
 }
 
 h1 {
