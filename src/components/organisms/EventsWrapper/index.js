@@ -78,7 +78,7 @@ const EventsWrapper = ({ mask, offset }) => {
     const { top } = eventsRef.current.getBoundingClientRect();
     const sectionTop = top + offset;
 
-    if (offset >= sectionTop - 300) setAnimate(true);
+    if (offset >= sectionTop - 400) setAnimate(true);
   }, [offset]);
 
   useEffect(() => {
@@ -128,6 +128,7 @@ const EventsWrapper = ({ mask, offset }) => {
                 onClick={() => {
                   linkToPopup(1);
                 }}
+                key={e.id}
               />
             ) : (
               <EventItem
@@ -139,6 +140,7 @@ const EventsWrapper = ({ mask, offset }) => {
                 onClick={() => {
                   linkToPopup(1);
                 }}
+                key={e.id}
               />
             )
           )}

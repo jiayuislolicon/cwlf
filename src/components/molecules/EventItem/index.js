@@ -33,13 +33,15 @@ const EventItem = ({
           endDay="2"
           className="tag"
         />
-        <img
-          className={`deco-${characterNum} ${
-            characterDisplay ? "appear" : ""
-          } character-img`}
-          src={characterPic[characterNum]}
-          alt="躲起來的小人物"
-        />
+        {mask && (
+          <img
+            className={`deco-${characterNum} ${
+              characterDisplay ? "appear" : ""
+            } character-img`}
+            src={characterPic[characterNum]}
+            alt="躲起來的小人物"
+          />
+        )}
       </div>
       <div className="event-title-wrapper" data-mouse="bigger">
         <h4>{title}</h4>
