@@ -158,7 +158,9 @@ const Service = ({ mask, offset }) => {
             />
           )}
         </div>
-        <WhiteCircle />
+        <div className="circle-wrapper">
+          <WhiteCircle />
+        </div>
       </div>
       <div
         className={classNames(
@@ -167,7 +169,9 @@ const Service = ({ mask, offset }) => {
         )}
         ref={serviceRef}
       >
-        <div className="bg-circle ab-center" />
+        <div className="bg-circle-wrapper">
+          <div className="bg-circle ab-center" />
+        </div>
         <WhiteCircle />
         <div className="text-content-wrapper">
           <div className="overflow-wrapper">

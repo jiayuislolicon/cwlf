@@ -160,7 +160,11 @@ const EventsWrapper = ({ mask, offset }) => {
           rightClick={addSlide}
         />
       </div>
-      {!mask && <WhiteCircle />}
+      {!mask && (
+        <div className="overflow-wrapper circle-wrapper">
+          <WhiteCircle />
+        </div>
+      )}
     </section>
   );
 };

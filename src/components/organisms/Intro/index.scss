@@ -19,17 +19,20 @@
     position: relative;
     @media screen and (min-width: 768px) {
       max-width: 483px;
-      top: 4.5vw;
+      top: 7vw;
     }
     @media screen and (min-width: 1280px) {
-      top: 6vw;
+      top: 10vw;
     }
     @media screen and (min-width: 1440px) {
-      top: 4vw;
+      top: 9vw;
     }
     @media screen and (min-width: 1680px) {
-      top: 60px;
+      top: 6vw;
     }
+    // @media screen and (min-width: 1680px) {
+    //   top: 60px;
+    // }
     img {
       width: 100%;
       height: auto;
@@ -39,6 +42,9 @@
     width: 100vw;
     height: 120%;
     overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
     .intro-heart-bg {
       width: auto;
       height: 120%;
@@ -57,8 +63,11 @@
     }
   }
   .content-wrapper {
+    padding-top: 20px;
+    @media screen and (min-width: 1280px) {
+      padding-top: 80px;
+    }
     @media screen and (min-width: 1440px) {
-      padding: 0;
       margin: 0 auto;
       width: 1280px;
     }
