@@ -107,7 +107,9 @@
     transform: translateX(100%);
     transition: 0.8s cubic-bezier(0.76, 0, 0.24, 1);
     pointer-events: auto;
+    padding-top: 60px;
     @media screen and (min-width: 1024px) {
+      padding-top: 0;
       flex-direction: row;
       left: auto;
       right: 80px;
@@ -132,6 +134,7 @@
       transform: translateY(-20px);
       transition: 0.5s;
       font-family: "Rubik", "jf-openhuninn", sans-serif;
+      letter-spacing: 1px;
       @media screen and (min-width: 1024px) {
         margin-bottom: 0;
         margin-right: 55px;

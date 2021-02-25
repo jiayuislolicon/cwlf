@@ -62,6 +62,7 @@ h2 {
   font-size: var(--mobile-h2);
   line-height: 1.2;
   @media screen and (min-width: 1280px) {
+    letter-spacing: 2px;
     font-size: var(--h2);
   }
 }
@@ -118,6 +119,7 @@ p {
   margin: 0;
   font-family: "jf-openhuninn", sans-serif;
   font-display: swap;
+  letter-spacing: 0.7px;
   @media screen and (min-width: 1280px) {
     font-size: var(--body);
   }

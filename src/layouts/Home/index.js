@@ -115,7 +115,7 @@ const Home = () => {
         ? sections[num].getBoundingClientRect().top + window.pageYOffset - 60
         : sections[num].getBoundingClientRect().top +
           scrollBarRef.current.scrollTop -
-          80,
+          130,
       reset: true,
       from: {
         y: isMobile(window.navigator).any
